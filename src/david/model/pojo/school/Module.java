@@ -37,6 +37,10 @@ public class Module {
 	 */
 	private List<Session> mSession;
 	/**
+	 * Lista de estudiantes matriculados en el módulo.
+	 */
+	private List<Person> mStudent;
+	/**
 	 * Profesor que imparte este módulo
 	 */
 	private Person mTeacher;
@@ -90,7 +94,14 @@ public class Module {
 	public List<Session> getSession(){
 		return mSession;
 	}
-
+	
+	/**
+	 * Listado de estudiantes
+	 */
+	public List<Person> getStudent(){
+		return mStudent;
+	}
+	
 	/**
 	 * Profesor que imparte este módulo
 	 */
@@ -150,6 +161,15 @@ public class Module {
 	 */
 	public void setSession(List<Session> newVal){
 		mSession = newVal;
+	}
+	
+	/**
+	 * Listado de estudiantes
+	 * 
+	 * @param newVal
+	 */
+	public void setStudent(List<Person> newVal){
+		mStudent = newVal;
 	}
 
 	/**
