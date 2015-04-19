@@ -8,6 +8,7 @@ package david.controller;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -79,6 +80,9 @@ public class FrontController {
 			
 			method = mGenericController.getSuperclass().getDeclaredMethod("setServletResponse", HttpServletResponse.class);
 			method.invoke(mController, response);
+			
+			method = mGenericController.getSuperclass().getDeclaredMethod("setRequestParameter", Map.class);
+			method.invoke(mController, request.getParameterMap());
 		} catch (IllegalAccessException | NoSuchMethodException | SecurityException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}

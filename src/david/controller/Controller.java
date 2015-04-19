@@ -7,6 +7,7 @@
 package david.controller;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,10 @@ public class Controller {
 	 * Atributo que almacena el response del servlet
 	 */
 	protected HttpServletResponse mServletResponse = null;
+	/**
+	 * Atributo que almacena los parametros de un request
+	 */
+	protected Map<String, String[]> mRequestParameter = null;
 	
 	/**
 	 * Método que establece el valor del atributo mServletRequest
@@ -40,15 +45,39 @@ public class Controller {
 	}
 	
 	/**
+	 * Método que establece el valor al atributo mRequestParameter
+	 * @param Map<String, String[]> requestParameter
+	 */
+	public void setRequestParameter(Map<String, String[]> requestParameter){
+		mRequestParameter = requestParameter;
+	}
+	
+	/**
+	 * Método que obtiene el valor del atributo mRequestParameter
+	 * @return Map<String, String[]>
+	 */
+	public Map<String, String[]> getRequestParameter(){
+		return mRequestParameter;
+	}
+	
+	/**
 	 * Método que renderiza la vista
 	 * @param String viewName
 	 */
 	protected void render(String viewName) {
 		try {
-			mServletRequest.getRequestDispatcher("/WEB-INF/"+viewName).include(mServletRequest, mServletResponse);
+			mServletRequest.getRequestDispatcher("view/"+viewName+".jsp").include(mServletRequest, mServletResponse);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Método que comprueba si hay parametros en una petición get o post
+	 * @return boolean
+	 */
+	protected boolean isRequest() {
+		return !mRequestParameter.isEmpty();
 	}
 
 }
