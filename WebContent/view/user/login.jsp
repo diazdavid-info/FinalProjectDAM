@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="david.utils.Message"%>
+<%@page import="java.util.ArrayList"%>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
@@ -17,6 +19,13 @@
 <body>
 	<div class="container">
 		<form action="user" method="post" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 well">
+			
+			<% for(String message : Message.getMessage()){
+				out.print("<div class='alert alert-danger' role='alert'>");
+				out.print(message);
+				out.print("</div>");
+			} %>
+			
 			<div class="form-group">
 				<label for="userName">Nombre de usuario</label>
 				<input type="text" class="form-control" id="userName" name="username" placeholder="Introduzca su nombre de usuario">

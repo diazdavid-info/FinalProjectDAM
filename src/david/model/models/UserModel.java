@@ -17,7 +17,9 @@ public class UserModel implements DUserModel{
 	 */
 	public void loginUser(Map<String, String[]> parameter){
 		LoginForm form = new LoginForm();
-		form.validate(parameter);
+		if(form.validate(parameter)){
+			
+		}
 		System.out.println("Estoy en el UserModel");
 	}
 

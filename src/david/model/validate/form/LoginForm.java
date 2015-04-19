@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 import david.model.annotation.Parameter;
+import david.utils.Message;
 
 
 public class LoginForm {
@@ -32,29 +33,30 @@ public class LoginForm {
 	 */
 	public boolean validate(Map<String, String[]> parameter){
 		System.out.println("Estoy en el LoginForm");
+		boolean validate = true;
 		for (Field field : this.getClass().getDeclaredFields()) {
 			String[] value = parameter.get(field.getAnnotation(Parameter.class).name());
 			setAttributes(field, value[0]);
-			validateField(field);
+			validate = validateField(field);
 		}
-		
-		return false;
+		return validate;
 	}
 
 	/**
 	 * Método que verifica si el campo cumple con las restriciones
 	 * @param Field field
 	 */
-	private void validateField(Field field) {
+	private boolean validateField(Field field) {
+		boolean validate = true;
 		try {
-			if(field.getAnnotation(Parameter.class).required()){
-				System.out.println("VALOR: "+((field.get(this).equals("")) ? "mal" : "Bien"));
+			if(field.getAnnotation(Parameter.class).required() && field.get(this).equals("")){
+				Message.addMesagge("Mal");
+				validate = false;
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		
-		
+		return validate;
 	}
 
 	/**
