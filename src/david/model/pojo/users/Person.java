@@ -36,7 +36,7 @@ public class Person extends User {
 	private int mId;
 
 	public Person(){
-
+		super(null);
 	}
 
 	public void finalize() throws Throwable {

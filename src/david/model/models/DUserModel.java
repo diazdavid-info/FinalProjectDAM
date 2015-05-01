@@ -8,12 +8,15 @@ package david.model.models;
 
 import java.util.Map;
 
+import david.model.pojo.users.User;
+
 public interface DUserModel {
 	
 	/**
 	 * Método que gestiona el login de usuarios
 	 * @param parameter 
+	 * @return User
 	 */
-	public void loginUser(Map<String, String[]> parameter);
+	public User loginUser(Map<String, String[]> parameter);
 
 }
