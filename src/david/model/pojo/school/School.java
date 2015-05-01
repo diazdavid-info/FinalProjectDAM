@@ -26,7 +26,7 @@ public class School extends User {
 	private int mId;
 
 	public School(){
-
+		super(null);
 	}
 
 	public void finalize() throws Throwable {

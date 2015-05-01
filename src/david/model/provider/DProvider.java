@@ -6,26 +6,21 @@
  */
 package david.model.provider;
 
+import java.sql.ResultSet;
+
 public interface DProvider {
-	
-	/**
-	 * Método que conecta con la base de datos
-	 * @param host String
-	 * @param user String
-	 * @param pass String
-	 * @param ddbbname String
-	 */
-	public void connect(String host, String user, String pass, String ddbbname);
-	
-	/**
-	 * Método que desconecta con la base de datos
-	 */
-	public void disconnect();
 	
 	/**
 	 * Método que comprueba si se esta conectado a la base de datos
 	 * @return boolean
 	 */
 	public boolean isConnected();
+	
+	/**
+	 * Método que ejecuta una query
+	 * @param String query
+	 * @return ResultSet
+	 */
+	public ResultSet executeQuery(String query);
 
 }

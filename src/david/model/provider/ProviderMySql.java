@@ -1,42 +1,41 @@
 package david.model.provider;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.sql.DataSource;
 
 public class ProviderMySql implements DProvider {
 	
-	private Connection connection;
+	private Connection mConnection;
+	private DataSource mDataSource;
+	private Statement mStatement;
+	private ResultSet mResultSet;
 	
-	public ProviderMySql() throws ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+	public ProviderMySql(DataSource dataSource){
+		mDataSource = dataSource;
 	}
 
 	/**
 	 * Método que conecta con la base de datos
-	 * @param host String
-	 * @param user String
-	 * @param pass String
-	 * @param ddbbname String
 	 */
-	@Override
-	public void connect(String host, String user, String pass, String ddbbname) {
+	private void connect() {
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://"+host+"/"+ddbbname+"?useServerPrepStmts=true",user,pass);
+			mConnection = mDataSource.getConnection();
 		} catch (SQLException e) {
-			System.err.println("Error al conectar a la base de datos, mensage: "+e.getMessage()+" código de error: "+e.getErrorCode());
+			System.err.println("Error al conectar con la base de datos, mensage: "+e.getMessage()+" código de error: "+e.getErrorCode());
 		}
-		
 	}
 
 	/**
 	 * Método que desconecta con la base de datos
 	 */
-	@Override
-	public void disconnect() {
+	private void disconnect() {
 		try {
-			connection.close();
-			connection = null;
+			mConnection.close();
+			mConnection = null;
 		} catch (SQLException e) {
 			System.err.println("Error al cerrar la conexión con la base de datos, mensage: "+e.getMessage()+" código de error: "+e.getErrorCode());
 		}
@@ -48,7 +47,25 @@ public class ProviderMySql implements DProvider {
 	 */
 	@Override
 	public boolean isConnected() {
-		return (connection == null) ? false : true;
+		return (mConnection == null) ? false : true;
+	}
+	
+	/**
+	 * Método que ejecuta una query
+	 * @param String query
+	 * @return ResultSet
+	 */
+	@Override
+	public ResultSet executeQuery(String query){
+		this.connect();
+		try {
+			mStatement = mConnection.createStatement();
+			mResultSet = mStatement.executeQuery(query);
+		} catch (SQLException e) {
+			System.err.println("Error al ejecutar la query, mensage: "+e.getMessage()+" código de error: "+e.getErrorCode());
+		}
+//		this.disconnect();
+		return mResultSet;
 	}
 
 	

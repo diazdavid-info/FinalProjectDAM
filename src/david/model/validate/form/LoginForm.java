@@ -13,7 +13,7 @@ import david.model.annotation.Parameter;
 import david.utils.Message;
 
 
-public class LoginForm {
+public class LoginForm implements IWebLogin{
 	
 	/**
 	 * Atributo que almacena el valor del campo username
@@ -40,6 +40,22 @@ public class LoginForm {
 			validate = validateField(field);
 		}
 		return validate;
+	}
+	
+	/**
+	 * Método que obtiene el valor del Username
+	 * @return String
+	 */
+	public String getUsername(){
+		return mUsername;
+	}
+	
+	/**
+	 * Método que obtiene el valor del password
+	 * @return String
+	 */
+	public String getPassword(){
+		return mPassword;
 	}
 
 	/**
