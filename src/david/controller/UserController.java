@@ -5,8 +5,13 @@
  */
 package david.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpSession;
+
 import david.model.factory.ModelFactory;
 import david.model.models.DUserModel;
+import david.model.pojo.users.User;
 
 
 public class UserController extends Controller{
@@ -27,10 +32,25 @@ public class UserController extends Controller{
 	 * Método que gestiona la acción index
 	 */
 	public void indexAction() {
+		User user = null;
 		if(isRequest()){
-			mModel.loginUser(getRequestParameter());
+			user = mModel.loginUser(getRequestParameter());
 			System.out.println("SI");
 		}
-		render("user/login");
+		
+		if(user != null){
+			HttpSession session = mServletRequest.getSession(true);
+			session.setAttribute("user", user);
+			System.out.println("EL LOGIN ES OK");
+			try {
+				mServletResponse.sendRedirect("app");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if(user == null){
+			render("user/login");
+		}
 	}	
 }
