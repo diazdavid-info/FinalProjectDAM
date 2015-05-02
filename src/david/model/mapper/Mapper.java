@@ -177,14 +177,16 @@ public class Mapper<T> {
 	 * @param ResultSet resultSet
 	 * @return List<T>
 	 */
+	@SuppressWarnings("unchecked")
 	public List<T> mapperAllToPersistence(ResultSet resultSet) {
 		List<T> list = new ArrayList<T>();
 		try {
+			Method method = mGenericInstance.getDeclaredMethod("clone");
 			while (resultSet.next()) {
 				setAtributtes(resultSet);
-				list.add(mInstance);
+				list.add((T) method.invoke(mInstance));
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 		return list;
