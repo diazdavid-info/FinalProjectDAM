@@ -5,7 +5,7 @@
  */
 package david.controller;
 
-import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -42,15 +42,19 @@ public class UserController extends Controller{
 			HttpSession session = mServletRequest.getSession(true);
 			session.setAttribute("user", user);
 			System.out.println("EL LOGIN ES OK");
-			try {
-				mServletResponse.sendRedirect("app");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			redirect("app");
 		}
 		
 		if(user == null){
 			render("user/login");
 		}
-	}	
+	}
+	
+	public void listAction() {
+		if(isLogin()){
+			List<User> listUser = mModel.listUser();
+			mServletRequest.setAttribute("listUser", listUser);
+			render("user/list");
+		}
+	}
 }

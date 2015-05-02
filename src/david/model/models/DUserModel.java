@@ -6,6 +6,7 @@
  */
 package david.model.models;
 
+import java.util.List;
 import java.util.Map;
 
 import david.model.pojo.users.User;
@@ -18,5 +19,11 @@ public interface DUserModel {
 	 * @return User
 	 */
 	public User loginUser(Map<String, String[]> parameter);
+
+	/**
+	 * Método que solicita y gestiona la lista de usuarios
+	 * @return List<User>
+	 */
+	public List<User> listUser();
 
 }
