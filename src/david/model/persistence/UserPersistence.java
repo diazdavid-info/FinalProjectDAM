@@ -164,4 +164,12 @@ public class UserPersistence implements Cloneable{
 	public void setIdSchool(int mIdSchool) {
 		this.mIdSchool = mIdSchool;
 	}
+
+	/**
+	 * Método para clonar el objeto
+	 */
+	@Override
+	public UserPersistence clone() throws CloneNotSupportedException{
+		return (UserPersistence) super.clone();
+	}
 }
