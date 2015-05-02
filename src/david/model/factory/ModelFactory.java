@@ -10,8 +10,12 @@ import david.model.models.UserModel;
 
 public class ModelFactory {
 	
+	/**
+	 * Método que fabrica el modelo de usuarios
+	 * @return UserModel
+	 */
 	public static UserModel createUserModel(){
-		return new UserModel();
+		return new UserModel(TransformerFactory.createUserTransformer(), RepositoryFactory.createUserRepository());
 	}
 
 }

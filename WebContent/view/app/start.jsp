@@ -1,4 +1,4 @@
-<jsp:include page="/include/head.html" />
+<jsp:include page="/include/head.jsp" />
 
 <jsp:include page="/include/nav.jsp" />
 

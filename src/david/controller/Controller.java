@@ -12,6 +12,9 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import david.model.pojo.users.User;
 
 public class Controller {
 	
@@ -66,8 +69,20 @@ public class Controller {
 	 */
 	protected void render(String viewName) {
 		try {
-			mServletRequest.getRequestDispatcher("view/"+viewName+".jsp").include(mServletRequest, mServletResponse);
+			mServletRequest.getRequestDispatcher("/view/"+viewName+".jsp").include(mServletRequest, mServletResponse);
 		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Método que redirecciona a una URL
+	 * @param String path
+	 */
+	protected void redirect(String path) {
+		try {
+			mServletResponse.sendRedirect(path);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -78,6 +93,19 @@ public class Controller {
 	 */
 	protected boolean isRequest() {
 		return !mRequestParameter.isEmpty();
+	}
+	
+	/**
+	 * Método que comprueba si un usuario esta logeado
+	 * @return boolean
+	 */
+	protected boolean isLogin() {
+		HttpSession session = mServletRequest.getSession();
+		User user = (User) session.getAttribute("user");
+		if(user == null){
+			redirect("user");
+		}
+		return (user != null) ? true : false;
 	}
 
 }
