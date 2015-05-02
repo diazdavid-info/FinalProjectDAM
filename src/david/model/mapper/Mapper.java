@@ -10,6 +10,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import david.model.annotation.column;
 
@@ -35,6 +37,10 @@ public class Mapper<T> {
 	 * Atributo que almacena la parte where de la query
 	 */
 	private StringBuilder mQueryWhere;
+	/**
+	 * Método que almacena si existe clausula where;
+	 */
+	private boolean mIsThereWhere;
 	
 	/**
 	 * Constructor
@@ -44,18 +50,14 @@ public class Mapper<T> {
 	public Mapper(T instance) {
 		mInstance = instance;
 		mGenericInstance = mInstance.getClass();
-		mQuerySelect = new StringBuilder();
-		mQueryFrom = new StringBuilder();
-		mQueryWhere = new StringBuilder();
+		mIsThereWhere = false;
 	}
 	
 	/**
 	 * Método que mapea los datos de la persistencia en sentencia MySql
 	 */
 	public String mapperToDbb(){
-		mQuerySelect.append("SELECT ");
-		mQueryFrom.append("FROM ");
-		mQueryWhere.append("WHERE ");
+		prepareBuilders();
 		
 		Field[] fields = mGenericInstance.getDeclaredFields();
 		for (Field field : fields) {
@@ -67,11 +69,34 @@ public class Mapper<T> {
 				e.printStackTrace();
 			}
 		}
-		mQuerySelect.delete(mQuerySelect.length() - 1, mQuerySelect.length());
-		mQueryWhere.delete(mQueryWhere.length() - 4, mQueryWhere.length());
+		clearQuery();
 		prepareFrom();
 		System.out.println("QUERY: "+mQuerySelect+" "+mQueryFrom+" "+mQueryWhere);
 		return mQuerySelect+" "+mQueryFrom+" "+mQueryWhere;
+	}
+
+	/**
+	 * Método que prepara los StringBuilder
+	 */
+	private void prepareBuilders() {
+		mQuerySelect = new StringBuilder();
+		mQueryFrom = new StringBuilder();
+		mQueryWhere = new StringBuilder();
+		mQuerySelect.append("SELECT ");
+		mQueryFrom.append("FROM ");
+		mQueryWhere.append("WHERE ");
+	}
+
+	/**
+	 * Método que limpia la query
+	 */
+	private void clearQuery() {
+		mQuerySelect.delete(mQuerySelect.length() - 1, mQuerySelect.length());
+		if(mIsThereWhere){
+			mQueryWhere.delete(mQueryWhere.length() - 4, mQueryWhere.length());
+		}else{
+			mQueryWhere.delete(mQueryWhere.length() - 6, mQueryWhere.length());
+		}
 	}
 
 	/**
@@ -84,10 +109,12 @@ public class Mapper<T> {
 		System.out.println("NAME: "+name+" TYPE: "+type+" VALUE: "+value);
 		if(value != null && type.equals("int")){
 			mQueryWhere.append(name+" = "+value+" and ");
+			mIsThereWhere = true;
 		}
 		
 		if(value != null && (type.equals("varchar") || type.equals("char"))){
 			mQueryWhere.append(name+" = '"+value+"' and ");
+			mIsThereWhere = true;
 		}
 	}
 
@@ -128,6 +155,10 @@ public class Mapper<T> {
 		return mInstance;
 	}
 
+	/**
+	 * Método que da valor a los atributos del objeto
+	 * @param ResultSet resultSet
+	 */
 	private void setAtributtes(ResultSet resultSet) {
 		Field[] fields = mGenericInstance.getDeclaredFields();
 		for (Field field : fields) {
@@ -139,6 +170,24 @@ public class Mapper<T> {
 			}
 		}
 		
+	}
+
+	/**
+	 * Método que mapea una lista de ResultSet
+	 * @param ResultSet resultSet
+	 * @return List<T>
+	 */
+	public List<T> mapperAllToPersistence(ResultSet resultSet) {
+		List<T> list = new ArrayList<T>();
+		try {
+			while (resultSet.next()) {
+				setAtributtes(resultSet);
+				list.add(mInstance);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }

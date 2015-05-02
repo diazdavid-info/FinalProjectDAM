@@ -7,7 +7,7 @@ package david.model.persistence;
 
 import david.model.annotation.column;
 
-public class UserPersistence {
+public class UserPersistence implements Cloneable{
 
 	/**
 	 * Atributo que almacena el ID
@@ -164,5 +164,4 @@ public class UserPersistence {
 	public void setIdSchool(int mIdSchool) {
 		this.mIdSchool = mIdSchool;
 	}
-	
 }
