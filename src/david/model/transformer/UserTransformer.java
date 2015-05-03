@@ -33,6 +33,11 @@ public class UserTransformer implements IUserTransformer{
 		if(user.getRole() != null){
 			userPersistence.setRole(user.getRole().getId());
 		}
+		
+		if(user.getPerson() != null){
+			userPersistence.setIdPerson(user.getPerson().getId());
+		}
+		
 		return userPersistence;
 	}
 	
