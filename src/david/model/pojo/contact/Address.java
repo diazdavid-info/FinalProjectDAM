@@ -1,5 +1,7 @@
 ﻿package david.model.pojo.contact;
 
+import david.model.pojo.builder.AddressBuilder;
+
 
 /**
  * Clase dirección
@@ -26,8 +28,20 @@ public class Address {
 	 */
 	private String mProvince;
 
-	public Address(){
-
+	/**
+	 * Constructor default
+	 */
+	public Address(){}
+	
+	/**
+	 * Constructor con un parametro
+	 * @param AddressBuilder addressBuilder
+	 */
+	public Address(AddressBuilder addressBuilder){
+		mDescription = addressBuilder.getDescription();
+		mId = addressBuilder.getId();
+		mPopulation = addressBuilder.getPopulation();
+		mProvince = addressBuilder.getProvince();
 	}
 
 	public void finalize() throws Throwable {

@@ -18,7 +18,11 @@ public class ModelFactory {
 		return new UserModel(TransformerFactory.createUserTransformer(), 
 				RepositoryFactory.createUserRepository(), 
 				TransformerFactory.createPersonTransformer(), 
-				RepositoryFactory.createPersonRepository());
+				RepositoryFactory.createPersonRepository(),
+				TransformerFactory.createAddressTransformer(),
+				RepositoryFactory.createAddressRepository(),
+				TransformerFactory.createRoletransformer(),
+				RepositoryFactory.createRoleRepository());
 	}
 
 }

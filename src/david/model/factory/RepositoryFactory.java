@@ -5,7 +5,9 @@
  */
 package david.model.factory;
 
+import david.model.repository.AddressRepository;
 import david.model.repository.PersonRepository;
+import david.model.repository.RoleRepository;
 import david.model.repository.UserRepository;
 
 public class RepositoryFactory {
@@ -24,6 +26,22 @@ public class RepositoryFactory {
 	 */
 	public static PersonRepository createPersonRepository() {
 		return new PersonRepository(ProviderFactory.createMysqlProvider());
+	}
+
+	/**
+	 * Método que fabrica un AddressRepository
+	 * @return AddressRepository
+	 */
+	public static AddressRepository createAddressRepository() {
+		return new AddressRepository(ProviderFactory.createMysqlProvider());
+	}
+
+	/**
+	 * Método que fabrica un RoleRepository
+	 * @return RoleRepository
+	 */
+	public static RoleRepository createRoleRepository() {
+		return new RoleRepository(ProviderFactory.createMysqlProvider());
 	}
 
 }

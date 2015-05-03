@@ -22,5 +22,12 @@ public interface DProvider {
 	 * @return ResultSet
 	 */
 	public ResultSet executeQuery(String query);
+	
+	/**
+	 * Método que inserta un registro en la BDD
+	 * @param String update
+	 * @return int
+	 */
+	public int executeUpdate(String update);
 
 }

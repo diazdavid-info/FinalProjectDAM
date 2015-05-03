@@ -11,6 +11,7 @@ import java.util.List;
 import david.model.pojo.contact.Address;
 import david.model.pojo.contact.Telephone;
 import david.model.pojo.permission.Role;
+import david.model.pojo.users.Person;
 
 public class UserBuilder {
 	
@@ -38,6 +39,10 @@ public class UserBuilder {
 	 * Atributo que almacena el Username
 	 */
 	private String mUsername;
+	/**
+	 * Atributo que almacena la persona
+	 */
+	private Person mPerson;
 	
 	/**
 	 * Método que establece el valor al atributo mAddress
@@ -92,10 +97,20 @@ public class UserBuilder {
 	/**
 	 * Método que establece el valor al atributo mUsername
 	 * @param String username
-	 * @return
+	 * @return UserBuilder
 	 */
 	public UserBuilder setUsername(String username){
 		mUsername = username;
+		return this;
+	}
+	
+	/**
+	 * Método que establece el valor del atributo mPerson
+	 * @param Person person
+	 * @return UserBuilder
+	 */
+	public UserBuilder setPerson(Person person){
+		mPerson = person;
 		return this;
 	}
 	
@@ -145,5 +160,13 @@ public class UserBuilder {
 	 */
 	public String getUsername(){
 		return mUsername;
+	}
+
+	/**
+	 * Método que obtiene la persona
+	 * @return Person
+	 */
+	public Person getPerson() {
+		return mPerson;
 	}
 }

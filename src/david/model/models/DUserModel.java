@@ -26,4 +26,10 @@ public interface DUserModel {
 	 */
 	public List<User> listUser();
 
+	/**
+	 * Método que gestiona la creación de usuarios
+	 * @param Map<String, String[]> requestParameter
+	 */
+	public void createUser(Map<String, String[]> requestParameter);
+
 }

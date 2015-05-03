@@ -38,9 +38,21 @@ public class Mapper<T> {
 	 */
 	private StringBuilder mQueryWhere;
 	/**
-	 * Método que almacena si existe clausula where;
+	 * Atributo que almacena la parte insert de la query
+	 */
+	private StringBuilder mQueryInsert;
+	/**
+	 * Atributo que almacena la parte values de la query
+	 */
+	private StringBuilder mQueryValues;
+	/**
+	 * Atributo que almacena si existe clausula where;
 	 */
 	private boolean mIsThereWhere;
+	/**
+	 * Atributo que almacena los Fields de la clase;
+	 */
+	private Field[] mFields;
 	
 	/**
 	 * Constructor
@@ -51,18 +63,20 @@ public class Mapper<T> {
 		mInstance = instance;
 		mGenericInstance = mInstance.getClass();
 		mIsThereWhere = false;
+		mFields = mGenericInstance.getDeclaredFields();
 	}
 	
 	/**
-	 * Método que mapea los datos de la persistencia en sentencia MySql
+	 * Método que mapea los datos de la persistencia en sentencia MySql para extraer datos
 	 */
 	public String mapperToDbb(){
-		prepareBuilders();
+		prepareBuildersToSelect();
 		
-		Field[] fields = mGenericInstance.getDeclaredFields();
-		for (Field field : fields) {
+		for (Field field : mFields) {
 			prepareSelect(field.getAnnotation(column.class).name());
+			
 			field.setAccessible(true);
+			
 			try {
 				prepareWhere(field.getAnnotation(column.class).name(), field.getAnnotation(column.class).type(), field.get(mInstance));
 			} catch (IllegalArgumentException | IllegalAccessException e) {
@@ -70,21 +84,72 @@ public class Mapper<T> {
 			}
 		}
 		clearQuery();
-		prepareFrom();
 		System.out.println("QUERY: "+mQuerySelect+" "+mQueryFrom+" "+mQueryWhere);
 		return mQuerySelect+" "+mQueryFrom+" "+mQueryWhere;
 	}
+	
 
 	/**
-	 * Método que prepara los StringBuilder
+	 * Método que mapea los datos de la persistencia en sentencia MySql para insertar datos
 	 */
-	private void prepareBuilders() {
+	public String mapperStorageToDbb() {
+		prepareBuildersToInsert();
+		
+		for (Field field : mFields) {
+			field.setAccessible(true);
+			
+			try {
+				prepareValues(field.getAnnotation(column.class).type(), field.get(mInstance));
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		clearQueryValues();
+		mQueryValues.append(" )");
+		System.out.println("INSERT INTO: "+mQueryInsert+" "+mQueryValues);
+		return mQueryInsert+" "+mQueryValues;
+	}
+
+	/**
+	 * Método que prepara la clausula values de la query;
+	 * @param String type
+	 * @param Object object
+	 */
+	private void prepareValues(String type, Object value) {
+		if(value != null && type.equals("int")){
+			mQueryValues.append(value+", ");
+		}
+		
+		if(value != null && (type.equals("varchar") || type.equals("char"))){
+			mQueryValues.append("'"+value+"', ");
+		}
+		
+		if(value == null){
+			mQueryValues.append("null, ");
+		}
+	}
+
+	/**
+	 * Método que prepara los StringBuilder para extraer datos
+	 */
+	private void prepareBuildersToSelect() {
 		mQuerySelect = new StringBuilder();
 		mQueryFrom = new StringBuilder();
 		mQueryWhere = new StringBuilder();
 		mQuerySelect.append("SELECT ");
-		mQueryFrom.append("FROM ");
+		mQueryFrom.append("FROM "+getTable());
 		mQueryWhere.append("WHERE ");
+	}
+	
+	/**
+	 * Método que prepara los StringBuilder para insertar datos
+	 */
+	private void prepareBuildersToInsert() {
+		mQueryInsert = new StringBuilder();
+		mQueryValues = new StringBuilder();
+		mQueryInsert.append("INSERT INTO "+getTable());
+		mQueryValues.append("VALUES ( ");
 	}
 
 	/**
@@ -97,6 +162,14 @@ public class Mapper<T> {
 		}else{
 			mQueryWhere.delete(mQueryWhere.length() - 6, mQueryWhere.length());
 		}
+	}
+	
+
+	/**
+	 * Método que limpia los últimos caracteres del queryValues
+	 */
+	private void clearQueryValues() {
+		mQueryValues.delete(mQueryValues.length() - 2, mQueryValues.length());
 	}
 
 	/**
@@ -119,15 +192,18 @@ public class Mapper<T> {
 	}
 
 	/**
-	 * Método que prepara la clausula FROM
+	 * Método que obtiene el nombre de la tabla
+	 * @return String
 	 */
-	private void prepareFrom() {
+	private String getTable() {
+		String table = "";
 		try {
 			Method method = mGenericInstance.getDeclaredMethod("getTable");
-			mQueryFrom.append(method.invoke(mInstance));
+			table = (String) method.invoke(mInstance);
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
+		return table;
 	}
 
 	/**
@@ -191,5 +267,4 @@ public class Mapper<T> {
 		}
 		return list;
 	}
-
 }
