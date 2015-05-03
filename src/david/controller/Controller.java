@@ -103,7 +103,7 @@ public class Controller {
 		HttpSession session = mServletRequest.getSession();
 		User user = (User) session.getAttribute("user");
 		if(user == null){
-			redirect("user");
+			redirect(mServletRequest.getContextPath()+"/user");
 		}
 		return (user != null) ? true : false;
 	}

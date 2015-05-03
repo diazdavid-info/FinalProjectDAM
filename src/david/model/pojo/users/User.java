@@ -40,6 +40,12 @@ public class User {
 	 * Nombre de usuario
 	 */
 	private String mUsername;
+	/**
+	 * Pesona
+	 */
+	private Person mPerson;
+	
+	public User(){}
 
 	public User(UserBuilder userBuilder){
 		mAddress = userBuilder.getAddress();
@@ -82,6 +88,15 @@ public class User {
 	 */
 	public void setAddress(Address newVal){
 		mAddress = newVal;
+	}
+	
+	/**
+	 * Persona
+	 * 
+	 * @param Person person
+	 */
+	public void setPerson(Person person){
+		mPerson = person;
 	}
 
 	/**
@@ -141,6 +156,15 @@ public class User {
 	 */
 	public void setUsername(String newVal){
 		mUsername = newVal;
+	}
+	
+	/*
+	 * Persona
+	 * 
+	 * @return Person
+	 */
+	public Person getPerson(){
+		return mPerson;
 	}
 	
 	/**
