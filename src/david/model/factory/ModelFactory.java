@@ -15,7 +15,10 @@ public class ModelFactory {
 	 * @return UserModel
 	 */
 	public static UserModel createUserModel(){
-		return new UserModel(TransformerFactory.createUserTransformer(), RepositoryFactory.createUserRepository());
+		return new UserModel(TransformerFactory.createUserTransformer(), 
+				RepositoryFactory.createUserRepository(), 
+				TransformerFactory.createPersonTransformer(), 
+				RepositoryFactory.createPersonRepository());
 	}
 
 }

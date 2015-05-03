@@ -47,7 +47,7 @@ public class UserPersistence implements Cloneable{
 	
 	/**
 	 * Método que devuelve el nombre de la tabla
-	 * @return
+	 * @return String
 	 */
 	public String getTable(){
 		return "user";
