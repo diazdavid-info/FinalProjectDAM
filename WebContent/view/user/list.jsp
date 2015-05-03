@@ -14,11 +14,19 @@
 				<tr>
 					<th>ID Usuario</th>
 					<th>User Name</th>
+					<th>Nombre</th>
+					<th>Primer Apellido</th>
+					<th>Segundo Apellido</th>
+					<th>NIF</th>
 				</tr>
 				<% for(User user : listUser){ %>
 					<tr>
 						<td><%= user.getId() %></td>
 						<td><%= user.getUsername() %></td>
+						<td><%= user.getPerson().getName() %></td>
+						<td><%= user.getPerson().getSurname1() %></td>
+						<td><%= user.getPerson().getSurname2() %></td>
+						<td><%= user.getPerson().getNif() %></td>
 					</tr>
 				<% } %>
 			</table>

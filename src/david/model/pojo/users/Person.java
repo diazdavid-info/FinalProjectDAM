@@ -1,5 +1,7 @@
 package david.model.pojo.users;
 
+import david.model.pojo.builder.PersonBuilder;
+
 
 
 /**
@@ -8,7 +10,7 @@ package david.model.pojo.users;
  * @version 1.0
  * @updated 13-mar-2015 15:53:23
  */
-public class Person extends User {
+public class Person{
 
 	/**
 	 * Email de la persona
@@ -21,7 +23,7 @@ public class Person extends User {
 	/**
 	 * Identificador de la persona
 	 */
-	private int mNif;
+	private String mNif;
 	/**
 	 * Primer apellido de la persona
 	 */
@@ -35,8 +37,15 @@ public class Person extends User {
 	 */
 	private int mId;
 
-	public Person(){
-		super(null);
+	public Person(){}
+	
+	public Person(PersonBuilder personBuilder){
+		this.mEmail = personBuilder.getEmail();
+		this.mName = personBuilder.getName();
+		this.mNif = personBuilder.getNif();
+		this.mSurname1 = personBuilder.getSurname1();
+		this.mSurname2 = personBuilder.getSurname2();
+		this.mId = personBuilder.getId();
 	}
 
 	public void finalize() throws Throwable {
@@ -60,7 +69,7 @@ public class Person extends User {
 	/**
 	 * Identificador de la persona
 	 */
-	public int getNif(){
+	public String getNif(){
 		return mNif;
 	}
 
@@ -101,7 +110,7 @@ public class Person extends User {
 	 * 
 	 * @param newVal
 	 */
-	public void setNif(int newVal){
+	public void setNif(String newVal){
 		mNif = newVal;
 	}
 
