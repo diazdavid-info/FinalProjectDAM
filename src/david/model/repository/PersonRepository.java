@@ -34,4 +34,34 @@ public class PersonRepository {
 		return mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
 	}
 
+	/**
+	 * Método que guarda un PersonsPersistence
+	 * @param PersonPersistence personPersistence
+	 */
+	public PersonPersistence storage(PersonPersistence personPersistence) {
+		return (personPersistence.getId() == null) ? save(personPersistence) : update(personPersistence);
+	}
+
+	/**
+	 * Método que actualiza un PersonPersistence
+	 * @param PersonPersistence personPersistence
+	 * @return PersonPersistence
+	 */
+	private PersonPersistence update(PersonPersistence personPersistence) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * Método que guarda un PersonPersistence
+	 * @param PersonPersistence personPersistence
+	 * @return PersonPersistence
+	 */
+	private PersonPersistence save(PersonPersistence personPersistence) {
+		System.out.println("SAVE PersonPersistence");
+		Mapper<PersonPersistence> mapper = new Mapper<PersonPersistence>(personPersistence);
+		personPersistence.setId(mProvider.executeUpdate(mapper.mapperStorageToDbb()));
+		return personPersistence;
+	}
+
 }

@@ -50,11 +50,26 @@ public class UserController extends Controller{
 		}
 	}
 	
+	/**
+	 * Método que lista todos los usuarios
+	 */
 	public void listAction() {
 		if(isLogin()){
 			List<User> listUser = mModel.listUser();
 			mServletRequest.setAttribute("listUser", listUser);
 			render("user/list");
 		}
+	}
+	
+	/**
+	 * Método que crea un usuario
+	 */
+	public void createAction() {
+		if(isRequest()){
+			mModel.createUser(getRequestParameter());
+			System.out.println("HAY REQUEST");
+		}
+		System.out.println("AQUI");
+		render("user/create");
 	}
 }

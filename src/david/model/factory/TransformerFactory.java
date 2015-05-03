@@ -5,9 +5,13 @@
  */
 package david.model.factory;
 
+import david.model.transformer.AddressTransformer;
+import david.model.transformer.IAddressTransformer;
 import david.model.transformer.IPersonTransformer;
+import david.model.transformer.IRoleTransformer;
 import david.model.transformer.IUserTransformer;
 import david.model.transformer.PersonTransformer;
+import david.model.transformer.RoleTransformer;
 import david.model.transformer.UserTransformer;
 
 public class TransformerFactory {
@@ -26,5 +30,21 @@ public class TransformerFactory {
 	 */
 	public static IPersonTransformer createPersonTransformer(){
 		return new PersonTransformer();
+	}
+	
+	/**
+	 * Método que construye un transformador de address
+	 * @return IAddressTransformer
+	 */
+	public static IAddressTransformer createAddressTransformer(){
+		return new AddressTransformer();
+	}
+
+	/**
+	 * Método que construye un transformer de role
+	 * @return IRoleTransformer
+	 */
+	public static IRoleTransformer createRoletransformer() {
+		return new RoleTransformer();
 	}
 }
