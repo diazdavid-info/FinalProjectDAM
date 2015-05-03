@@ -10,10 +10,9 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 import david.model.annotation.Parameter;
-import david.utils.Message;
 
 
-public class LoginForm implements IWebLogin{
+public class LoginForm extends Form implements IWebLogin{
 	
 	/**
 	 * Atributo que almacena el valor del campo username
@@ -56,35 +55,5 @@ public class LoginForm implements IWebLogin{
 	 */
 	public String getPassword(){
 		return mPassword;
-	}
-
-	/**
-	 * Método que verifica si el campo cumple con las restriciones
-	 * @param Field field
-	 */
-	private boolean validateField(Field field) {
-		boolean validate = true;
-		try {
-			if(field.getAnnotation(Parameter.class).required() && field.get(this).equals("")){
-				Message.addMesagge("Mal");
-				validate = false;
-			}
-		} catch (IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
-		return validate;
-	}
-
-	/**
-	 * Método que mapea los atributos del formulario con los atributos propios de la clase
-	 * @param String value 
-	 * @param Map<String, String[]> parameter
-	 */
-	private void setAttributes(Field field, String value) {
-		try {
-			field.set(this, value);
-		} catch (IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
 	}
 }

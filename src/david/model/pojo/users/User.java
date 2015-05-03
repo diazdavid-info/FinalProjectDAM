@@ -54,6 +54,7 @@ public class User {
 		mPassword = userBuilder.getPassword();
 		mTelephone = userBuilder.getTelephone();
 		mUsername = userBuilder.getUsername();
+		mPerson = userBuilder.getPerson();
 	}
 
 	public void finalize() throws Throwable {

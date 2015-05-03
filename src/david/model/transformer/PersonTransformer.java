@@ -19,7 +19,11 @@ public class PersonTransformer implements IPersonTransformer{
 	public PersonPersistence entityToPersistence(Person person){
 		PersonPersistence personPersistence = new PersonPersistence();
 		personPersistence.setEmail(person.getEmail());
-		personPersistence.setId(person.getId());
+		
+		if(person.getId() != 0){
+			personPersistence.setId(person.getId());
+		}
+		
 		personPersistence.setmSurname2(person.getSurname2());
 		personPersistence.setName(person.getName());
 		personPersistence.setNif(person.getNif());

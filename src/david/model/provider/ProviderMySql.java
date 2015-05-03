@@ -32,6 +32,7 @@ public class ProviderMySql implements DProvider {
 	/**
 	 * Método que desconecta con la base de datos
 	 */
+	@SuppressWarnings("unused")
 	private void disconnect() {
 		try {
 			mConnection.close();
@@ -66,6 +67,26 @@ public class ProviderMySql implements DProvider {
 		}
 //		this.disconnect();
 		return mResultSet;
+	}
+	
+	/**
+	 * Método que inserta un registro en la BDD
+	 * @param String update
+	 */
+	@Override
+	public int executeUpdate(String update){
+		int id = -1;
+		this.connect();
+		try {
+			mStatement = mConnection.createStatement();
+			mStatement.executeUpdate(update, Statement.RETURN_GENERATED_KEYS);
+			mResultSet = mStatement.getGeneratedKeys();
+			mResultSet.next();
+			id = mResultSet.getInt(1);
+		} catch (SQLException e) {
+			System.err.println("Error al ejecutar el update, mensage: "+e.getMessage()+" código de error: "+e.getErrorCode());
+		}
+		return id;
 	}
 
 	

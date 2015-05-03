@@ -25,10 +25,32 @@ public class UserRepository {
 	/**
 	 * Método que almacena la persistencia de user
 	 * @param UserPersistence userPersistence
+	 * @return UserPersistence
 	 */
-	public void storage(UserPersistence userPersistence) {
+	public UserPersistence storage(UserPersistence userPersistence) {
+		return (userPersistence.getId() == null) ? save(userPersistence) : update(userPersistence);
+	}
+
+	/**
+	 * Método que guarda un UserPersistence
+	 * @param UserPersistence userPersistence
+	 * @return UserPersistence
+	 */
+	private UserPersistence save(UserPersistence userPersistence) {
+		System.out.println("SAVE");
+		Mapper<UserPersistence> mapper = new Mapper<UserPersistence>(userPersistence);
+		userPersistence.setId(mProvider.executeUpdate(mapper.mapperStorageToDbb()));
+		return userPersistence;
+	}
+
+	/**
+	 * Método que actualiza un UserPersistence
+	 * @param UserPersistence userPersistence
+	 * @return UserPersistence
+	 */
+	private UserPersistence update(UserPersistence userPersistence) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	/**

@@ -2,6 +2,8 @@
 
 import java.util.List;
 
+import david.model.pojo.builder.RoleBuilder;
+
 
 /**
  * Clase Rol
@@ -28,8 +30,20 @@ public class Role {
 	 */
 	private String mNameRol;
 
-	public Role(){
+	/**
+	 * Constructor default
+	 */
+	public Role(){}
 
+	/**
+	 * Constructor con un parametro
+	 * @param roleBuilder
+	 */
+	public Role(RoleBuilder roleBuilder) {
+		mDescription = roleBuilder.getDescription();
+		mFunctionality = roleBuilder.getFunctionality();
+		mId = roleBuilder.getId();
+		mNameRol = roleBuilder.getNameRol();
 	}
 
 	public void finalize() throws Throwable {
