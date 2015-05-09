@@ -7,7 +7,7 @@ package david.model.validate.form;
 
 import java.util.Map;
 
-public interface IWebCreate {
+public interface IWebCreateUser {
 
 	/**
 	 * Método que valida los campos del formulario

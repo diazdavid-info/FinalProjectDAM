@@ -10,7 +10,7 @@ import java.util.Map;
 
 import david.model.annotation.Parameter;
 
-public class CreateForm extends Form implements IWebCreate {
+public class UserCreateForm extends Form implements IWebCreateUser {
 	
 	/**
 	 * Atributo que almacena el valor del campo username
