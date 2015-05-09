@@ -13,6 +13,10 @@
     <servlet-name>School</servlet-name>
     <servlet-class>david.servlet.School</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>Course</servlet-name>
+    <servlet-class>david.servlet.Course</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>User</servlet-name>
     <url-pattern>/user/*</url-pattern>
@@ -24,6 +28,10 @@
   <servlet-mapping>
     <servlet-name>School</servlet-name>
     <url-pattern>/school/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Course</servlet-name>
+    <url-pattern>/course/*</url-pattern>
   </servlet-mapping>
   <resource-ref>
     <description>Pool de conexiones localhost</description>
