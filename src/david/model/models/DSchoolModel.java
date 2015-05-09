@@ -5,7 +5,10 @@
  */
 package david.model.models;
 
+import java.util.List;
 import java.util.Map;
+
+import david.model.pojo.school.School;
 
 public interface DSchoolModel {
 	
@@ -14,5 +17,11 @@ public interface DSchoolModel {
 	 * @param Map<String, String[]> parameter
 	 */
 	public void createSchool(Map<String, String[]> parameter);
+
+	/**
+	 * Método que solicita y gestiona el listado de institutos
+	 * @return List<School>
+	 */
+	public List<School> listSchool();
 
 }

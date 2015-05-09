@@ -5,6 +5,8 @@
  */
 package david.model.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import david.model.persistence.AddressPersistence;
@@ -71,5 +73,22 @@ public class SchoolModel implements DSchoolModel {
 		}
 		
 		System.out.println("FORMULARIO CRETE SCHOOL NO ES VALIDO");
+	}
+	
+	/**
+	 * Método que solicita y gestiona el listado de institutos
+	 * @return List<School>
+	 */
+	public List<School> listSchool(){
+		List<School> listSchool = new ArrayList<School>();
+		List<SchoolPersistence> schoolsPersistence = mSchoolRepository.findAll(new SchoolPersistence());
+		
+		for (SchoolPersistence schoolPersistence : schoolsPersistence) {
+			School school = mISchoolTransformer.persistenceToEntity(schoolPersistence);
+			
+			listSchool.add(school);
+		}
+		
+		return listSchool;
 	}
 }
