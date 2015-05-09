@@ -1,7 +1,7 @@
 /**
  * Modelo para todo lo relacionado con un usuario
  * @author David Díaz García
- * @date 19-05-2015
+ * @date 19-04-2015
  * @version 1.0
  */
 package david.model.models;

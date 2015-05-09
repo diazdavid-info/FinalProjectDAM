@@ -9,9 +9,11 @@ import david.model.transformer.AddressTransformer;
 import david.model.transformer.IAddressTransformer;
 import david.model.transformer.IPersonTransformer;
 import david.model.transformer.IRoleTransformer;
+import david.model.transformer.ISchoolTransformer;
 import david.model.transformer.IUserTransformer;
 import david.model.transformer.PersonTransformer;
 import david.model.transformer.RoleTransformer;
+import david.model.transformer.SchoolTransformer;
 import david.model.transformer.UserTransformer;
 
 public class TransformerFactory {
@@ -46,5 +48,13 @@ public class TransformerFactory {
 	 */
 	public static IRoleTransformer createRoletransformer() {
 		return new RoleTransformer();
+	}
+
+	/**
+	 * Método que construye un transformer de school
+	 * @return ISchoolTransformer
+	 */
+	public static ISchoolTransformer createSchoolTransformer() {
+		return new SchoolTransformer();
 	}
 }
