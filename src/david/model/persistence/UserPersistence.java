@@ -39,11 +39,6 @@ public class UserPersistence implements Cloneable{
 	 */
 	@column(name="mIdPerson", type="int")
 	private Integer mIdPerson;
-	/**
-	 * Atributo que almacena le ID del school
-	 */
-	@column(name="mIdSchool", type="int")
-	private Integer mIdSchool;
 	
 	/**
 	 * Método que devuelve el nombre de la tabla
@@ -147,22 +142,6 @@ public class UserPersistence implements Cloneable{
 	 */
 	public void setIdPerson(int mIdPerson) {
 		this.mIdPerson = mIdPerson;
-	}
-	
-	/**
-	 * Método que obtiene el valor del atributo mIdSchool
-	 * @return int
-	 */
-	public int getIdSchool() {
-		return mIdSchool;
-	}
-	
-	/**
-	 * Método que establece el valor del atributo mIdSchool
-	 * @param mIdSchool
-	 */
-	public void setIdSchool(int mIdSchool) {
-		this.mIdSchool = mIdSchool;
 	}
 
 	/**
