@@ -12,21 +12,22 @@ import david.utils.Message;
 
 public class Form {
 	
+	private boolean mValidate = true;
+	
 	/**
 	 * Método que verifica si el campo cumple con las restriciones
 	 * @param Field field
 	 */
 	protected boolean validateField(Field field) {
-		boolean validate = true;
 		try {
 			if(field.getAnnotation(Parameter.class).required() && field.get(this).equals("")){
 				Message.addMesagge("Mal");
-				validate = false;
+				mValidate = false;
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		return validate;
+		return mValidate;
 	}
 
 	/**

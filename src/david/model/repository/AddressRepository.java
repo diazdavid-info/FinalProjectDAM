@@ -1,3 +1,8 @@
+/**
+ * Repositorio para la persistencia de Address
+ * @author David Díaz García
+ * @date 03-05-2015
+ */
 package david.model.repository;
 
 import david.model.mapper.Mapper;
