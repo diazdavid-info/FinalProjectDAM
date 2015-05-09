@@ -3,7 +3,6 @@
 import java.util.List;
 
 import david.model.pojo.contact.Address;
-import david.model.pojo.users.User;
 
 /**
  * Clase Instituto
@@ -11,7 +10,7 @@ import david.model.pojo.users.User;
  * @version 1.0
  * @created 13-mar-2015 15:53:34
  */
-public class School extends User {
+public class School {
 
 	/**
 	 * Dirección school
@@ -29,9 +28,13 @@ public class School extends User {
 	 * Identificador del instituto
 	 */
 	private int mId;
+	/**
+	 * Nombre del School
+	 */
+	private String mName;
 
 	public School(){
-		super(null);
+		
 	}
 
 	public void finalize() throws Throwable {
@@ -64,6 +67,13 @@ public class School extends User {
 	 */
 	public int getId(){
 		return mId;
+	}
+	
+	/**
+	 * Nombre del instituto
+	 */
+	public String getName(){
+		return mName;
 	}
 
 	/**
@@ -99,6 +109,15 @@ public class School extends User {
 	 */
 	public void setId(int newVal){
 		mId = newVal;
+	}
+	
+	/**
+	 * Nombre del instituto
+	 * 
+	 * @param newVal
+	 */
+	public void setName(String newVal){
+		mName = newVal;
 	}
 
 }
