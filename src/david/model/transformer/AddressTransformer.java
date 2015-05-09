@@ -1,3 +1,8 @@
+/**
+ * Clase que transforma la entidad Address
+ * @author David Diaz Garcia
+ * @date 03-05-2015
+ */
 package david.model.transformer;
 
 import david.model.persistence.AddressPersistence;

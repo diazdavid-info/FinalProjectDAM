@@ -2,6 +2,7 @@
 
 import java.util.List;
 
+import david.model.pojo.builder.SchoolBuilder;
 import david.model.pojo.contact.Address;
 
 /**
@@ -33,12 +34,16 @@ public class School {
 	 */
 	private String mName;
 
-	public School(){
-		
+	public School(SchoolBuilder schoolBuilder){
+		mAddress = schoolBuilder.getAddress();
+		mCodeIdentification = schoolBuilder.getCodeIdentification();
+		mCourse = schoolBuilder.getCourse();
+		mId = schoolBuilder.getId();
+		mName = schoolBuilder.getName();
 	}
 
 	public void finalize() throws Throwable {
-		super.finalize();
+		
 	}
 	
 	/**
