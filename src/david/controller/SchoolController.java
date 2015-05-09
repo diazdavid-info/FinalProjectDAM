@@ -1,7 +1,7 @@
 /**
+ * Controlador para las acciones de school
  * @author David Diaz
  * @date 09-05-2015
- * Controlador para las acciones de school
  */
 package david.controller;
 
