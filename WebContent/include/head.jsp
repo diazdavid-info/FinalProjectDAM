@@ -12,6 +12,6 @@
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/function.js"></script>
 	
-	<title>Insert title here</title>
+	<title>Seguimiento Lectivo</title>
 </head>
 <body>

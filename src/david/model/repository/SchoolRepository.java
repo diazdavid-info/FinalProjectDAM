@@ -5,6 +5,8 @@
  */
 package david.model.repository;
 
+import java.util.List;
+
 import david.model.mapper.Mapper;
 import david.model.persistence.SchoolPersistence;
 import david.model.provider.DProvider;
@@ -53,5 +55,16 @@ public class SchoolRepository {
 		Mapper<SchoolPersistence> mapper = new Mapper<SchoolPersistence>(schoolPersistence);
 		schoolPersistence.setId(mProvider.executeUpdate(mapper.mapperStorageToDbb()));
 		return schoolPersistence;
+	}
+
+	/**
+	 * Método que busca todos los schoolPersistence que cumplan con los requisitos
+	 * @param SchoolPersistence schoolPersistence
+	 * @return List<SchoolPersistence>
+	 */
+	public List<SchoolPersistence> findAll(SchoolPersistence schoolPersistence) {
+		Mapper<SchoolPersistence> mapper = new Mapper<SchoolPersistence>(schoolPersistence);
+		System.out.println(mapper.mapperToDbb());
+		return mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
 	}
 }
