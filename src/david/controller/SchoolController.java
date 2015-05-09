@@ -5,8 +5,11 @@
  */
 package david.controller;
 
+import java.util.List;
+
 import david.model.factory.ModelFactory;
 import david.model.models.DSchoolModel;
+import david.model.pojo.school.School;
 
 
 
@@ -22,6 +25,17 @@ public class SchoolController extends Controller{
 	 */
 	public SchoolController() {
 		mModel = ModelFactory.createSchoolModel();
+	}
+	
+	/**
+	 * Método que lista todos los institutos
+	 */
+	public void listAction() {
+		if(isLogin()){
+			List<School> listSchool = mModel.listSchool();
+			mServletRequest.setAttribute("listSchool", listSchool);
+			render("school/list");
+		}
 	}
 	
 	/**

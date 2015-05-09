@@ -6,7 +6,10 @@
 <jsp:include page="/include/nav.jsp" />
 
 <div class="container">
-	<% List<User> listUser = (List<User>) request.getAttribute("listUser"); %>
+	<% 
+		@SuppressWarnings("unchecked")
+		List<User> listUser = (List<User>) request.getAttribute("listUser"); 
+	%>
 	<div class="panel panel-primary">
 		<div class="panel-heading">LISTA DE USUARIOS</div>
 		<div class="panel-body">
