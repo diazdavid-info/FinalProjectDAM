@@ -19,6 +19,8 @@ import david.model.repository.AddressRepository;
 import david.model.repository.SchoolRepository;
 import david.model.transformer.IAddressTransformer;
 import david.model.transformer.ISchoolTransformer;
+import david.model.validate.form.CourseSchoolCreateForm;
+import david.model.validate.form.IWebCreateCourseSchool;
 import david.model.validate.form.IWebCreateSchool;
 import david.model.validate.form.SchoolCreateForm;
 
@@ -90,5 +92,14 @@ public class SchoolModel implements DSchoolModel {
 		}
 		
 		return listSchool;
+	}
+	
+	/**
+	 * Método que gestiona la creación de la relación entre cursos e institutos
+	 * @param Map<String, String[]> requestParameter
+	 */
+	public void createCourseSchools(Map<String, String[]> parameter){
+		IWebCreateCourseSchool form = new CourseSchoolCreateForm();
+		form.validate(parameter);
 	}
 }

@@ -26,4 +26,10 @@ public @interface Parameter {
 	 * @return boolean
 	 */
 	public boolean required();
+
+	/**
+	 * Anotación que indica el tipo de campo
+	 * @return String
+	 */
+	public String type() default "String";
 }

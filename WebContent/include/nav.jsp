@@ -19,6 +19,8 @@
             		<li><a href="<%=request.getContextPath() %>/school/create">Añadir</a></li>
             		<li class="divider"></li>
             		<li><a href="<%=request.getContextPath() %>/school/list">Listar</a></li>
+            		<li class="divider"></li>
+            		<li><a href="<%=request.getContextPath() %>/school/addCourse">Añadir Curso</a></li>
             	</ul>
         	</li>
         	<li class="dropdown">
