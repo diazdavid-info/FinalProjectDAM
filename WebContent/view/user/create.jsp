@@ -67,7 +67,7 @@
    					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label" for="population">Role</label>
+					<label class="col-sm-2 control-label" for="role">Role</label>
 					<div class="col-sm-4">
 						<select name="role" class="form-control">
 							<option value="1">Alumno</option>
