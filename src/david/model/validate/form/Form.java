@@ -32,10 +32,10 @@ public class Form {
 
 	/**
 	 * Método que mapea los atributos del formulario con los atributos propios de la clase
-	 * @param String value 
-	 * @param Map<String, String[]> parameter
+	 * @param Field field
+	 * @param Object value
 	 */
-	protected void setAttributes(Field field, String value) {
+	protected void setAttributes(Field field, Object value) {
 		try {
 			field.setAccessible(true);
 			field.set(this, value);

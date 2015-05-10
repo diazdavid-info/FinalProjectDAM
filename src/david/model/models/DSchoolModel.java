@@ -24,4 +24,10 @@ public interface DSchoolModel {
 	 */
 	public List<School> listSchool();
 
+	/**
+	 * Método que gestiona la creación de la relación entre cursos e institutos
+	 * @param Map<String, String[]> requestParameter
+	 */
+	public void createCourseSchools(Map<String, String[]> requestParameter);
+
 }
