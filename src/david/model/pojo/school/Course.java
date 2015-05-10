@@ -2,6 +2,8 @@
 
 import java.util.List;
 
+import david.model.pojo.builder.CourseBuilder;
+
 
 /**
  * Clase curso
@@ -27,10 +29,16 @@ public class Course {
 	 * Año de inicio del curso
 	 */
 	private int mStartYear;
-	public Cycle mCourse;
 
-	public Course(){
-
+	/**
+	 * Constructor con un parametro
+	 * @param CourseBuilder courseBuilder
+	 */
+	public Course(CourseBuilder courseBuilder){
+		mCycle = courseBuilder.getCycle();
+		mFinishYear = courseBuilder.getFinishYear();
+		mId = courseBuilder.getId();
+		mStartYear = courseBuilder.getStartYear();
 	}
 
 	public void finalize() throws Throwable {
