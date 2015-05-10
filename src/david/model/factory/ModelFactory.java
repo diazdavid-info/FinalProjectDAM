@@ -6,6 +6,8 @@
  */
 package david.model.factory;
 
+import david.model.models.CourseModel;
+import david.model.models.DCourseModel;
 import david.model.models.DSchoolModel;
 import david.model.models.DUserModel;
 import david.model.models.SchoolModel;
@@ -37,6 +39,15 @@ public class ModelFactory {
 				RepositoryFactory.createAddressRepository(),
 				TransformerFactory.createSchoolTransformer(),
 				RepositoryFactory.createSchoolRepository());
+	}
+
+	/**
+	 * Método que fabrica el modelo de cursos
+	 * @return DCourseModel
+	 */
+	public static DCourseModel createCourseModel() {
+		return new CourseModel(TransformerFactory.createCourseTransformer(), 
+				RepositoryFactory.createCourseRepository());
 	}
 
 }
