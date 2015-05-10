@@ -19,7 +19,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="start">Fecha inicio</label>
 					<div class="col-sm-4">
-    					<input name="start" type="datetime" class="form-control" id="start" placeholder="Inicio dd-mm-yyyy" required="required"/>
+    					<input name="start" type="datetime" class="form-control" id="start" placeholder="Inicio dd-mm-yyyy" required="required" />
    					</div>
     				<label class="col-sm-2 control-label" for="finish">Fecha de fin</label>
     				<div class="col-sm-4">
