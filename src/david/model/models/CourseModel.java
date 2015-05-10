@@ -5,6 +5,8 @@
  */
 package david.model.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import david.model.persistence.CoursePersistence;
@@ -51,5 +53,22 @@ public class CourseModel implements DCourseModel{
 			System.out.println("FORMULARIO CRETE COURSE ES VALIDO");
 		}
 		System.out.println("FORMULARIO CRETE COURSE NO ES VALIDO");
+	}
+	
+	/**
+	 * Método que solicita y gestiona el listado de cursos
+	 * @return List<Course>
+	 */
+	public List<Course> listCourse(){
+		List<Course> listCourse = new ArrayList<Course>();
+		List<CoursePersistence> coursesPersistence = mCourseRepository.findAll(new CoursePersistence());
+		
+		for (CoursePersistence coursePersistence : coursesPersistence) {
+			Course course = mICourseTransformer.persistenceToEntity(coursePersistence);
+			
+			listCourse.add(course);
+		}
+		
+		return listCourse;
 	}
 }

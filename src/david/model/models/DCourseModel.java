@@ -5,7 +5,10 @@
  */
 package david.model.models;
 
+import java.util.List;
 import java.util.Map;
+
+import david.model.pojo.school.Course;
 
 public interface DCourseModel {
 	
@@ -14,5 +17,11 @@ public interface DCourseModel {
 	 * @param Map<String, String[]> parameter
 	 */
 	public void createCourse(Map<String, String[]> parameter);
+
+	/**
+	 * Método que solicita y gestiona el listado de cursos
+	 * @return List<Course>
+	 */
+	public List<Course> listCourse();
 
 }
