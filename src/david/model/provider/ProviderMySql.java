@@ -72,6 +72,7 @@ public class ProviderMySql implements DProvider {
 	/**
 	 * Método que inserta un registro en la BDD
 	 * @param String update
+	 * @return int
 	 */
 	@Override
 	public int executeUpdate(String update){

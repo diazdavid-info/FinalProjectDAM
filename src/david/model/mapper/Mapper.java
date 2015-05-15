@@ -223,7 +223,7 @@ public class Mapper<T> {
 		try {
 			if(resultSet.next()){
 				setAtributtes(resultSet);
-				System.out.println("ID: "+resultSet.getString("mId"));
+//				System.out.println("ID: "+resultSet.getString("mId"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

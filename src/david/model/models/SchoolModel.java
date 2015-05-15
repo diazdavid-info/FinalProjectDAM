@@ -10,14 +10,24 @@ import java.util.List;
 import java.util.Map;
 
 import david.model.persistence.AddressPersistence;
+import david.model.persistence.CoursePersistence;
+import david.model.persistence.CourseSchoolPersistence;
 import david.model.persistence.SchoolPersistence;
 import david.model.pojo.builder.AddressBuilder;
+import david.model.pojo.builder.CourseBuilder;
+import david.model.pojo.builder.CourseSchoolBuilder;
 import david.model.pojo.builder.SchoolBuilder;
 import david.model.pojo.contact.Address;
+import david.model.pojo.school.Course;
+import david.model.pojo.school.CourseSchool;
 import david.model.pojo.school.School;
 import david.model.repository.AddressRepository;
+import david.model.repository.CourseRepository;
+import david.model.repository.CourseSchoolRepository;
 import david.model.repository.SchoolRepository;
 import david.model.transformer.IAddressTransformer;
+import david.model.transformer.ICourseSchoolTransformer;
+import david.model.transformer.ICourseTransformer;
 import david.model.transformer.ISchoolTransformer;
 import david.model.validate.form.CourseSchoolCreateForm;
 import david.model.validate.form.IWebCreateCourseSchool;
@@ -42,15 +52,43 @@ public class SchoolModel implements DSchoolModel {
 	 * Atributo que almacena el repositorio de institutos
 	 */
 	private SchoolRepository mSchoolRepository;
+	/**
+	 * Atributo que almacena el transformador de cursos
+	 */
+	private ICourseTransformer mICourseTransformer;
+	/**
+	 * Atributo que almacena el repositorio de cursos
+	 */
+	private CourseRepository mCourseRepository;
+	/**
+	 * Atributo que almacena el transformador de la relación entre cursos e institutos
+	 */
+	private ICourseSchoolTransformer mICourseSchoolTransformer;
+	/**
+	 * Atributo que almacena el repositorio de CourseSchool
+	 */
+	private CourseSchoolRepository mCourseSchoolRepository;
 
 	/**
 	 * Constructor
 	 */
-	public SchoolModel(IAddressTransformer addressTransformer, AddressRepository addressRepository, ISchoolTransformer schoolTransformer, SchoolRepository schoolRepository){
+	public SchoolModel(IAddressTransformer addressTransformer, 
+			AddressRepository addressRepository, 
+			ISchoolTransformer schoolTransformer, 
+			SchoolRepository schoolRepository,
+			ICourseTransformer courseTransformer,
+			CourseRepository courseRepository,
+			ICourseSchoolTransformer courseSchoolTransformer,
+			CourseSchoolRepository courseSchoolRepository){
+		
 		mIAddressTransformer = addressTransformer;
 		mAddressRepository = addressRepository;
 		mISchoolTransformer = schoolTransformer;
 		mSchoolRepository = schoolRepository;
+		mICourseTransformer = courseTransformer;
+		mCourseRepository = courseRepository;
+		mICourseSchoolTransformer = courseSchoolTransformer;
+		mCourseSchoolRepository = courseSchoolRepository;
 	}
 	
 	/**
@@ -100,6 +138,25 @@ public class SchoolModel implements DSchoolModel {
 	 */
 	public void createCourseSchools(Map<String, String[]> parameter){
 		IWebCreateCourseSchool form = new CourseSchoolCreateForm();
-		form.validate(parameter);
+		Course course = null;
+		School school = null;
+		CourseSchool courseSchool = null;
+		
+		if(form.validate(parameter)){
+			course = new Course(new CourseBuilder().id(Integer.parseInt(form.getCourse())));
+			CoursePersistence coursePersistence = mICourseTransformer.entityToPersistence(course);
+			course = mICourseTransformer.persistenceToEntity(mCourseRepository.find(coursePersistence));
+			
+			for (String idSchool : form.getSchools()) {
+				school = new School(new SchoolBuilder().id(Integer.parseInt(idSchool)));
+				SchoolPersistence schoolPersistence = mISchoolTransformer.entityToPersistence(school);
+				school = mISchoolTransformer.persistenceToEntity(mSchoolRepository.find(schoolPersistence));
+				
+				courseSchool = new CourseSchool(new CourseSchoolBuilder().course(course).school(school));
+				CourseSchoolPersistence courseSchoolPersistence = mICourseSchoolTransformer.entityToPersistence(courseSchool);
+				courseSchool = mICourseSchoolTransformer.persistenceToEntity(mCourseSchoolRepository.storage(courseSchoolPersistence));
+			}
+			
+		}
 	}
 }

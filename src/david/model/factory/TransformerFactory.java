@@ -6,8 +6,10 @@
 package david.model.factory;
 
 import david.model.transformer.AddressTransformer;
+import david.model.transformer.CourseSchoolTransformer;
 import david.model.transformer.CourseTransformer;
 import david.model.transformer.IAddressTransformer;
+import david.model.transformer.ICourseSchoolTransformer;
 import david.model.transformer.ICourseTransformer;
 import david.model.transformer.IPersonTransformer;
 import david.model.transformer.IRoleTransformer;
@@ -66,5 +68,13 @@ public class TransformerFactory {
 	 */
 	public static ICourseTransformer createCourseTransformer() {
 		return new CourseTransformer();
+	}
+	
+	/**
+	 * Método que construye un transformador de courseSchool
+	 * @return
+	 */
+	public static ICourseSchoolTransformer createCourseSchoolTransformer() {
+		return new CourseSchoolTransformer();
 	}
 }
