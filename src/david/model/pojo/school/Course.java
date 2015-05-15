@@ -1,7 +1,5 @@
 ﻿package david.model.pojo.school;
 
-import java.util.List;
-
 import david.model.pojo.builder.CourseBuilder;
 
 
@@ -13,10 +11,6 @@ import david.model.pojo.builder.CourseBuilder;
  */
 public class Course {
 
-	/**
-	 * Lista de ciclos
-	 */
-	private List<Cycle> mCycle;
 	/**
 	 * Año de fin del curso
 	 */
@@ -35,7 +29,6 @@ public class Course {
 	 * @param CourseBuilder courseBuilder
 	 */
 	public Course(CourseBuilder courseBuilder){
-		mCycle = courseBuilder.getCycle();
 		mFinishYear = courseBuilder.getFinishYear();
 		mId = courseBuilder.getId();
 		mStartYear = courseBuilder.getStartYear();
@@ -45,13 +38,6 @@ public class Course {
 
 	}
 
-	/**
-	 * Lista de ciclos
-	 */
-	public List<Cycle> getCycle(){
-		return mCycle;
-	}
-	
 	/**
 	 * Ano de fin del curso
 	 */
@@ -73,15 +59,6 @@ public class Course {
 		return mStartYear;
 	}
 
-	/**
-	 * Lista de ciclos
-	 * 
-	 * @param newVal
-	 */
-	public void setCycle(List<Cycle> newVal){
-		mCycle = newVal;
-	}
-	
 	/**
 	 * Año de finalización del curso
 	 * 

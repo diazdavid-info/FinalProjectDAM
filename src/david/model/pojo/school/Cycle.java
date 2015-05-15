@@ -13,6 +13,10 @@ import david.model.pojo.users.Person;
 public class Cycle {
 
 	/**
+	 * Curso del ciclo
+	 */
+	private Course mCourse;
+	/**
 	 * Identificador del ciclo
 	 */
 	private int mId;
@@ -29,6 +33,10 @@ public class Cycle {
 	 */
 	private String mName;
 	/**
+	 * Instituto del cliclo
+	 */
+	private School mSchool;
+	/**
 	 * Tutor del ciclo
 	 */
 	private Person mTutor;
@@ -39,6 +47,13 @@ public class Cycle {
 
 	public void finalize() throws Throwable {
 
+	}
+	
+	/**
+	 * Curso del ciclo
+	 */
+	public Course getCourse(){
+		return mCourse;
 	}
 
 	/**
@@ -74,6 +89,22 @@ public class Cycle {
 	 */
 	public Person getTutor(){
 		return mTutor;
+	}
+	
+	/**
+	 * @return
+	 */
+	public School getSchool(){
+		return mSchool;
+	}
+	
+	/**
+	 * Courso del ciclo
+	 * 
+	 * @param newVal
+	 */
+	public void setCourse(Course newVal){
+		mCourse = newVal;
 	}
 
 	/**
@@ -119,6 +150,15 @@ public class Cycle {
 	 */
 	public void setTutor(Person newVal){
 		mTutor = newVal;
+	}
+	
+	/**
+	 * Instituto del ciclo
+	 * 
+	 * @param newVal
+	 */
+	public void setSchool(School newVal){
+		mSchool = newVal;
 	}
 
 }
