@@ -38,7 +38,11 @@ public class ModelFactory {
 		return new SchoolModel(TransformerFactory.createAddressTransformer(),
 				RepositoryFactory.createAddressRepository(),
 				TransformerFactory.createSchoolTransformer(),
-				RepositoryFactory.createSchoolRepository());
+				RepositoryFactory.createSchoolRepository(),
+				TransformerFactory.createCourseTransformer(),
+				RepositoryFactory.createCourseRepository(),
+				TransformerFactory.createCourseSchoolTransformer(),
+				RepositoryFactory.createCourseSchoolRepository());
 	}
 
 	/**

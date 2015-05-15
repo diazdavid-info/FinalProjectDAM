@@ -67,4 +67,15 @@ public class SchoolRepository {
 		System.out.println(mapper.mapperToDbb());
 		return mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
 	}
+
+	/**
+	 * Método que busca un schoolPersistence que cumpla con los requisitos
+	 * @param SchoolPersistence schoolPersistence
+	 * @return SchoolPersistence
+	 */
+	public SchoolPersistence find(SchoolPersistence schoolPersistence) {
+		Mapper<SchoolPersistence> mapper = new Mapper<SchoolPersistence>(schoolPersistence);
+		System.out.println(mapper.mapperToDbb());
+		return mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+	}
 }
