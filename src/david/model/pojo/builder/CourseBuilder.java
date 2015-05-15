@@ -5,16 +5,9 @@
  */
 package david.model.pojo.builder;
 
-import java.util.List;
-
-import david.model.pojo.school.Cycle;
 
 public class CourseBuilder {
 	
-	/**
-	 * Atributo que almacena el listado de ciclos
-	 */
-	private List<Cycle> mCycle;
 	/**
 	 * Atributo que almacena el año de finalización
 	 */
@@ -27,24 +20,6 @@ public class CourseBuilder {
 	 * Atributo que almacena el año de inicio
 	 */
 	private int mStartYear;
-	
-	/**
-	 * Método que obtiene el valor de atributo mCycle
-	 * @return List<Cycle>
-	 */
-	public List<Cycle> getCycle() {
-		return mCycle;
-	}
-	
-	/**
-	 * Método que establece el valor del atributo mCycle
-	 * @param List<Cycle> mCycle
-	 * @return CourseBuilder
-	 */
-	public CourseBuilder cycle(List<Cycle> mCycle) {
-		this.mCycle = mCycle;
-		return this;
-	}
 	
 	/**
 	 * Método que obtiene el valor del atributo mFinishYear
