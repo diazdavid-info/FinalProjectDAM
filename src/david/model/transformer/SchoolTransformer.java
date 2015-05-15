@@ -24,7 +24,10 @@ public class SchoolTransformer implements ISchoolTransformer{
 			schoolPersistence.setId(school.getId());
 		}
 		
-		schoolPersistence.setIdAddress(school.getAddress().getId());
+		if(school.getAddress() != null){
+			schoolPersistence.setIdAddress(school.getAddress().getId());
+		}
+		
 		schoolPersistence.setName(school.getName());
 		return schoolPersistence;
 	}

@@ -1,3 +1,8 @@
+/**
+ * Clase que construye un course
+ * @author David Díaz García
+ * @date 10-05-2015
+ */
 package david.model.pojo.builder;
 
 import java.util.List;

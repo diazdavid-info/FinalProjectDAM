@@ -68,4 +68,14 @@ public class CourseRepository {
 		return mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
 	}
 
+	/**
+	 * Método que busca un CoursePersistence que cumpla con los requisitos
+	 * @param CoursePersistence coursePersistence
+	 * @return CoursePersistence
+	 */
+	public CoursePersistence find(CoursePersistence coursePersistence) {
+		Mapper<CoursePersistence> mapper = new Mapper<CoursePersistence>(coursePersistence);
+		return mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+	}
+
 }
