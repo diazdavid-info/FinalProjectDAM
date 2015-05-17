@@ -8,6 +8,7 @@ package david.model.factory;
 import david.model.repository.AddressRepository;
 import david.model.repository.CourseRepository;
 import david.model.repository.CourseSchoolRepository;
+import david.model.repository.CycleRepository;
 import david.model.repository.PersonRepository;
 import david.model.repository.RoleRepository;
 import david.model.repository.SchoolRepository;
@@ -70,6 +71,12 @@ public class RepositoryFactory {
 	public static CourseSchoolRepository createCourseSchoolRepository() {
 		return new CourseSchoolRepository(ProviderFactory.createMysqlProvider());
 	}
-	
 
+	/**
+	 * Método que fabrica un CycleRepository
+	 * @return CycleRepository
+	 */
+	public static CycleRepository createCycleRepository() {
+		return new CycleRepository(ProviderFactory.createMysqlProvider());
+	}
 }

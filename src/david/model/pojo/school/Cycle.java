@@ -2,7 +2,8 @@
 
 import java.util.List;
 
-import david.model.pojo.users.Person;
+import david.model.pojo.builder.CycleBuilder;
+import david.model.pojo.users.User;
 
 /**
  * Clase ciclo
@@ -39,10 +40,16 @@ public class Cycle {
 	/**
 	 * Tutor del ciclo
 	 */
-	private Person mTutor;
+	private User mTutor;
 
-	public Cycle(){
-
+	public Cycle(CycleBuilder cycleBuilder){
+		mCourse = cycleBuilder.getCourse();
+		mId = cycleBuilder.getId();
+		mIdentification = cycleBuilder.getIdentification();
+		mModule = cycleBuilder.getModule();
+		mName = cycleBuilder.getName();
+		mSchool = cycleBuilder.getSchool();
+		mTutor = cycleBuilder.getTutor();
 	}
 
 	public void finalize() throws Throwable {
@@ -87,7 +94,7 @@ public class Cycle {
 	/**
 	 * Tutor del ciclo
 	 */
-	public Person getTutor(){
+	public User getTutor(){
 		return mTutor;
 	}
 	
@@ -148,7 +155,7 @@ public class Cycle {
 	 * 
 	 * @param newVal
 	 */
-	public void setTutor(Person newVal){
+	public void setTutor(User newVal){
 		mTutor = newVal;
 	}
 	
