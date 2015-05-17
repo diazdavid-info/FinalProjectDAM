@@ -7,6 +7,7 @@ package david.services;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -35,5 +36,20 @@ public class ApiServices implements IApiServices{
 	@WebMethod
 	public String getSchoolByCourseId(@QueryParam("course") int courseId){
 		return IMPLEMENT_SERVICES.getSchoolByCourseId(courseId);
+	}
+	
+	/**
+	 * Servicio que recupera todos los ciclos
+	 * @param int courseId
+	 * @param int schoolId
+	 * @param int tutorId
+	 * @return String
+	 */
+	@GET
+	@Path("/getCycleByCourseIdSchoolIdTutorId")
+	@Produces(MediaType.APPLICATION_JSON)
+	@WebMethod
+	public String getCycleByCourseIdSchoolIdTutorId(@QueryParam("course") int courseId, @QueryParam("school") int schoolId, @QueryParam("tutor") int tutorId){
+		return IMPLEMENT_SERVICES.getCycleByCourseIdSchoolIdTutorId(courseId, schoolId, tutorId);
 	}
 }
