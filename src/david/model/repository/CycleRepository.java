@@ -5,6 +5,8 @@
  */
 package david.model.repository;
 
+import java.util.List;
+
 import david.model.mapper.Mapper;
 import david.model.persistence.CyclePersistence;
 import david.model.provider.DProvider;
@@ -54,7 +56,14 @@ public class CycleRepository {
 		System.out.println("ESTOY EN EL UPDATE DE CYCLEREPOSITORY");
 		return null;
 	}
-	
-	
 
+	/**
+	 * Método que busca todos los schoolPersistence que cumplan con los requisitos
+	 * @param CyclePersistence cyclePersistence
+	 * @return List<CyclePersistence>
+	 */
+	public List<CyclePersistence> findAll(CyclePersistence cyclePersistence) {
+		Mapper<CyclePersistence> mapper = new Mapper<CyclePersistence>(cyclePersistence);
+		return mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+	}
 }

@@ -12,6 +12,7 @@ import david.model.models.DCourseModel;
 import david.model.models.DCycleModel;
 import david.model.models.DUserModel;
 import david.model.pojo.school.Course;
+import david.model.pojo.school.Cycle;
 import david.model.pojo.users.User;
 
 public class CycleController extends Controller{
@@ -53,6 +54,18 @@ public class CycleController extends Controller{
 			mServletRequest.setAttribute("listTutors", listTutors);
 			mServletRequest.setAttribute("listCourses", listCourses);
 			render("cycle/create");
+		}
+	}
+	
+	/**
+	 * Método que lista los ciclos
+	 */
+	public void listAction() {
+		if(isLogin()){
+			List<Cycle> listCycles = mCycleModel.listCycles();
+			
+			mServletRequest.setAttribute("listCycles", listCycles);
+			render("cycle/list");
 		}
 	}
 

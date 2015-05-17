@@ -10,7 +10,7 @@
           		<ul class="dropdown-menu" role="menu">
             		<li><a href="<%=request.getContextPath() %>/cycle/create">Añadir</a></li>
             		<li class="divider"></li>
-            		<li><a href="<%=request.getContextPath() %>/course/list">Listar</a></li>
+            		<li><a href="<%=request.getContextPath() %>/cycle/list">Listar</a></li>
             	</ul>
         	</li>
       		<li class="dropdown">
