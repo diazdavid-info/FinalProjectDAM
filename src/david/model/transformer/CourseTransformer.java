@@ -18,13 +18,18 @@ public class CourseTransformer implements ICourseTransformer {
 	 */
 	public CoursePersistence entityToPersistence(Course course){
 		CoursePersistence coursePersistence = new CoursePersistence();
-		coursePersistence.setFinishYear(course.getFinishYear());
+		
+		if(course.getFinishYear() != 0){
+			coursePersistence.setFinishYear(course.getFinishYear());
+		}
 		
 		if(course.getId() != 0){
 			coursePersistence.setId(course.getId());
 		}
 		
-		coursePersistence.setStartYear(course.getStartYear());
+		if(course.getStartYear() != 0){
+			coursePersistence.setStartYear(course.getStartYear());
+		}
 		
 		return coursePersistence;
 	}
