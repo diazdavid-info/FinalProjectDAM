@@ -5,6 +5,8 @@
  */
 package david.model.repository;
 
+import java.util.List;
+
 import david.model.mapper.Mapper;
 import david.model.persistence.CourseSchoolPersistence;
 import david.model.provider.DProvider;
@@ -64,6 +66,16 @@ public class CourseSchoolRepository {
 	public CourseSchoolPersistence find(CourseSchoolPersistence courseSchoolPersistence) {
 		Mapper<CourseSchoolPersistence> mapper = new Mapper<CourseSchoolPersistence>(courseSchoolPersistence);
 		return mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+	}
+
+	/**
+	 * Método que busca todos los courseSchoolPersistence que cumplan con los requisitos
+	 * @param CourseSchoolPersistence courseSchoolPersistence
+	 * @return List<CourseSchoolPersistence>
+	 */
+	public List<CourseSchoolPersistence> findAll(CourseSchoolPersistence courseSchoolPersistence) {
+		Mapper<CourseSchoolPersistence> mapper = new Mapper<CourseSchoolPersistence>(courseSchoolPersistence);
+		return mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
 	}
 
 }

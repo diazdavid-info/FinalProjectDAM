@@ -32,4 +32,10 @@ public interface DUserModel {
 	 */
 	public void createUser(Map<String, String[]> requestParameter);
 
+	/**
+	 * Método que gestiona la lista de tutores
+	 * @return List<User>
+	 */
+	public List<User> listTutors();
+
 }
