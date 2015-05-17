@@ -15,7 +15,7 @@ function getSchool(value) {
 			$('#schools').append('<option disabled="disabled" selected="selected">Selecione un Instituto ...</option>');
 			console.log(result);
 			$.each(result, function(key, value){
-				$('#schools').append('<option value"'+value.mId+'">'+value.mName+'</option>');
+				$('#schools').append('<option value="'+value.mId+'">'+value.mName+'</option>');
 			});
 			
 		}
