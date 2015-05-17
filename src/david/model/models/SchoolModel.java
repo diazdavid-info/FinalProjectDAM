@@ -159,4 +159,25 @@ public class SchoolModel implements DSchoolModel {
 			
 		}
 	}
+	
+	/**
+	 * Método que solicita los institutos de un curso
+	 * @param int courseId
+	 * @return List<School>
+	 */
+	public List<School> getSchoolByCourseId(int courseId){
+		List<School> listSchool = new ArrayList<School>();
+		
+		CourseSchool courseSchool = new CourseSchool(new CourseSchoolBuilder().course(new Course(new CourseBuilder().id(courseId))));
+		CourseSchoolPersistence courseSchoolPersistence = mICourseSchoolTransformer.entityToPersistence(courseSchool);
+		List<CourseSchoolPersistence> listCourseSchoolPersistence = mCourseSchoolRepository.findAll(courseSchoolPersistence);
+		
+		for (CourseSchoolPersistence courseSchoolPersistence2 : listCourseSchoolPersistence) {
+			School school = new School(new SchoolBuilder().id(courseSchoolPersistence2.getIdSchool()));
+			SchoolPersistence schoolPersistence = mISchoolTransformer.entityToPersistence(school);
+			listSchool.add(mISchoolTransformer.persistenceToEntity(mSchoolRepository.find(schoolPersistence)));
+		}
+		
+		return listSchool;
+	}
 }

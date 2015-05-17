@@ -29,5 +29,12 @@ public interface DSchoolModel {
 	 * @param Map<String, String[]> requestParameter
 	 */
 	public void createCourseSchools(Map<String, String[]> requestParameter);
+	
+	/**
+	 * Método que solicita los institutos de un curso
+	 * @param int courseId
+	 * @return List<School>
+	 */
+	public List<School> getSchoolByCourseId(int courseId);
 
 }
