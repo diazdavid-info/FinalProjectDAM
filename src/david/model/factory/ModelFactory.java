@@ -61,7 +61,13 @@ public class ModelFactory {
 	 * @return DCycleModel
 	 */
 	public static DCycleModel createCycleModel() {
-		return new CycleModel();
+		return new CycleModel(TransformerFactory.createCourseTransformer(),
+				RepositoryFactory.createCourseRepository(),
+				TransformerFactory.createSchoolTransformer(),
+				RepositoryFactory.createSchoolRepository(),
+				TransformerFactory.createUserTransformer(),
+				RepositoryFactory.createUserRepository(),
+				TransformerFactory.createCycleTransformer(),
+				RepositoryFactory.createCycleRepository());
 	}
-
 }

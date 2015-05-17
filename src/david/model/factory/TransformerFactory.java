@@ -8,9 +8,11 @@ package david.model.factory;
 import david.model.transformer.AddressTransformer;
 import david.model.transformer.CourseSchoolTransformer;
 import david.model.transformer.CourseTransformer;
+import david.model.transformer.CycleTransformer;
 import david.model.transformer.IAddressTransformer;
 import david.model.transformer.ICourseSchoolTransformer;
 import david.model.transformer.ICourseTransformer;
+import david.model.transformer.ICycleTransformer;
 import david.model.transformer.IPersonTransformer;
 import david.model.transformer.IRoleTransformer;
 import david.model.transformer.ISchoolTransformer;
@@ -76,5 +78,13 @@ public class TransformerFactory {
 	 */
 	public static ICourseSchoolTransformer createCourseSchoolTransformer() {
 		return new CourseSchoolTransformer();
+	}
+
+	/**
+	 * Método que construye un transformador de cycle
+	 * @return ICycleTransformer
+	 */
+	public static ICycleTransformer createCycleTransformer() {
+		return new CycleTransformer();
 	}
 }
