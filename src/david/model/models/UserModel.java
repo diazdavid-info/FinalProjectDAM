@@ -30,9 +30,9 @@ import david.model.transformer.IAddressTransformer;
 import david.model.transformer.IPersonTransformer;
 import david.model.transformer.IRoleTransformer;
 import david.model.transformer.IUserTransformer;
-import david.model.validate.form.UserCreateForm;
 import david.model.validate.form.IWebCreateUser;
 import david.model.validate.form.LoginForm;
+import david.model.validate.form.UserCreateForm;
 import david.utils.Message;
 
 public class UserModel implements DUserModel{
@@ -165,5 +165,25 @@ public class UserModel implements DUserModel{
 			System.out.println("VALIDO");
 		}
 		System.out.println("NO VALIDO");
+	}
+	
+	/**
+	 * Método que gestiona la lista de tutores
+	 * @return List<User>
+	 */
+	public List<User> listTutors(){
+		Role role = new Role(new RoleBuilder().nameRol("Profesor"));
+		RolePersistence rolePersistence = mIRoleTransformer.entityToPersistence(role);
+		role = mIRoleTransformer.persistenceToEntity(mRoleRepository.find(rolePersistence));
+		
+		User user = new User(new UserBuilder().setRole(role));
+		UserPersistence userPersistence = mIUserTransformer.entityToPersistence(user);
+		List<UserPersistence> listUserPersistence = mUserRepository.findAll(userPersistence);
+		
+		List<User> listUser = new ArrayList<User>();
+		for (UserPersistence persistence : listUserPersistence) {
+			listUser.add(mIUserTransformer.persistenceToEntity(persistence));
+		}
+		return listUser;
 	}
 }

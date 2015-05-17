@@ -9,7 +9,7 @@ import david.model.pojo.builder.CourseBuilder;
  * @version 1.0
  * @created 13-mar-2015 15:53:32
  */
-public class Course {
+public class Course{
 
 	/**
 	 * Año de fin del curso

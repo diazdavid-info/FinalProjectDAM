@@ -46,7 +46,7 @@ public class SchoolController extends Controller{
 	}
 	
 	/**
-	 * Método que crea un usuario
+	 * Método que crea un instituto
 	 */
 	public void createAction() {
 		if(isLogin() && isRequest()){

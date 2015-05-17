@@ -7,7 +7,9 @@
 package david.model.factory;
 
 import david.model.models.CourseModel;
+import david.model.models.CycleModel;
 import david.model.models.DCourseModel;
+import david.model.models.DCycleModel;
 import david.model.models.DSchoolModel;
 import david.model.models.DUserModel;
 import david.model.models.SchoolModel;
@@ -52,6 +54,14 @@ public class ModelFactory {
 	public static DCourseModel createCourseModel() {
 		return new CourseModel(TransformerFactory.createCourseTransformer(), 
 				RepositoryFactory.createCourseRepository());
+	}
+
+	/**
+	 * Método que fabrica el modelo de ciclos
+	 * @return DCycleModel
+	 */
+	public static DCycleModel createCycleModel() {
+		return new CycleModel();
 	}
 
 }
