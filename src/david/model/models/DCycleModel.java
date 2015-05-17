@@ -5,7 +5,10 @@
  */
 package david.model.models;
 
+import java.util.List;
 import java.util.Map;
+
+import david.model.pojo.school.Cycle;
 
 public interface DCycleModel {
 	
@@ -14,5 +17,11 @@ public interface DCycleModel {
 	 * @param Map<String, String[]> parameter
 	 */
 	public void createCycle(Map<String, String[]> parameter);
+
+	/**
+	 * Método que solicita y gestiona el listado de ciclos
+	 * @return List<Cycle>
+	 */
+	public List<Cycle> listCycles();
 
 }
