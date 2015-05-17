@@ -5,6 +5,7 @@
  */
 package david.model.factory;
 
+import david.model.provider.DProvider;
 import david.model.repository.AddressRepository;
 import david.model.repository.CourseRepository;
 import david.model.repository.CourseSchoolRepository;
@@ -15,13 +16,15 @@ import david.model.repository.SchoolRepository;
 import david.model.repository.UserRepository;
 
 public class RepositoryFactory {
+	
+	private final static DProvider PROVIDER_LOCAL_MYSQL = ProviderFactory.createMysqlProvider();
 
 	/**
 	 * Método que fabrica un UserRepository
 	 * @return UserRepository
 	 */
 	public static UserRepository createUserRepository() {
-		return new UserRepository(ProviderFactory.createMysqlProvider());
+		return new UserRepository(PROVIDER_LOCAL_MYSQL);
 	}
 	
 	/**
@@ -29,7 +32,7 @@ public class RepositoryFactory {
 	 * @return PersonRepository
 	 */
 	public static PersonRepository createPersonRepository() {
-		return new PersonRepository(ProviderFactory.createMysqlProvider());
+		return new PersonRepository(PROVIDER_LOCAL_MYSQL);
 	}
 
 	/**
@@ -37,7 +40,7 @@ public class RepositoryFactory {
 	 * @return AddressRepository
 	 */
 	public static AddressRepository createAddressRepository() {
-		return new AddressRepository(ProviderFactory.createMysqlProvider());
+		return new AddressRepository(PROVIDER_LOCAL_MYSQL);
 	}
 
 	/**
@@ -45,7 +48,7 @@ public class RepositoryFactory {
 	 * @return RoleRepository
 	 */
 	public static RoleRepository createRoleRepository() {
-		return new RoleRepository(ProviderFactory.createMysqlProvider());
+		return new RoleRepository(PROVIDER_LOCAL_MYSQL);
 	}
 	
 	/**
@@ -53,7 +56,7 @@ public class RepositoryFactory {
 	 * @return SchoolRepository
 	 */
 	public static SchoolRepository createSchoolRepository() {
-		return new SchoolRepository(ProviderFactory.createMysqlProvider());
+		return new SchoolRepository(PROVIDER_LOCAL_MYSQL);
 	}
 
 	/**
@@ -61,7 +64,7 @@ public class RepositoryFactory {
 	 * @return CourseRepository
 	 */
 	public static CourseRepository createCourseRepository() {
-		return new CourseRepository(ProviderFactory.createMysqlProvider());
+		return new CourseRepository(PROVIDER_LOCAL_MYSQL);
 	}
 
 	/**
@@ -69,7 +72,7 @@ public class RepositoryFactory {
 	 * @return CourseSchoolRepository
 	 */
 	public static CourseSchoolRepository createCourseSchoolRepository() {
-		return new CourseSchoolRepository(ProviderFactory.createMysqlProvider());
+		return new CourseSchoolRepository(PROVIDER_LOCAL_MYSQL);
 	}
 
 	/**
@@ -77,6 +80,6 @@ public class RepositoryFactory {
 	 * @return CycleRepository
 	 */
 	public static CycleRepository createCycleRepository() {
-		return new CycleRepository(ProviderFactory.createMysqlProvider());
+		return new CycleRepository(PROVIDER_LOCAL_MYSQL);
 	}
 }
