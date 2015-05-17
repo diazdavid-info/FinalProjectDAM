@@ -63,8 +63,12 @@ public class CycleController extends Controller{
 	public void listAction() {
 		if(isLogin()){
 			List<Cycle> listCycles = mCycleModel.listCycles();
+			List<Course> listCourses = mCourseModel.listCourse();
+			List<User> listTutors = mUserModel.listTutors();
 			
 			mServletRequest.setAttribute("listCycles", listCycles);
+			mServletRequest.setAttribute("listCourses", listCourses);
+			mServletRequest.setAttribute("listTutors", listTutors);
 			render("cycle/list");
 		}
 	}

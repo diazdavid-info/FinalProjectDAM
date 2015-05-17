@@ -8,6 +8,7 @@ package david.services.implement;
 import com.google.gson.Gson;
 
 import david.model.factory.ModelFactory;
+import david.model.models.DCycleModel;
 import david.model.models.DSchoolModel;
 
 public class ImplementServices {
@@ -21,5 +22,18 @@ public class ImplementServices {
 		Gson gson = new Gson();
 		DSchoolModel schoolModel = ModelFactory.createSchoolModel();
 		return gson.toJson(schoolModel.getSchoolByCourseId(courseId));
+	}
+
+	/**
+	 * Método que recupera los ciclos
+	 * @param int courseId
+	 * @param int schoolId
+	 * @param int tutorId
+	 * @return String
+	 */
+	public String getCycleByCourseIdSchoolIdTutorId(int courseId, int schoolId,int tutorId) {
+		Gson gson = new Gson();
+		DCycleModel cycleModel = ModelFactory.createCycleModel();
+		return gson.toJson(cycleModel.listCycles(courseId, schoolId, tutorId));
 	}
 }

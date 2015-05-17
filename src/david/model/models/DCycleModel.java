@@ -24,4 +24,12 @@ public interface DCycleModel {
 	 */
 	public List<Cycle> listCycles();
 
+	/**
+	 * Método que solicita y gestiona el listado de ciclos
+	 * @param int courseId
+	 * @param int schoolId
+	 * @param int tutorId
+	 * @return List<Cycle>
+	 */
+	public List<Cycle> listCycles(int courseId, int schoolId, int tutorId);
 }
