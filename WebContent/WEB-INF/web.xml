@@ -5,8 +5,8 @@
     <servlet-name>Jersey REST Service</servlet-name>
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
     <init-param>
-        <param-name>jersey.config.server.provider.packages</param-name>
-        <param-value>david.services</param-value>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>david.services</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
@@ -29,6 +29,10 @@
   <servlet>
     <servlet-name>Cycle</servlet-name>
     <servlet-class>david.servlet.Cycle</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Module</servlet-name>
+    <servlet-class>david.servlet.Module</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Jersey REST Service</servlet-name>
@@ -53,6 +57,10 @@
   <servlet-mapping>
     <servlet-name>Cycle</servlet-name>
     <url-pattern>/cycle/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Module</servlet-name>
+    <url-pattern>/module/*</url-pattern>
   </servlet-mapping>
   <resource-ref>
     <description>Pool de conexiones localhost</description>
@@ -90,9 +98,4 @@
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>/servlet/AdminServlet</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  
-  
 </web-app>
