@@ -10,6 +10,7 @@ import david.model.repository.AddressRepository;
 import david.model.repository.CourseRepository;
 import david.model.repository.CourseSchoolRepository;
 import david.model.repository.CycleRepository;
+import david.model.repository.ModuleRepository;
 import david.model.repository.PersonRepository;
 import david.model.repository.RoleRepository;
 import david.model.repository.SchoolRepository;
@@ -81,5 +82,13 @@ public class RepositoryFactory {
 	 */
 	public static CycleRepository createCycleRepository() {
 		return new CycleRepository(PROVIDER_LOCAL_MYSQL);
+	}
+	
+	/**
+	 * Método que fabrica un ModuleRepository
+	 * @return ModuleRepository
+	 */
+	public static ModuleRepository createModuleRepository(){
+		return new ModuleRepository(PROVIDER_LOCAL_MYSQL);
 	}
 }

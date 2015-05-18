@@ -66,4 +66,15 @@ public class CycleRepository {
 		Mapper<CyclePersistence> mapper = new Mapper<CyclePersistence>(cyclePersistence);
 		return mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
 	}
+
+	/**
+	 * Método que busca un CyclePersistence que cumpla con los requisitos
+	 * @param CyclePersistence cyclePersistence
+	 * @return CyclePersistence
+	 */
+	public CyclePersistence find(CyclePersistence cyclePersistence) {
+		Mapper<CyclePersistence> mapper = new Mapper<CyclePersistence>(cyclePersistence);
+		System.out.println(mapper.mapperToDbb());
+		return mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+	}
 }

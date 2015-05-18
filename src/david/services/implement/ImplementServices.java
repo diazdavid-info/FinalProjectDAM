@@ -36,4 +36,16 @@ public class ImplementServices {
 		DCycleModel cycleModel = ModelFactory.createCycleModel();
 		return gson.toJson(cycleModel.listCycles(courseId, schoolId, tutorId));
 	}
+
+	/**
+	 * Método que recupera los ciclos
+	 * @param int courseId
+	 * @param int schoolId
+	 * @return String
+	 */
+	public String getCycleByCourseIdSchoolId(int courseId, int schoolId) {
+		Gson gson = new Gson();
+		DCycleModel cycleModel = ModelFactory.createCycleModel();
+		return gson.toJson(cycleModel.listCycles(courseId, schoolId));
+	}
 }

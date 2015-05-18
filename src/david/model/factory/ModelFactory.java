@@ -10,8 +10,10 @@ import david.model.models.CourseModel;
 import david.model.models.CycleModel;
 import david.model.models.DCourseModel;
 import david.model.models.DCycleModel;
+import david.model.models.DModuleModel;
 import david.model.models.DSchoolModel;
 import david.model.models.DUserModel;
+import david.model.models.ModuleModel;
 import david.model.models.SchoolModel;
 import david.model.models.UserModel;
 
@@ -69,5 +71,13 @@ public class ModelFactory {
 				RepositoryFactory.createUserRepository(),
 				TransformerFactory.createCycleTransformer(),
 				RepositoryFactory.createCycleRepository());
+	}
+
+	/**
+	 * Método que fabrica el modelo de módulos
+	 * @return DModuleModel
+	 */
+	public static DModuleModel createModuleModel() {
+		return new ModuleModel(TransformerFactory.createModuleTransformer(), RepositoryFactory.createModuleRepository());
 	}
 }
