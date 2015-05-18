@@ -30,7 +30,7 @@
 					<div class="col-sm-4">
 						<label class="col-sm-4" for="course">Cursos</label>
 						<div class="col-sm-12">
-							<select name="course" class="form-control" onchange="getSchool(value)">
+							<select id="course" name="course" class="form-control" onchange="getSchool(value)">
 								<option disabled="disabled" selected="selected">Selecione un Curso ...</option>
 								<% for(Course course : listCourse){ %>
 									<option value="<%= course.getId() %>"><%= course.getStartYear() %> / <%= course.getFinishYear() %></option>
@@ -41,19 +41,16 @@
    					<div class="col-sm-4">
 	   					<label class="col-sm-4" for="schools">Institutos</label>
 						<div class="col-sm-12">
-							<select id="schools" name="schools" class="form-control">
-								<option disabled="disabled" selected="selected">Selecione un Instituto ...</option>
+							<select id="schools" name="schools" class="form-control" onchange="getCyclesByModule()">
+								<option disabled="disabled" selected="selected">Seleccione un Instituto ...</option>
 							</select>
 	   					</div>
    					</div>
    					<div class="col-sm-4">
-						<label class="col-sm-4" for="tutor">Tutor</label>
+	   					<label class="col-sm-4" for="cycle">Ciclo</label>
 						<div class="col-sm-12">
-							<select id="tutor" name="tutor" class="form-control">
-								<option disabled="disabled" selected="selected">Selecione un Tutor ...</option>
-								<% for(User users : listTutors){ %>
-									<option value="<%= users.getId() %>"><%= users.getUsername() %></option>
-								<% } %>
+							<select id="cycle" name="cycle" class="form-control">
+								<option disabled="disabled" selected="selected">Seleccione un ciclo ...</option>
 							</select>
 	   					</div>
    					</div>
@@ -70,9 +67,18 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="name">Nombre del módulo</label>
-					<div class="col-sm-10">
+					<div class="col-sm-4">
     					<input name="name" type="text" class="form-control" id="name" placeholder="Nombre" />
    					</div>
+   					<label class="col-sm-2 control-label" for="tutor">Tutor</label>
+						<div class="col-sm-4">
+							<select id="tutor" name="tutor" class="form-control">
+								<option disabled="disabled" selected="selected">Seleccione un Tutor ...</option>
+								<% for(User users : listTutors){ %>
+									<option value="<%= users.getId() %>"><%= users.getUsername() %></option>
+								<% } %>
+							</select>
+	   					</div>
     			</div>
 				<div class="form-group">
 					<div class="col-sm-4 col-sm-offset-2">

@@ -24,4 +24,11 @@ public interface DCourseModel {
 	 */
 	public List<Course> listCourse();
 
+	/**
+	 * Método que solicita y gestiona la busqueda de un curso
+	 * @param Course course
+	 * @return Course
+	 */
+	public Course findCourse(Course course);
+
 }

@@ -38,4 +38,11 @@ public interface DUserModel {
 	 */
 	public List<User> listTutors();
 
+	/**
+	 * Método que solicita y gestiona la busqueda de un user
+	 * @param User user
+	 * @return User
+	 */
+	public User findUser(User user);
+
 }

@@ -180,4 +180,14 @@ public class SchoolModel implements DSchoolModel {
 		
 		return listSchool;
 	}
+	
+	/**
+	 * Método que solicita y gestiona la busqueda de un instituto
+	 * @param School school
+	 * @return School
+	 */
+	public School findSchool(School school){
+		SchoolPersistence schoolPersistence = mISchoolTransformer.entityToPersistence(school);
+		return mISchoolTransformer.persistenceToEntity(mSchoolRepository.find(schoolPersistence));
+	}
 }
