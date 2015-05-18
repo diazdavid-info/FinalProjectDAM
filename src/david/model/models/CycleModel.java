@@ -160,6 +160,44 @@ public class CycleModel implements DCycleModel{
 	 * Método que solicita y gestiona el listado de ciclos
 	 * @param int courseId
 	 * @param int schoolId
+	 * @return List<Cycle>
+	 */
+	public List<Cycle> listCycles(int courseId, int schoolId){
+		List<Cycle> listCycle = new ArrayList<Cycle>();
+		
+		CyclePersistence cyclePersistence = mICycleTransformer.entityToPersistence(new Cycle(new CycleBuilder()));
+		cyclePersistence.setIdCourse(courseId);
+		cyclePersistence.setIdSchool(schoolId);
+		
+		List<CyclePersistence> listCyclePersistence = mCycleRepository.findAll(cyclePersistence);
+		
+		for (CyclePersistence persistence : listCyclePersistence) {
+			Course course = new Course(new CourseBuilder().id(persistence.getIdCourse()));
+			CoursePersistence coursePersistence = mICourseTransformer.entityToPersistence(course);
+			course = mICourseTransformer.persistenceToEntity(mCourseRepository.find(coursePersistence));
+			
+			School school = new School(new SchoolBuilder().id(persistence.getIdSchool()));
+			SchoolPersistence schoolPersistence = mISchoolTransformer.entityToPersistence(school);
+			school = mISchoolTransformer.persistenceToEntity(mSchoolRepository.find(schoolPersistence));
+			
+			User user = new User(new UserBuilder().setId(persistence.getTutor()));
+			UserPersistence userPersistence = mIUserTransformer.entityToPersistence(user);
+			user = mIUserTransformer.persistenceToEntity(mUserRepository.find(userPersistence));
+			
+			Cycle cycle = mICycleTransformer.persistenceToEntity(persistence);
+			cycle.setCourse(course);
+			cycle.setSchool(school);
+			cycle.setTutor(user);
+			listCycle.add(cycle);
+		}
+		
+		return listCycle;
+	}
+	
+	/**
+	 * Método que solicita y gestiona el listado de ciclos
+	 * @param int courseId
+	 * @param int schoolId
 	 * @param int tutorId
 	 * @return List<Cycle>
 	 */
@@ -194,6 +232,16 @@ public class CycleModel implements DCycleModel{
 		}
 		
 		return listCycle;
+	}
+	
+	/**
+	 * Método que solicita y gestiona la busqueda de un ciclo
+	 * @param Cycle cycle
+	 * @return Cycle
+	 */
+	public Cycle findCycle(Cycle cycle){
+		CyclePersistence cyclePersistence = mICycleTransformer.entityToPersistence(cycle);
+		return mICycleTransformer.persistenceToEntity(mCycleRepository.find(cyclePersistence));
 	}
 
 }

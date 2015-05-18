@@ -23,6 +23,11 @@ public class ModuleCreateForm extends Form implements IWebCreateModule{
 	@Parameter(name="schools", required=true)
 	private String mSchool;
 	/**
+	 * Atributo que almacena el valor del campo cycle
+	 */
+	@Parameter(name="cycle", required=true)
+	private String mCycle;
+	/**
 	 * Atributo que almacena el valor del campo tutor
 	 */
 	@Parameter(name="tutor", required=true)
@@ -73,6 +78,14 @@ public class ModuleCreateForm extends Form implements IWebCreateModule{
 	 */
 	public String getSchool(){
 		return mSchool;
+	}
+	
+	/**
+	 * Método que obtiene el valor del atributo mCycle
+	 * @return String
+	 */
+	public String getCycle(){
+		return mCycle;
 	}
 	
 	/**

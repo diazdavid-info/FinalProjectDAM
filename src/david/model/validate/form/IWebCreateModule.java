@@ -29,6 +29,12 @@ public interface IWebCreateModule {
 	public String getSchool();
 	
 	/**
+	 * Método que obtiene el valor del atributo mCycle
+	 * @return String
+	 */
+	public String getCycle();
+	
+	/**
 	 * Método que obtiene el valor del atributo mTutor
 	 * @return String
 	 */

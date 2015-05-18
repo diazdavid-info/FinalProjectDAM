@@ -37,4 +37,11 @@ public interface DSchoolModel {
 	 */
 	public List<School> getSchoolByCourseId(int courseId);
 
+	/**
+	 * Método que solicita y gestiona la busqueda de un instituto
+	 * @param School school
+	 * @return School
+	 */
+	public School findSchool(School school);
+
 }

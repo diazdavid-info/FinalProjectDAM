@@ -186,4 +186,14 @@ public class UserModel implements DUserModel{
 		}
 		return listUser;
 	}
+	
+	/**
+	 * Método que solicita y gestiona la busqueda de un user
+	 * @param User user
+	 * @return User
+	 */
+	public User findUser(User user){
+		UserPersistence userPersistence = mIUserTransformer.entityToPersistence(user);
+		return mIUserTransformer.persistenceToEntity(mUserRepository.find(userPersistence));
+	}
 }

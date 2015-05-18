@@ -24,4 +24,12 @@ public interface IApiServices {
 	 * @return String
 	 */
 	public String getCycleByCourseIdSchoolIdTutorId(int courseId, int schoolId, int tutorId);
+	
+	/**
+	 * Servicio que recupera todos los ciclos
+	 * @param int courseId
+	 * @param int schoolId
+	 * @return String
+	 */
+	public String getCycleByCourseIdSchoolId(int courseId, int schoolId);
 }

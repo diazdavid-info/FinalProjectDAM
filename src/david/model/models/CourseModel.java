@@ -71,4 +71,14 @@ public class CourseModel implements DCourseModel{
 		
 		return listCourse;
 	}
+	
+	/**
+	 * Método que solicita y gestiona la busqueda de un curso
+	 * @param Course course
+	 * @return Course
+	 */
+	public Course findCourse(Course course){
+		CoursePersistence coursePersistence = mICourseTransformer.entityToPersistence(course);
+		return mICourseTransformer.persistenceToEntity(mCourseRepository.find(coursePersistence));
+	}
 }

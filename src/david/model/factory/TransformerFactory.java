@@ -13,10 +13,12 @@ import david.model.transformer.IAddressTransformer;
 import david.model.transformer.ICourseSchoolTransformer;
 import david.model.transformer.ICourseTransformer;
 import david.model.transformer.ICycleTransformer;
+import david.model.transformer.IModuleTransformer;
 import david.model.transformer.IPersonTransformer;
 import david.model.transformer.IRoleTransformer;
 import david.model.transformer.ISchoolTransformer;
 import david.model.transformer.IUserTransformer;
+import david.model.transformer.ModuleTransformer;
 import david.model.transformer.PersonTransformer;
 import david.model.transformer.RoleTransformer;
 import david.model.transformer.SchoolTransformer;
@@ -86,5 +88,13 @@ public class TransformerFactory {
 	 */
 	public static ICycleTransformer createCycleTransformer() {
 		return new CycleTransformer();
+	}
+	
+	/**
+	 * Método que construye un transformador de module
+	 * @return IModuleTransformer
+	 */
+	public static IModuleTransformer createModuleTransformer(){
+		return new ModuleTransformer();
 	}
 }

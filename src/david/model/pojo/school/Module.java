@@ -2,7 +2,8 @@
 
 import java.util.List;
 
-import david.model.pojo.users.Person;
+import david.model.pojo.builder.ModuleBuilder;
+import david.model.pojo.users.User;
 
 /**
  * Clase modulo
@@ -39,14 +40,21 @@ public class Module {
 	/**
 	 * Lista de estudiantes matriculados en el módulo.
 	 */
-	private List<Person> mStudent;
+	private List<User> mStudent;
 	/**
 	 * Profesor que imparte este módulo
 	 */
-	private Person mTeacher;
+	private User mTeacher;
 
-	public Module(){
-
+	public Module(ModuleBuilder moduleBuilder){
+		mChapter = moduleBuilder.getChapter();
+		mHour = moduleBuilder.getHour();
+		mId = moduleBuilder.getId();
+		mIdentification = moduleBuilder.getIdentification();
+		mName = moduleBuilder.getName();
+		mSession = moduleBuilder.getSession();
+		mStudent = moduleBuilder.getStudent();
+		mTeacher = moduleBuilder.getTeacher();
 	}
 
 	public void finalize() throws Throwable {
@@ -98,14 +106,14 @@ public class Module {
 	/**
 	 * Listado de estudiantes
 	 */
-	public List<Person> getStudent(){
+	public List<User> getStudent(){
 		return mStudent;
 	}
 	
 	/**
 	 * Profesor que imparte este módulo
 	 */
-	public Person getTeacher(){
+	public User getTeacher(){
 		return mTeacher;
 	}
 
@@ -168,7 +176,7 @@ public class Module {
 	 * 
 	 * @param newVal
 	 */
-	public void setStudent(List<Person> newVal){
+	public void setStudent(List<User> newVal){
 		mStudent = newVal;
 	}
 
@@ -177,7 +185,7 @@ public class Module {
 	 * 
 	 * @param newVal
 	 */
-	public void setTeacher(Person newVal){
+	public void setTeacher(User newVal){
 		mTeacher = newVal;
 	}
 
