@@ -22,9 +22,9 @@ public class School {
 	 */
 	private String mCodeIdentification;
 	/**
-	 * Lista de cursos
+	 * Lista de ciclos
 	 */
-	private List<Course> mCourse;
+	private List<Cycle> mCycle;
 	/**
 	 * Identificador del instituto
 	 */
@@ -37,7 +37,7 @@ public class School {
 	public School(SchoolBuilder schoolBuilder){
 		mAddress = schoolBuilder.getAddress();
 		mCodeIdentification = schoolBuilder.getCodeIdentification();
-		mCourse = schoolBuilder.getCourse();
+		mCycle = schoolBuilder.getCycle();
 		mId = schoolBuilder.getId();
 		mName = schoolBuilder.getName();
 	}
@@ -61,10 +61,10 @@ public class School {
 	}
 
 	/**
-	 * Lista de cursos
+	 * Lista de ciclo
 	 */
-	public List<Course> getCourse(){
-		return mCourse;
+	public List<Cycle> getCycle(){
+		return mCycle;
 	}
 
 	/**
@@ -99,12 +99,12 @@ public class School {
 	}
 
 	/**
-	 * Lista de cursos
+	 * Lista de ciclo
 	 * 
 	 * @param newVal
 	 */
-	public void setCourse(List<Course> newVal){
-		mCourse = newVal;
+	public void setCycle(List<Cycle> newVal){
+		mCycle = newVal;
 	}
 
 	/**

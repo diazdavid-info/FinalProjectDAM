@@ -9,6 +9,7 @@ import java.util.List;
 
 import david.model.factory.ModelFactory;
 import david.model.models.DCourseModel;
+import david.model.models.DCourseSchoolModel;
 import david.model.models.DSchoolModel;
 import david.model.pojo.school.Course;
 import david.model.pojo.school.School;
@@ -25,6 +26,10 @@ public class SchoolController extends Controller{
 	 * Atributo que almacena el modelo de Course
 	 */
 	private DCourseModel mCourseModel;
+	/**
+	 * Atributo que almacena el modelo de CourseSchool
+	 */
+	private DCourseSchoolModel mCourseSchoolModel;
 	
 	/**
 	 * Costructor por defecto
@@ -32,6 +37,7 @@ public class SchoolController extends Controller{
 	public SchoolController() {
 		mModel = ModelFactory.createSchoolModel();
 		mCourseModel = ModelFactory.createCourseModel();
+		mCourseSchoolModel = ModelFactory.createCourseSchoolModel();
 	}
 	
 	/**
@@ -68,7 +74,7 @@ public class SchoolController extends Controller{
 		}
 		
 		if(isLogin() && isRequest()){
-			mModel.createCourseSchools(getRequestParameter());
+			mCourseSchoolModel.createCourseSchools(getRequestParameter());
 		}
 		render("school/addCourse");
 	}

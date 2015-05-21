@@ -41,9 +41,10 @@ public class CycleRepository {
 	 * @return CyclePersistence
 	 */
 	private CyclePersistence save(CyclePersistence cyclePersistence) {
-		System.out.println("ESTOY EN EL SAVE DE CYCLEREPOSITORY");
 		Mapper<CyclePersistence> mapper = new Mapper<CyclePersistence>(cyclePersistence);
+		mProvider.connect();
 		cyclePersistence.setId(mProvider.executeUpdate(mapper.mapperStorageToDbb()));
+		mProvider.disconnect();
 		return cyclePersistence;
 	}
 
@@ -53,7 +54,6 @@ public class CycleRepository {
 	 * @return CyclePersistence
 	 */
 	private CyclePersistence update(CyclePersistence cyclePersistence) {
-		System.out.println("ESTOY EN EL UPDATE DE CYCLEREPOSITORY");
 		return null;
 	}
 
@@ -64,7 +64,10 @@ public class CycleRepository {
 	 */
 	public List<CyclePersistence> findAll(CyclePersistence cyclePersistence) {
 		Mapper<CyclePersistence> mapper = new Mapper<CyclePersistence>(cyclePersistence);
-		return mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.connect();
+		List<CyclePersistence> persistence = mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return persistence;
 	}
 
 	/**
@@ -74,7 +77,9 @@ public class CycleRepository {
 	 */
 	public CyclePersistence find(CyclePersistence cyclePersistence) {
 		Mapper<CyclePersistence> mapper = new Mapper<CyclePersistence>(cyclePersistence);
-		System.out.println(mapper.mapperToDbb());
-		return mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.connect();
+		CyclePersistence persistence = mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return persistence;
 	}
 }

@@ -21,7 +21,7 @@ public class ProviderMySql implements DProvider {
 	/**
 	 * Método que conecta con la base de datos
 	 */
-	private void connect() {
+	public void connect() {
 		try {
 			mConnection = mDataSource.getConnection();
 		} catch (SQLException e) {
@@ -32,11 +32,14 @@ public class ProviderMySql implements DProvider {
 	/**
 	 * Método que desconecta con la base de datos
 	 */
-	@SuppressWarnings("unused")
-	private void disconnect() {
+	public void disconnect() {
 		try {
 			mConnection.close();
+			mStatement.close();
+			mResultSet.close();
 			mConnection = null;
+			mStatement = null;
+			mResultSet = null;
 		} catch (SQLException e) {
 			System.err.println("Error al cerrar la conexión con la base de datos, mensage: "+e.getMessage()+" código de error: "+e.getErrorCode());
 		}
@@ -58,14 +61,12 @@ public class ProviderMySql implements DProvider {
 	 */
 	@Override
 	public ResultSet executeQuery(String query){
-		this.connect();
 		try {
 			mStatement = mConnection.createStatement();
 			mResultSet = mStatement.executeQuery(query);
 		} catch (SQLException e) {
 			System.err.println("Error al ejecutar la query, mensage: "+e.getMessage()+" código de error: "+e.getErrorCode());
 		}
-//		this.disconnect();
 		return mResultSet;
 	}
 	
@@ -77,7 +78,6 @@ public class ProviderMySql implements DProvider {
 	@Override
 	public int executeUpdate(String update){
 		int id = -1;
-		this.connect();
 		try {
 			mStatement = mConnection.createStatement();
 			mStatement.executeUpdate(update, Statement.RETURN_GENERATED_KEYS);

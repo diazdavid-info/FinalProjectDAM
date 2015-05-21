@@ -31,7 +31,10 @@ public class PersonRepository {
 	 */
 	public PersonPersistence find(PersonPersistence personPersistence){
 		Mapper<PersonPersistence> mapper = new Mapper<PersonPersistence>(personPersistence);
-		return mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.connect();
+		PersonPersistence persistence = mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return persistence;
 	}
 
 	/**
@@ -48,7 +51,6 @@ public class PersonRepository {
 	 * @return PersonPersistence
 	 */
 	private PersonPersistence update(PersonPersistence personPersistence) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -58,9 +60,10 @@ public class PersonRepository {
 	 * @return PersonPersistence
 	 */
 	private PersonPersistence save(PersonPersistence personPersistence) {
-		System.out.println("SAVE PersonPersistence");
 		Mapper<PersonPersistence> mapper = new Mapper<PersonPersistence>(personPersistence);
+		mProvider.connect();
 		personPersistence.setId(mProvider.executeUpdate(mapper.mapperStorageToDbb()));
+		mProvider.disconnect();
 		return personPersistence;
 	}
 
