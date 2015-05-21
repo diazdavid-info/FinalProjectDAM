@@ -1,5 +1,7 @@
 ﻿package david.model.pojo.school;
 
+import java.util.List;
+
 import david.model.pojo.builder.CourseBuilder;
 
 
@@ -23,6 +25,10 @@ public class Course{
 	 * Año de inicio del curso
 	 */
 	private int mStartYear;
+	/**
+	 * Listado de institutos
+	 */
+	private List<School> mSchool;
 
 	/**
 	 * Constructor con un parametro
@@ -58,6 +64,13 @@ public class Course{
 	public int getStartYear(){
 		return mStartYear;
 	}
+	
+	/**
+	 * listado de institutos
+	 */
+	public List<School> getSchool(){
+		return mSchool;
+	}
 
 	/**
 	 * Año de finalización del curso
@@ -84,6 +97,15 @@ public class Course{
 	 */
 	public void setStartYear(int newVal){
 		mStartYear = newVal;
+	}
+	
+	/**
+	 * Listado de institutos
+	 * 
+	 * @param newVal
+	 */
+	public void setSchool(List<School> newVal){
+		mSchool = newVal;
 	}
 
 }

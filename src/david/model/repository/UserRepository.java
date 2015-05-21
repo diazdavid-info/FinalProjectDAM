@@ -37,9 +37,10 @@ public class UserRepository {
 	 * @return UserPersistence
 	 */
 	private UserPersistence save(UserPersistence userPersistence) {
-		System.out.println("SAVE");
 		Mapper<UserPersistence> mapper = new Mapper<UserPersistence>(userPersistence);
+		mProvider.connect();
 		userPersistence.setId(mProvider.executeUpdate(mapper.mapperStorageToDbb()));
+		mProvider.disconnect();
 		return userPersistence;
 	}
 
@@ -49,7 +50,6 @@ public class UserRepository {
 	 * @return UserPersistence
 	 */
 	private UserPersistence update(UserPersistence userPersistence) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -60,7 +60,10 @@ public class UserRepository {
 	 */
 	public UserPersistence find(UserPersistence userPersistence) {
 		Mapper<UserPersistence> mapper = new Mapper<UserPersistence>(userPersistence);
-		return mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.connect();
+		UserPersistence persistence = mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return persistence;
 	}
 
 	/**
@@ -70,8 +73,10 @@ public class UserRepository {
 	 */
 	public List<UserPersistence> findAll(UserPersistence userPersistence) {
 		Mapper<UserPersistence> mapper = new Mapper<UserPersistence>(userPersistence);
-		System.out.println(mapper.mapperToDbb());
-		return mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.connect();
+		List<UserPersistence> list = mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return list;
 	}
 
 }

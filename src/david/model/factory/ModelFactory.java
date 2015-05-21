@@ -6,9 +6,13 @@
  */
 package david.model.factory;
 
+import david.model.models.AddressModel;
 import david.model.models.CourseModel;
+import david.model.models.CourseSchoolModel;
 import david.model.models.CycleModel;
+import david.model.models.DAddressModel;
 import david.model.models.DCourseModel;
+import david.model.models.DCourseSchoolModel;
 import david.model.models.DCycleModel;
 import david.model.models.DModuleModel;
 import david.model.models.DSchoolModel;
@@ -39,14 +43,7 @@ public class ModelFactory {
 	 * @return DSchoolModel
 	 */
 	public static DSchoolModel createSchoolModel() {
-		return new SchoolModel(TransformerFactory.createAddressTransformer(),
-				RepositoryFactory.createAddressRepository(),
-				TransformerFactory.createSchoolTransformer(),
-				RepositoryFactory.createSchoolRepository(),
-				TransformerFactory.createCourseTransformer(),
-				RepositoryFactory.createCourseRepository(),
-				TransformerFactory.createCourseSchoolTransformer(),
-				RepositoryFactory.createCourseSchoolRepository());
+		return new SchoolModel(TransformerFactory.createSchoolTransformer(), RepositoryFactory.createSchoolRepository());
 	}
 
 	/**
@@ -54,8 +51,7 @@ public class ModelFactory {
 	 * @return DCourseModel
 	 */
 	public static DCourseModel createCourseModel() {
-		return new CourseModel(TransformerFactory.createCourseTransformer(), 
-				RepositoryFactory.createCourseRepository());
+		return new CourseModel(TransformerFactory.createCourseTransformer(), RepositoryFactory.createCourseRepository());
 	}
 
 	/**
@@ -63,14 +59,7 @@ public class ModelFactory {
 	 * @return DCycleModel
 	 */
 	public static DCycleModel createCycleModel() {
-		return new CycleModel(TransformerFactory.createCourseTransformer(),
-				RepositoryFactory.createCourseRepository(),
-				TransformerFactory.createSchoolTransformer(),
-				RepositoryFactory.createSchoolRepository(),
-				TransformerFactory.createUserTransformer(),
-				RepositoryFactory.createUserRepository(),
-				TransformerFactory.createCycleTransformer(),
-				RepositoryFactory.createCycleRepository());
+		return new CycleModel(TransformerFactory.createCycleTransformer(), RepositoryFactory.createCycleRepository());
 	}
 
 	/**
@@ -79,5 +68,21 @@ public class ModelFactory {
 	 */
 	public static DModuleModel createModuleModel() {
 		return new ModuleModel(TransformerFactory.createModuleTransformer(), RepositoryFactory.createModuleRepository());
+	}
+
+	/**
+	 * Método que fabrica el modelo de direcciones
+	 * @return DAddressModel
+	 */
+	public static DAddressModel createAddressModel() {
+		return new AddressModel(TransformerFactory.createAddressTransformer(), RepositoryFactory.createAddressRepository());
+	}
+	
+	/**
+	 * Método que fabrica el modelo de curso instituto
+	 * @return DCourseSchoolModel
+	 */
+	public static DCourseSchoolModel createCourseSchoolModel() {
+		return new CourseSchoolModel(TransformerFactory.createCourseSchoolTransformer(), RepositoryFactory.createCourseSchoolRepository());
 	}
 }

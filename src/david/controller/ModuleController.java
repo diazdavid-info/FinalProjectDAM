@@ -56,5 +56,17 @@ public class ModuleController extends Controller{
 			render("module/create");
 		}
 	}
+	
+	/**
+	 * Método que lista los modulos
+	 */
+	public void listAction(){
+		if(isLogin()){
+			List<Course> listCourses = mCourseModel.listCourse();
+			
+			mServletRequest.setAttribute("listCourses", listCourses);
+			render("module/list");
+		}
+	}
 
 }

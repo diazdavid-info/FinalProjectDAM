@@ -31,7 +31,10 @@ public class RoleRepository {
 	 */
 	public RolePersistence find(RolePersistence rolePersistence){
 		Mapper<RolePersistence> mapper = new Mapper<RolePersistence>(rolePersistence);
-		return mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.connect();
+		RolePersistence persistence = mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return persistence;
 	}
 
 }

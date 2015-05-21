@@ -42,7 +42,6 @@ public class CourseSchoolRepository {
 	 */
 	@SuppressWarnings("unused")
 	private CourseSchoolPersistence update(CourseSchoolPersistence courseSchoolPersistence) {
-		System.out.println("ESTOY EN EL UPDATE DE COURSESCHOOLREPOSITORY");
 		return courseSchoolPersistence;
 	}
 
@@ -52,9 +51,10 @@ public class CourseSchoolRepository {
 	 * @return CourseSchoolPersistence
 	 */
 	private CourseSchoolPersistence save(CourseSchoolPersistence courseSchoolPersistence) {
-		System.out.println("ESTOY EN EL SAVE DE COURSESCHOOLREPOSITORY");
 		Mapper<CourseSchoolPersistence> mapper = new Mapper<CourseSchoolPersistence>(courseSchoolPersistence);
+		mProvider.connect();
 		mProvider.executeUpdate(mapper.mapperStorageToDbb());
+		mProvider.disconnect();
 		return courseSchoolPersistence;
 	}
 
@@ -65,7 +65,10 @@ public class CourseSchoolRepository {
 	 */
 	public CourseSchoolPersistence find(CourseSchoolPersistence courseSchoolPersistence) {
 		Mapper<CourseSchoolPersistence> mapper = new Mapper<CourseSchoolPersistence>(courseSchoolPersistence);
-		return mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.connect();
+		CourseSchoolPersistence peristence = mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return peristence;
 	}
 
 	/**
@@ -75,7 +78,10 @@ public class CourseSchoolRepository {
 	 */
 	public List<CourseSchoolPersistence> findAll(CourseSchoolPersistence courseSchoolPersistence) {
 		Mapper<CourseSchoolPersistence> mapper = new Mapper<CourseSchoolPersistence>(courseSchoolPersistence);
-		return mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.connect();
+		List<CourseSchoolPersistence> persistence = mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return persistence;
 	}
 
 }

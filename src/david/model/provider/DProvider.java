@@ -11,6 +11,16 @@ import java.sql.ResultSet;
 public interface DProvider {
 	
 	/**
+	 * Método que conecta con la base de datos
+	 */
+	public void connect();
+	
+	/**
+	 * Método que desconecta con la base de datos
+	 */
+	public void disconnect();
+	
+	/**
 	 * Método que comprueba si se esta conectado a la base de datos
 	 * @return boolean
 	 */
