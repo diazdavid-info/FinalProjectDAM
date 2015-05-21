@@ -8,7 +8,7 @@ package david.model.pojo.builder;
 import java.util.List;
 
 import david.model.pojo.contact.Address;
-import david.model.pojo.school.Course;
+import david.model.pojo.school.Cycle;
 
 public class SchoolBuilder {
 
@@ -21,9 +21,9 @@ public class SchoolBuilder {
 	 */
 	private String mCodeIdentification;
 	/**
-	 * Atributo que almacena el valor de mCourse
+	 * Atributo que almacena el valor de mCycle
 	 */
-	private List<Course> mCourse;
+	private List<Cycle> mCycle;
 	/**
 	 * Atributo que almacena el valor de mId
 	 */
@@ -51,11 +51,11 @@ public class SchoolBuilder {
 	}
 
 	/**
-	 * Método que obtiene el valor del atributo mCourse
-	 * @return List<Course>
+	 * Método que obtiene el valor del atributo mCycle
+	 * @return List<Cycle>
 	 */
-	public List<Course> getCourse(){
-		return mCourse;
+	public List<Cycle> getCycle(){
+		return mCycle;
 	}
 
 	/**
@@ -95,12 +95,12 @@ public class SchoolBuilder {
 	}
 
 	/**
-	 * Método que establece el valor del atributo mCourse
+	 * Método que establece el valor del atributo mCycle
 	 * @param newVal
 	 * @return SchoolBuilder
 	 */
-	public SchoolBuilder course(List<Course> newVal){
-		mCourse = newVal;
+	public SchoolBuilder cycle(List<Cycle> newVal){
+		mCycle = newVal;
 		return this;
 	}
 

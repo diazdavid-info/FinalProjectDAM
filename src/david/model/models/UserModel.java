@@ -109,7 +109,6 @@ public class UserModel implements DUserModel{
 				user = mIUserTransformer.persistenceToEntity(userPersistence);
 			}
 		}
-		System.out.println("Estoy en el UserModel");
 		return user;
 	}
 	

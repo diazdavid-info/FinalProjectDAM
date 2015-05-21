@@ -10,6 +10,8 @@ import com.google.gson.Gson;
 import david.model.factory.ModelFactory;
 import david.model.models.DCycleModel;
 import david.model.models.DSchoolModel;
+import david.model.pojo.builder.CourseBuilder;
+import david.model.pojo.school.Course;
 
 public class ImplementServices {
 
@@ -21,7 +23,7 @@ public class ImplementServices {
 	public String getSchoolByCourseId(int courseId) {
 		Gson gson = new Gson();
 		DSchoolModel schoolModel = ModelFactory.createSchoolModel();
-		return gson.toJson(schoolModel.getSchoolByCourseId(courseId));
+		return gson.toJson(schoolModel.findSchoolByCourse(new Course(new CourseBuilder().id(courseId))));
 	}
 
 	/**

@@ -39,7 +39,6 @@ public class AddressRepository {
 	 * @return AddressPersistence
 	 */
 	private AddressPersistence update(AddressPersistence addressPersistence) {
-		System.out.println("UPDATE");
 		return null;
 	}
 
@@ -49,9 +48,10 @@ public class AddressRepository {
 	 * @return AddressPersistence
 	 */
 	private AddressPersistence save(AddressPersistence addressPersistence) {
-		System.out.println("SAVE");
+		mProvider.connect();
 		Mapper<AddressPersistence> mapper = new Mapper<AddressPersistence>(addressPersistence);
 		addressPersistence.setId(mProvider.executeUpdate(mapper.mapperStorageToDbb()));
+		mProvider.disconnect();
 		return addressPersistence;
 	}
 }

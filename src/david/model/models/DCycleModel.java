@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import david.model.pojo.school.Cycle;
+import david.model.pojo.school.School;
 
 public interface DCycleModel {
 	
@@ -48,5 +49,10 @@ public interface DCycleModel {
 	 */
 	public Cycle findCycle(Cycle cycle);
 
-	
+	/**
+	 * Método que solicita y gestiona la busqueda de los ciclos de un instituto
+	 * @param School school
+	 * @return List<Cycle>
+	 */
+	public List<Cycle> findCycleBySchool(School school);
 }

@@ -5,12 +5,15 @@
  */
 package david.model.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import david.model.factory.ModelFactory;
 import david.model.persistence.ModulePersistence;
 import david.model.pojo.builder.ModuleBuilder;
 import david.model.pojo.builder.UserBuilder;
+import david.model.pojo.school.Cycle;
 import david.model.pojo.school.Module;
 import david.model.pojo.users.User;
 import david.model.repository.ModuleRepository;
@@ -44,9 +47,8 @@ public class ModuleModel implements DModuleModel{
 	 * @param Map<String, String[]> parameter
 	 */
 	public void createModule(Map<String, String[]> parameter){
-		DUserModel userModel = ModelFactory.createUserModel();
-		
 		IWebCreateModule form = new ModuleCreateForm();
+		DUserModel userModel = ModelFactory.createUserModel();
 		
 		if(form.validate(parameter)) {
 			User user = userModel.findUser(new User(new UserBuilder().setId(Integer.parseInt(form.getTutor()))));
@@ -55,10 +57,29 @@ public class ModuleModel implements DModuleModel{
 			ModulePersistence modulePersistence = mIModuleTransformer.entityToPersistence(module);
 			modulePersistence.setCycle(Integer.parseInt(form.getCycle()));
 			module = mIModuleTransformer.persistenceToEntity(mModuleRepository.storage(modulePersistence));
-			
-			System.out.println("FORMULARIO CRETE MODULE ES VALIDO");
 		}
-		System.out.println("FORMULARIO CRETE MODULE NO ES VALIDO");
+	}
+	
+	/**
+	 * Método que busca los módulos de un ciclo
+	 * @param Cycle cycle
+	 * @return List<Cycle>
+	 */
+	public List<Module> findModuleByCycle(Cycle cycle){
+		List<Module> listModule = new ArrayList<Module>();
+		DUserModel userModel = ModelFactory.createUserModel();
+		
+		ModulePersistence modulePersistence = new ModulePersistence();
+		modulePersistence.setCycle(cycle.getId());
+		List<ModulePersistence> listPersistence = mModuleRepository.findAll(modulePersistence);
+		
+		for (ModulePersistence persistence : listPersistence) {
+			Module module = mIModuleTransformer.persistenceToEntity(persistence);
+			module.setTeacher(userModel.findUser(new User(new UserBuilder().setId(persistence.getTeacher()))));
+			listModule.add(module);
+		}
+		
+		return listModule;
 	}
 
 }

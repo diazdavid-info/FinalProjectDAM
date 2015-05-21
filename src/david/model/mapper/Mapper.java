@@ -179,7 +179,6 @@ public class Mapper<T> {
 	 * @param Object value
 	 */
 	private void prepareWhere(String name, String type, Object value) {
-		System.out.println("NAME: "+name+" TYPE: "+type+" VALUE: "+value);
 		if(value != null && type.equals("int")){
 			mQueryWhere.append(name+" = "+value+" and ");
 			mIsThereWhere = true;
@@ -223,7 +222,6 @@ public class Mapper<T> {
 		try {
 			if(resultSet.next()){
 				setAtributtes(resultSet);
-//				System.out.println("ID: "+resultSet.getString("mId"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

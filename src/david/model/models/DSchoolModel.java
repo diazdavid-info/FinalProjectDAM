@@ -8,6 +8,7 @@ package david.model.models;
 import java.util.List;
 import java.util.Map;
 
+import david.model.pojo.school.Course;
 import david.model.pojo.school.School;
 
 public interface DSchoolModel {
@@ -25,23 +26,17 @@ public interface DSchoolModel {
 	public List<School> listSchool();
 
 	/**
-	 * Método que gestiona la creación de la relación entre cursos e institutos
-	 * @param Map<String, String[]> requestParameter
-	 */
-	public void createCourseSchools(Map<String, String[]> requestParameter);
-	
-	/**
-	 * Método que solicita los institutos de un curso
-	 * @param int courseId
-	 * @return List<School>
-	 */
-	public List<School> getSchoolByCourseId(int courseId);
-
-	/**
 	 * Método que solicita y gestiona la busqueda de un instituto
 	 * @param School school
 	 * @return School
 	 */
 	public School findSchool(School school);
+
+	/**
+	 * Método que solicita y gestiona la busqueda de institutos de un curso
+	 * @param Curse course
+	 * @return List<School>
+	 */
+	public List<School> findSchoolByCourse(Course course);
 
 }

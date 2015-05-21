@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import david.model.factory.ModelFactory;
 import david.model.persistence.CoursePersistence;
 import david.model.pojo.builder.CourseBuilder;
 import david.model.pojo.school.Course;
@@ -27,6 +28,10 @@ public class CourseModel implements DCourseModel{
 	 * Atributo que almacena el valor del repositorio de cursos
 	 */
 	private CourseRepository mCourseRepository;
+	/**
+	 * Atributo que almacena el modelo de institutos
+	 */
+	private DSchoolModel mSchoolModel;
 	
 	/**
 	 * Constructor
@@ -34,6 +39,7 @@ public class CourseModel implements DCourseModel{
 	public CourseModel(ICourseTransformer courseTransformer, CourseRepository courseRepository){
 		mICourseTransformer = courseTransformer;
 		mCourseRepository = courseRepository;
+		mSchoolModel = ModelFactory.createSchoolModel();
 	}
 	
 	/**
@@ -41,18 +47,13 @@ public class CourseModel implements DCourseModel{
 	 * @param Map<String, String[]> parameter
 	 */
 	public void createCourse(Map<String, String[]> parameter){
-		Course course = null;
-		
 		IWebCreateCourse form = new CourseCreateForm();
 		
 		if(form.validate(parameter)){
-			course = new Course(new CourseBuilder().startYear(Integer.parseInt(form.getStart())).finishYear(Integer.parseInt(form.getFinish())));
+			Course course = new Course(new CourseBuilder().startYear(Integer.parseInt(form.getStart())).finishYear(Integer.parseInt(form.getFinish())));
 			CoursePersistence coursePersistence = mICourseTransformer.entityToPersistence(course);
 			course = mICourseTransformer.persistenceToEntity(mCourseRepository.storage(coursePersistence));
-			
-			System.out.println("FORMULARIO CRETE COURSE ES VALIDO");
 		}
-		System.out.println("FORMULARIO CRETE COURSE NO ES VALIDO");
 	}
 	
 	/**
@@ -65,6 +66,8 @@ public class CourseModel implements DCourseModel{
 		
 		for (CoursePersistence coursePersistence : coursesPersistence) {
 			Course course = mICourseTransformer.persistenceToEntity(coursePersistence);
+			
+			course.setSchool(mSchoolModel.findSchoolByCourse(course));
 			
 			listCourse.add(course);
 		}
