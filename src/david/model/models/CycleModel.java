@@ -182,8 +182,11 @@ public class CycleModel implements DCycleModel{
 	 * @return Cycle
 	 */
 	public Cycle findCycle(Cycle cycle){
+		DModuleModel moduleModel = ModelFactory.createModuleModel();
 		CyclePersistence cyclePersistence = mICycleTransformer.entityToPersistence(cycle);
-		return mICycleTransformer.persistenceToEntity(mCycleRepository.find(cyclePersistence));
+		Cycle newCycle = mICycleTransformer.persistenceToEntity(mCycleRepository.find(cyclePersistence));
+		newCycle.setModule(moduleModel.findModuleByCycle(newCycle));
+		return newCycle;
 	}
 	
 	/**

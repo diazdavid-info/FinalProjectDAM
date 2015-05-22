@@ -11,6 +11,7 @@ import java.util.Map;
 
 import david.model.factory.ModelFactory;
 import david.model.persistence.ModulePersistence;
+import david.model.pojo.builder.CycleBuilder;
 import david.model.pojo.builder.ModuleBuilder;
 import david.model.pojo.builder.UserBuilder;
 import david.model.pojo.school.Cycle;
@@ -80,6 +81,19 @@ public class ModuleModel implements DModuleModel{
 		}
 		
 		return listModule;
+	}
+	
+	/**
+	 * Método que busca los módulos de un curso, instituto y ciclo
+	 * @param int courseId
+	 * @param int schoolId
+	 * @param int cycleId
+	 * @return List<Module>
+	 */
+	public List<Module> listModule(int courseId, int schoolId, int cycleId){
+		DCycleModel cycleModel = ModelFactory.createCycleModel();
+		Cycle cycle = cycleModel.findCycle(new Cycle(new CycleBuilder().id(cycleId)));
+		return cycle.getModule();
 	}
 
 }

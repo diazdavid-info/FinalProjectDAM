@@ -26,4 +26,13 @@ public interface DModuleModel {
 	 */
 	public List<Module> findModuleByCycle(Cycle cycle);
 
+	/**
+	 * Método que busca los módulos de un curso, instituto y ciclo
+	 * @param int courseId
+	 * @param int schoolId
+	 * @param int cycleId
+	 * @return List<Module>
+	 */
+	public List<Module> listModule(int courseId, int schoolId, int cycleId);
+
 }

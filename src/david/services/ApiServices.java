@@ -66,4 +66,19 @@ public class ApiServices implements IApiServices{
 	public String getCycleByCourseIdSchoolId(@QueryParam("course") int courseId, @QueryParam("school") int schoolId){
 		return IMPLEMENT_SERVICES.getCycleByCourseIdSchoolId(courseId, schoolId);
 	}
+	
+	/**
+	 * Servicio que recupera todos los módulos de un curso, de un instituto y de un ciclo
+	 * @param int courseId
+	 * @param int schoolId
+	 * @param int cycleId
+	 * @return String
+	 */
+	@GET
+	@Path("/getModuleByCourseSchoolCycle")
+	@Produces(MediaType.APPLICATION_JSON)
+	@WebMethod
+	public String getModuleByCourseSchoolCycle(@QueryParam("course") int courseId, @QueryParam("school") int schoolId, @QueryParam("cycle") int cycleId){
+		return IMPLEMENT_SERVICES.getModuleByCourseSchoolCycle(courseId, schoolId, cycleId);
+	}
 }
