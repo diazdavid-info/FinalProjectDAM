@@ -34,6 +34,10 @@
     <servlet-name>Module</servlet-name>
     <servlet-class>david.servlet.Module</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>Session</servlet-name>
+    <servlet-class>david.servlet.Session</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Jersey REST Service</servlet-name>
     <url-pattern>/webServices/*</url-pattern>
@@ -61,6 +65,10 @@
   <servlet-mapping>
     <servlet-name>Module</servlet-name>
     <url-pattern>/module/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Session</servlet-name>
+    <url-pattern>/session/*</url-pattern>
   </servlet-mapping>
   <resource-ref>
     <description>Pool de conexiones localhost</description>

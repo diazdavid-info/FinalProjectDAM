@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 
 import david.model.factory.ModelFactory;
 import david.model.models.DCycleModel;
+import david.model.models.DModuleModel;
 import david.model.models.DSchoolModel;
 import david.model.pojo.builder.CourseBuilder;
 import david.model.pojo.school.Course;
@@ -49,5 +50,18 @@ public class ImplementServices {
 		Gson gson = new Gson();
 		DCycleModel cycleModel = ModelFactory.createCycleModel();
 		return gson.toJson(cycleModel.listCycles(courseId, schoolId));
+	}
+
+	/**
+	 * Método que recupera los módulos
+	 * @param int courseId
+	 * @param int schoolId
+	 * @param int cycleId
+	 * @return String
+	 */
+	public String getModuleByCourseSchoolCycle(int courseId, int schoolId, int cycleId) {
+		Gson gson = new Gson();
+		DModuleModel moduleModel = ModelFactory.createModuleModel();
+		return gson.toJson(moduleModel.listModule(courseId, schoolId, cycleId));
 	}
 }
