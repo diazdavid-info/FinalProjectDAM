@@ -6,6 +6,14 @@
       	
       	<ul class="nav navbar-nav navbar-right">
       		<li class="dropdown">
+          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Seguimiento<span class="caret"></span></a>
+          		<ul class="dropdown-menu" role="menu">
+            		<li><a href="<%=request.getContextPath() %>/session/create">Añadir Sessión</a></li>
+            		<li class="divider"></li>
+            		<li><a href="<%=request.getContextPath() %>/module/list">Listar</a></li>
+            	</ul>
+        	</li>
+      		<li class="dropdown">
           		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Módulos<span class="caret"></span></a>
           		<ul class="dropdown-menu" role="menu">
             		<li><a href="<%=request.getContextPath() %>/module/create">Añadir</a></li>

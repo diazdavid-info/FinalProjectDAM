@@ -32,4 +32,13 @@ public interface IApiServices {
 	 * @return String
 	 */
 	public String getCycleByCourseIdSchoolId(int courseId, int schoolId);
+	
+	/**
+	 * Servicio que recupera todos los módulos de un curso, de un instituto y de un ciclo
+	 * @param int courseId
+	 * @param int schoolId
+	 * @param int cycleId
+	 * @return String
+	 */
+	public String getModuleByCourseSchoolCycle(int courseId, int schoolId, int cycleId);
 }

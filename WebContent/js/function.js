@@ -28,6 +28,7 @@ function getSchool(value) {
 
 /**
  * Función que hace una petición ajax para recuperar los ciclos
+ * en función del curso, instituto y tutor
  */
 function getCycles() {
 	var course = (!$('#course').val()) ? 0 : $('#course').val();
@@ -63,6 +64,29 @@ function getCyclesByModule() {
 			console.log(result);
 			$.each(result, function(key, value){
 				$('#cycle').append('<option value="'+value.mId+'">'+value.mName+'</option>');
+			});
+		}
+	})
+}
+
+/**
+ * Función que hace una petición ajax para recuperaar los modulos
+ * en función del curso, instituto y ciclo.
+ */
+function getModuleByCourseSchoolCycle() {
+	var course = (!$('#course').val()) ? 0 : $('#course').val();
+	var school = (!$('#schools').val()) ? 0 : $('#schools').val();
+	var cycle = (!$('#cycle').val()) ? 0 : $('#cycle').val();
+	$.ajax({
+		url: '../webServices/apiServices/getModuleByCourseSchoolCycle?course='+course+'&school='+school+'&cycle',
+		type: 'GET',
+		success: function(result) {
+			console.log(result);
+			$('#module').find('option').remove();
+			$('#module').append('<option disabled="disabled" selected="selected">Seleccione un módulo ...</option>');
+			console.log(result);
+			$.each(result, function(key, value){
+				$('#module').append('<option value="'+value.mId+'">'+value.mName+'</option>');
 			});
 		}
 	})
