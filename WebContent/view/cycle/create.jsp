@@ -1,3 +1,5 @@
+<%@page import="java.io.OutputStreamWriter"%>
+<%@page import="java.io.PrintWriter"%>
 <%@page import="david.utils.Message"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
@@ -5,6 +7,7 @@
 <%@ page import="david.model.pojo.school.Course"%>
 <%@ page import="david.model.pojo.users.User"%>
 <%@ page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<% PrintWriter out2 = new PrintWriter(new OutputStreamWriter(System.out)); %>
 <jsp:include page="/include/head.jsp" />
 
 <jsp:include page="/include/nav.jsp" />
@@ -22,9 +25,11 @@
 			<form class="form-horizontal" action="" method="get">
 			
 				<% for(String message : Message.getMessage()){
-					out.print("<div class='alert alert-danger' role='alert'>");
-					out.print(message);
-					out.print("</div>");
+					out2.print("<div class='alert alert-danger' role='alert'>");
+					out2.print(message);
+					System.out.print(message);
+					out2.print(new String(message.getBytes("UNICODE"),"UTF-8"));
+					out2.print("</div>");
 				} %>
 				<div class="form-group well">
 					<div class="col-sm-4">
