@@ -95,7 +95,7 @@ public class ModelFactory {
 	 * @return DTypeModel
 	 */
 	public static DTypeModel createTypeModel() {
-		return new TypeModel();
+		return new TypeModel(TransformerFactory.createTypeTransformer(), RepositoryFactory.createTypeRepository());
 	}
 
 	/**

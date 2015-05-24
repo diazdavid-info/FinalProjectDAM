@@ -14,6 +14,7 @@ import david.model.repository.ModuleRepository;
 import david.model.repository.PersonRepository;
 import david.model.repository.RoleRepository;
 import david.model.repository.SchoolRepository;
+import david.model.repository.TypeRepository;
 import david.model.repository.UserRepository;
 
 public class RepositoryFactory {
@@ -90,5 +91,13 @@ public class RepositoryFactory {
 	 */
 	public static ModuleRepository createModuleRepository(){
 		return new ModuleRepository(PROVIDER_LOCAL_MYSQL);
+	}
+	
+	/**
+	 * Método que fabrica un TypeRepository
+	 * @return TypeRepository
+	 */
+	public static TypeRepository createTypeRepository(){
+		return new TypeRepository(PROVIDER_LOCAL_MYSQL);
 	}
 }
