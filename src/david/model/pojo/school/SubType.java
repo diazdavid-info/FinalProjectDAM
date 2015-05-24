@@ -1,5 +1,7 @@
 ﻿package david.model.pojo.school;
 
+import david.model.pojo.builder.SubtypeBuilder;
+
 
 /**
  * Clase que recoge los subtipos de los tipo de sessiones
@@ -22,8 +24,10 @@ public class SubType {
 	 */
 	private String mName;
 
-	public SubType(){
-
+	public SubType(SubtypeBuilder subtypeBuilder){
+		mDescription = subtypeBuilder.getDescription();
+		mId = subtypeBuilder.getId();
+		mName = subtypeBuilder.getName();
 	}
 
 	public void finalize() throws Throwable {
