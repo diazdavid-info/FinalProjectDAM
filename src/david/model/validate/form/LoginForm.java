@@ -17,12 +17,12 @@ public class LoginForm extends Form implements IWebLogin{
 	/**
 	 * Atributo que almacena el valor del campo username
 	 */
-	@Parameter(name="username", required=true)
+	@Parameter(name="username", required=true, msg="El campo username no es válido")
 	private String mUsername;
 	/**
 	 * Atributo que almacena el valor del campo password
 	 */
-	@Parameter(name="password", required=true)
+	@Parameter(name="password", required=true, msg="El campo password no es válido")
 	private String mPassword;
 
 	/**

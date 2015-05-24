@@ -21,7 +21,7 @@ public class Form {
 	protected boolean validateField(Field field) {
 		try {
 			if(field.getAnnotation(Parameter.class).required() && field.get(this).equals("")){
-				Message.addMesagge("Mal");
+				Message.addMesagge(field.getAnnotation(Parameter.class).msg());
 				mValidate = false;
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
