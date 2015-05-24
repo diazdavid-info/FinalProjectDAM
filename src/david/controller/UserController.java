@@ -67,9 +67,7 @@ public class UserController extends Controller{
 	public void createAction() {
 		if(isRequest()){
 			mModel.createUser(getRequestParameter());
-			System.out.println("HAY REQUEST");
 		}
-		System.out.println("AQUI");
 		render("user/create");
 	}
 }

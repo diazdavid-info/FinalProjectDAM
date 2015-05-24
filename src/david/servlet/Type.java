@@ -1,7 +1,7 @@
 /**
- * Servlet para las peticiones de Course
+ * Servlet para las peticiones de Type
  * @author David Diaz Garcia
- * @date 09-05-2015
+ * @date 24-05-2015
  */
 package david.servlet;
 
@@ -15,16 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 import david.controller.FrontController;
 
 /**
- * Servlet implementation class Course
+ * Servlet implementation class Type
  */
-public class Course extends HttpServlet {
+public class Type extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String NAME_SERVLET = "Course";
+	private static final String NAME_SERVLET = "Type";
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Course() {
+    public Type() {
         super();
         // TODO Auto-generated constructor stub
     }

@@ -38,6 +38,14 @@
     <servlet-name>Session</servlet-name>
     <servlet-class>david.servlet.Session</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>Type</servlet-name>
+    <servlet-class>david.servlet.Type</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Subtype</servlet-name>
+    <servlet-class>david.servlet.Subtype</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Jersey REST Service</servlet-name>
     <url-pattern>/webServices/*</url-pattern>
@@ -69,6 +77,14 @@
   <servlet-mapping>
     <servlet-name>Session</servlet-name>
     <url-pattern>/session/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Type</servlet-name>
+    <url-pattern>/type/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Subtype</servlet-name>
+    <url-pattern>/subtype/*</url-pattern>
   </servlet-mapping>
   <resource-ref>
     <description>Pool de conexiones localhost</description>
