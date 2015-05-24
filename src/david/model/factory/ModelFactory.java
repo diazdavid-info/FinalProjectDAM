@@ -7,10 +7,12 @@
 package david.model.factory;
 
 import david.model.models.AddressModel;
+import david.model.models.ChapterModel;
 import david.model.models.CourseModel;
 import david.model.models.CourseSchoolModel;
 import david.model.models.CycleModel;
 import david.model.models.DAddressModel;
+import david.model.models.DChapterModel;
 import david.model.models.DCourseModel;
 import david.model.models.DCourseSchoolModel;
 import david.model.models.DCycleModel;
@@ -104,5 +106,13 @@ public class ModelFactory {
 	 */
 	public static DSubtypeModel createSubtypeModel() {
 		return new SubtypeModel(TransformerFactory.createSubtypeTransformer(), RepositoryFactory.createSubtypeRepository());
+	}
+
+	/**
+	 * Método que fabrica el modelo de chapter
+	 * @return DChapterModel
+	 */
+	public static DChapterModel createChapterModel() {
+		return new ChapterModel();
 	}
 }
