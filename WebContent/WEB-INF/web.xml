@@ -46,6 +46,10 @@
     <servlet-name>Subtype</servlet-name>
     <servlet-class>david.servlet.Subtype</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>Chapter</servlet-name>
+    <servlet-class>david.servlet.Chapter</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Jersey REST Service</servlet-name>
     <url-pattern>/webServices/*</url-pattern>
@@ -85,6 +89,10 @@
   <servlet-mapping>
     <servlet-name>Subtype</servlet-name>
     <url-pattern>/subtype/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Chapter</servlet-name>
+    <url-pattern>/chapter/*</url-pattern>
   </servlet-mapping>
   <resource-ref>
     <description>Pool de conexiones localhost</description>
