@@ -1,7 +1,7 @@
 <%@page import="david.model.pojo.school.School"%>
 <%@page import="david.model.pojo.school.Module"%>
-<%@page import="david.model.pojo.school.Cycle"%>
-<%@page import="david.model.pojo.school.Course"%>
+<%@page import="david.model.pojo.school.Cycle" %>
+<%@page import="david.model.pojo.school.Course" %>
 <%@page import="david.model.pojo.users.User"%>
 <%@page import="java.util.List"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
