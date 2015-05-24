@@ -32,4 +32,10 @@ public @interface Parameter {
 	 * @return String
 	 */
 	public String type() default "String";
+
+	/**
+	 * Anotación que indica el mensaje de error
+	 * @return String
+	 */
+	public String msg() default "El campo no puede esta vacío";
 }

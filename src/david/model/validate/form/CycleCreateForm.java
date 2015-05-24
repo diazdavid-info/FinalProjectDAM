@@ -44,11 +44,10 @@ public class CycleCreateForm extends Form implements IWebCreateCycle{
 	 * @return boolean
 	 */
 	public boolean validate(Map<String, String[]> parameter){
-		System.out.println("Estoy en el CycleCreateForm");
 		boolean validate = true;
 		for (Field field : this.getClass().getDeclaredFields()) {
 			String[] value = parameter.get(field.getAnnotation(Parameter.class).name());
-			setAttributes(field, value[0]);
+			setAttributes(field, (value == null) ? "" : value[0]);
 			validate = validateField(field);
 		}
 		return validate;
