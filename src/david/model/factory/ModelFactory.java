@@ -16,9 +16,13 @@ import david.model.models.DCourseSchoolModel;
 import david.model.models.DCycleModel;
 import david.model.models.DModuleModel;
 import david.model.models.DSchoolModel;
+import david.model.models.DSubtypeModel;
+import david.model.models.DTypeModel;
 import david.model.models.DUserModel;
 import david.model.models.ModuleModel;
 import david.model.models.SchoolModel;
+import david.model.models.SubtypeModel;
+import david.model.models.TypeModel;
 import david.model.models.UserModel;
 
 public class ModelFactory {
@@ -84,5 +88,21 @@ public class ModelFactory {
 	 */
 	public static DCourseSchoolModel createCourseSchoolModel() {
 		return new CourseSchoolModel(TransformerFactory.createCourseSchoolTransformer(), RepositoryFactory.createCourseSchoolRepository());
+	}
+
+	/**
+	 * Método que fabrica el modelo de tipo de sesión
+	 * @return DTypeModel
+	 */
+	public static DTypeModel createTypeModel() {
+		return new TypeModel();
+	}
+
+	/**
+	 * Método que fabrica el modelo de subtipo de sesión
+	 * @return DSubtypeModel
+	 */
+	public static DSubtypeModel createSubtypeModel() {
+		return new SubtypeModel();
 	}
 }
