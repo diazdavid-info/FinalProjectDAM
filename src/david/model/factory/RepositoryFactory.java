@@ -7,6 +7,7 @@ package david.model.factory;
 
 import david.model.provider.DProvider;
 import david.model.repository.AddressRepository;
+import david.model.repository.ChapterRepository;
 import david.model.repository.CourseRepository;
 import david.model.repository.CourseSchoolRepository;
 import david.model.repository.CycleRepository;
@@ -108,5 +109,13 @@ public class RepositoryFactory {
 	 */
 	public static SubtypeRepository createSubtypeRepository() {
 		return new SubtypeRepository(PROVIDER_LOCAL_MYSQL);
+	}
+
+	/**
+	 * Método que fabrica un ChpaterRepository
+	 * @return ChapterRepository
+	 */
+	public static ChapterRepository createChapterRepository() {
+		return new ChapterRepository(PROVIDER_LOCAL_MYSQL);
 	}
 }

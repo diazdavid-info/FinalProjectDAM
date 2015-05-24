@@ -113,6 +113,6 @@ public class ModelFactory {
 	 * @return DChapterModel
 	 */
 	public static DChapterModel createChapterModel() {
-		return new ChapterModel();
+		return new ChapterModel(TransformerFactory.createChapterTransformer(), RepositoryFactory.createChapterRepository());
 	}
 }
