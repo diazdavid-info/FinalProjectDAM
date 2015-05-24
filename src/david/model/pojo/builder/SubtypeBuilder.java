@@ -1,11 +1,11 @@
 /**
- * Clase que construye un type
+ * Clase que construye un subtype
  * @author David Díaz García
  * @date 26-05-2015
  */
 package david.model.pojo.builder;
 
-public class TypeBuilder {
+public class SubtypeBuilder {
 	
 	/**
 	 * Atributo que almacena la descripción
@@ -47,9 +47,9 @@ public class TypeBuilder {
 	/**
 	 * Método que establece el valor del atributo mDescription
 	 * @param String newVal
-	 * @return TypeBuilder
+	 * @return SubtypeBuilder
 	 */
-	public TypeBuilder description(String newVal){
+	public SubtypeBuilder description(String newVal){
 		mDescription = newVal;
 		return this;
 	}
@@ -57,9 +57,9 @@ public class TypeBuilder {
 	/**
 	 * Atributo que establece el valor dels atributo mId
 	 * @param int newVal
-	 * @return TypeBuilder
+	 * @return SubtypeBuilder
 	 */
-	public TypeBuilder id(int newVal){
+	public SubtypeBuilder id(int newVal){
 		mId = newVal;
 		return this;
 	}
@@ -67,9 +67,9 @@ public class TypeBuilder {
 	/**
 	 * Atributo que establece el valor del atributo mName
 	 * @param String newVal
-	 * @return TypeBuilder
+	 * @return SubtypeBuilder
 	 */
-	public TypeBuilder name(String newVal){
+	public SubtypeBuilder name(String newVal){
 		mName = newVal;
 		return this;
 	}
