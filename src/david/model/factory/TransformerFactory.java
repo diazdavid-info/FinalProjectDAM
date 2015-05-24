@@ -6,10 +6,12 @@
 package david.model.factory;
 
 import david.model.transformer.AddressTransformer;
+import david.model.transformer.ChapterTransformer;
 import david.model.transformer.CourseSchoolTransformer;
 import david.model.transformer.CourseTransformer;
 import david.model.transformer.CycleTransformer;
 import david.model.transformer.IAddressTransformer;
+import david.model.transformer.IChapterTransformer;
 import david.model.transformer.ICourseSchoolTransformer;
 import david.model.transformer.ICourseTransformer;
 import david.model.transformer.ICycleTransformer;
@@ -116,5 +118,13 @@ public class TransformerFactory {
 	 */
 	public static ISubtypeTransformer createSubtypeTransformer() {
 		return new SubtypeTransformer();
+	}
+
+	/**
+	 * Método que construye un transformador de chapter
+	 * @return IChapterTransformer
+	 */
+	public static IChapterTransformer createChapterTransformer() {
+		return new ChapterTransformer();
 	}
 }

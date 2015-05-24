@@ -1,5 +1,7 @@
 ﻿package david.model.pojo.school;
 
+import david.model.pojo.builder.ChapterBuilder;
+
 
 /**
  * Clase que recoge los capítulos de un temario
@@ -22,8 +24,10 @@ public class Chapter {
 	 */
 	private String mName;
 
-	public Chapter(){
-
+	public Chapter(ChapterBuilder chapterBuilder){
+		mHour = chapterBuilder.getHour();
+		mId = chapterBuilder.getId();
+		mName = chapterBuilder.getName();
 	}
 
 	public void finalize() throws Throwable {
