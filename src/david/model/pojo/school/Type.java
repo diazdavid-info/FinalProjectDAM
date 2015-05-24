@@ -1,5 +1,7 @@
 package david.model.pojo.school;
 
+import david.model.pojo.builder.TypeBuilder;
+
 
 /**
  * Clase que recoge el tipo de la sessión
@@ -22,8 +24,14 @@ public class Type {
 	 */
 	private String mName;
 
-	public Type(){
-
+	/**
+	 * Constructor
+	 * @param TypeBuilder typeBuilder
+	 */
+	public Type(TypeBuilder typeBuilder){
+		mDescription = typeBuilder.getDescription();
+		mId = typeBuilder.getId();
+		mName = typeBuilder.getName();
 	}
 
 	public void finalize() throws Throwable {

@@ -17,11 +17,13 @@ import david.model.transformer.IModuleTransformer;
 import david.model.transformer.IPersonTransformer;
 import david.model.transformer.IRoleTransformer;
 import david.model.transformer.ISchoolTransformer;
+import david.model.transformer.ITypeTransformer;
 import david.model.transformer.IUserTransformer;
 import david.model.transformer.ModuleTransformer;
 import david.model.transformer.PersonTransformer;
 import david.model.transformer.RoleTransformer;
 import david.model.transformer.SchoolTransformer;
+import david.model.transformer.TypeTransformer;
 import david.model.transformer.UserTransformer;
 
 public class TransformerFactory {
@@ -96,5 +98,13 @@ public class TransformerFactory {
 	 */
 	public static IModuleTransformer createModuleTransformer(){
 		return new ModuleTransformer();
+	}
+
+	/**
+	 * Método que construye un transformador de type
+	 * @return ITypeTransformer
+	 */
+	public static ITypeTransformer createTypeTransformer() {
+		return new TypeTransformer();
 	}
 }
