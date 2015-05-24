@@ -7,7 +7,7 @@ package david.model.persistence;
 
 import david.model.annotation.column;
 
-public class TypePersistence implements Cloneable{
+public class SubtypePersistence {
 	
 	/**
 	 * Atributo que almacena el ID
@@ -30,7 +30,7 @@ public class TypePersistence implements Cloneable{
 	 * @return String
 	 */
 	public String getTable(){
-		return "type";
+		return "subType";
 	}
 	
 	/**
@@ -38,8 +38,8 @@ public class TypePersistence implements Cloneable{
 	 * @throws CloneNotSupportedException 
 	 */
 	@Override
-	public TypePersistence clone() throws CloneNotSupportedException{
-		return (TypePersistence) super.clone();
+	public SubtypePersistence clone() throws CloneNotSupportedException{
+		return (SubtypePersistence) super.clone();
 	}
 	
 	/**

@@ -103,6 +103,6 @@ public class ModelFactory {
 	 * @return DSubtypeModel
 	 */
 	public static DSubtypeModel createSubtypeModel() {
-		return new SubtypeModel();
+		return new SubtypeModel(TransformerFactory.createSubtypeTransformer(), RepositoryFactory.createSubtypeRepository());
 	}
 }
