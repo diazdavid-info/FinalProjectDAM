@@ -42,6 +42,7 @@ public class ChapterCreateForm extends Form implements IWebCreateChapter{
 	 */
 	@Parameter(name="name", required=true)
 	private String mName;
+
 	
 	/**
 	 * Método que valida los campos del formulario
@@ -153,5 +154,4 @@ public class ChapterCreateForm extends Form implements IWebCreateChapter{
 	public void setName(String name){
 		mName = name;
 	}
-
 }

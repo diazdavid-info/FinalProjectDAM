@@ -5,6 +5,8 @@
  */
 package david.model.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import david.model.persistence.ChapterPersistence;
@@ -44,6 +46,34 @@ public class ChapterModel implements DChapterModel{
 			chapterPersistence.setModule(Integer.parseInt(form.getModule()));
 			chapter = mIChapterTransformer.persistenceToEntity(mChapterRepository.storage(chapterPersistence));
 		}
+	}
+	
+	/**
+	 * Método que gestiona la busqueda de los temarios de un módulo
+	 * @param int moduleId
+	 * @return List<Chapter>
+	 */
+	public List<Chapter> listChapterByModule(int moduleId){
+		List<Chapter> list = new ArrayList<Chapter>();
+		ChapterPersistence chapterPersistence = new ChapterPersistence();
+		chapterPersistence.setModule(moduleId);
+		List<ChapterPersistence> listChapterPersistence = mChapterRepository.findAll(chapterPersistence);
+		
+		for (ChapterPersistence chapterPersistence2 : listChapterPersistence) {
+			list.add(mIChapterTransformer.persistenceToEntity(chapterPersistence2));
+		}
+		
+		return list;
+	}
+	
+	/**
+	 * Método que gestiona la busqueda de un temario
+	 * @param Chapter chapter
+	 * @return Chapter
+	 */
+	public Chapter findChapter(Chapter chapter){
+		ChapterPersistence chapterPersistence = mIChapterTransformer.entityToPersistence(chapter);
+		return mIChapterTransformer.persistenceToEntity(mChapterRepository.find(chapterPersistence));
 	}
 
 }

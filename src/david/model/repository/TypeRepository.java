@@ -5,6 +5,8 @@
  */
 package david.model.repository;
 
+import java.util.List;
+
 import david.model.mapper.Mapper;
 import david.model.persistence.TypePersistence;
 import david.model.provider.DProvider;
@@ -53,6 +55,32 @@ public class TypeRepository {
 		typePersistence.setId(mProvider.executeUpdate(mapper.mapperStorageToDbb()));
 		mProvider.disconnect();
 		return typePersistence;
+	}
+
+	/**
+	 * Método que busca todos los typePersistence que cumplan con los requisitos
+	 * @param TypePersistence typePersistence
+	 * @return list<TypePersistence>
+	 */
+	public List<TypePersistence> findAll(TypePersistence typePersistence) {
+		Mapper<TypePersistence> mapper = new Mapper<TypePersistence>(typePersistence);
+		mProvider.connect();
+		List<TypePersistence> list = mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return list;
+	}
+
+	/**
+	 * Método que busca un typePersistence que cumplan con los requisitos
+	 * @param TypePersistence typePersistence
+	 * @return TypePersistence
+	 */
+	public TypePersistence find(TypePersistence typePersistence) {
+		Mapper<TypePersistence> mapper = new Mapper<TypePersistence>(typePersistence);
+		mProvider.connect();
+		TypePersistence persistence = mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return persistence;
 	}
 
 }

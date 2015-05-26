@@ -18,11 +18,13 @@ import david.model.models.DCourseSchoolModel;
 import david.model.models.DCycleModel;
 import david.model.models.DModuleModel;
 import david.model.models.DSchoolModel;
+import david.model.models.DSessionModel;
 import david.model.models.DSubtypeModel;
 import david.model.models.DTypeModel;
 import david.model.models.DUserModel;
 import david.model.models.ModuleModel;
 import david.model.models.SchoolModel;
+import david.model.models.SessionModel;
 import david.model.models.SubtypeModel;
 import david.model.models.TypeModel;
 import david.model.models.UserModel;
@@ -114,5 +116,13 @@ public class ModelFactory {
 	 */
 	public static DChapterModel createChapterModel() {
 		return new ChapterModel(TransformerFactory.createChapterTransformer(), RepositoryFactory.createChapterRepository());
+	}
+
+	/**
+	 * Método que fabrica el modelo de session
+	 * @return DChapterModel
+	 */
+	public static DSessionModel createSessionModel() {
+		return new SessionModel();
 	}
 }
