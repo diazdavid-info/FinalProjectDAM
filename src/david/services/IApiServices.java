@@ -41,4 +41,11 @@ public interface IApiServices {
 	 * @return String
 	 */
 	public String getModuleByCourseSchoolCycle(int courseId, int schoolId, int cycleId);
+	
+	/**
+	 * Servicio que recupera todos los temas de un módulo
+	 * @param int moduleId
+	 * @return String
+	 */
+	public String getChapterByModule(int moduleId);
 }

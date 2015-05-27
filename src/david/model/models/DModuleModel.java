@@ -35,4 +35,11 @@ public interface DModuleModel {
 	 */
 	public List<Module> listModule(int courseId, int schoolId, int cycleId);
 
+	/**
+	 * Método que solicita y gestiona la busqueda de un módulo
+	 * @param Module module
+	 * @return Module
+	 */
+	public Module findModule(Module module);
+
 }

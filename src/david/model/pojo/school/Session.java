@@ -1,5 +1,7 @@
 ﻿package david.model.pojo.school;
 
+import david.model.pojo.builder.SessionBuilder;
+
 
 /**
  * Clase que recoge las sessiones impartidas
@@ -34,8 +36,13 @@ public class Session {
 	 */
 	private Type mType;
 
-	public Session(){
-
+	public Session(SessionBuilder sessionBuilder){
+		mChapter = sessionBuilder.getChapter();
+		mDescription = sessionBuilder.getDescription();
+		mId = sessionBuilder.getId();
+		mSubType = sessionBuilder.getSubType();
+		mTime = sessionBuilder.getTime();
+		mType = sessionBuilder.getType();
 	}
 
 	public void finalize() throws Throwable {

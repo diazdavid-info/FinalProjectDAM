@@ -5,6 +5,8 @@
  */
 package david.model.repository;
 
+import java.util.List;
+
 import david.model.mapper.Mapper;
 import david.model.persistence.ChapterPersistence;
 import david.model.provider.DProvider;
@@ -53,6 +55,32 @@ public class ChapterRepository {
 		chapterPersistence.setId(mProvider.executeUpdate(mapper.mapperStorageToDbb()));
 		mProvider.disconnect();
 		return chapterPersistence;
+	}
+
+	/**
+	 * Método que busca todos los chapterPersistence que cumplan con los requisitos
+	 * @param ChapterPersistence chapterPersistence
+	 * @return List<ChapterPersistence>
+	 */
+	public List<ChapterPersistence> findAll(ChapterPersistence chapterPersistence) {
+		Mapper<ChapterPersistence> mapper = new Mapper<ChapterPersistence>(chapterPersistence);
+		mProvider.connect();
+		List<ChapterPersistence> list = mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return list;
+	}
+
+	/**
+	 * Método que busca un chapterPersistence que cumplan con los requisitos
+	 * @param ChapterPersistence chapterPersistence
+	 * @return ChapterPersistence
+	 */
+	public ChapterPersistence find(ChapterPersistence chapterPersistence) {
+		Mapper<ChapterPersistence> mapper = new Mapper<ChapterPersistence>(chapterPersistence);
+		mProvider.connect();
+		ChapterPersistence persistence = mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return persistence;
 	}
 
 }

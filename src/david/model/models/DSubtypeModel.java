@@ -5,7 +5,10 @@
  */
 package david.model.models;
 
+import java.util.List;
 import java.util.Map;
+
+import david.model.pojo.school.SubType;
 
 public interface DSubtypeModel {
 
@@ -14,5 +17,18 @@ public interface DSubtypeModel {
 	 * @param Map<String, String[]> requestParameter
 	 */
 	public void createSubtype(Map<String, String[]> requestParameter);
+
+	/**
+	 * Método que solicita y gestiona el listado de subtipos
+	 * @return List<SubType>
+	 */
+	public List<SubType> listSubtype();
+
+	/**
+	 * Método que solicita y gestiona la busqueda de un Subtipo
+	 * @param SubType subType
+	 * @return SubType
+	 */
+	public SubType findSubtype(SubType subType);
 
 }

@@ -12,15 +12,17 @@ import david.model.persistence.SchoolPersistence;
 import david.model.provider.DProvider;
 
 public class SchoolRepository {
-	
+
 	/**
 	 * Atributo que almacena el proveedor de la BDD
 	 */
 	private DProvider mProvider;
-	
+
 	/**
 	 * Constructor
-	 * @param DProvider provider
+	 * 
+	 * @param DProvider
+	 *            provider
 	 */
 	public SchoolRepository(DProvider provider) {
 		mProvider = provider;
@@ -28,7 +30,9 @@ public class SchoolRepository {
 
 	/**
 	 * Método que guarda un SchoolPersistence
-	 * @param SchoolPersistence schoolPersistence
+	 * 
+	 * @param SchoolPersistence
+	 *            schoolPersistence
 	 * @return SchoolPersistence
 	 */
 	public SchoolPersistence storage(SchoolPersistence schoolPersistence) {
@@ -37,7 +41,9 @@ public class SchoolRepository {
 
 	/**
 	 * Método que actualiza un SchoolPersistence
-	 * @param SchoolPersistence schoolPersistence
+	 * 
+	 * @param SchoolPersistence
+	 *            schoolPersistence
 	 * @return SchoolPersistence
 	 */
 	private SchoolPersistence update(SchoolPersistence schoolPersistence) {
@@ -46,7 +52,9 @@ public class SchoolRepository {
 
 	/**
 	 * Método que almacena un SchoolRepository
-	 * @param SchoolPersistence schoolPersistence
+	 * 
+	 * @param SchoolPersistence
+	 *            schoolPersistence
 	 * @return SchoolPersistence
 	 */
 	private SchoolPersistence save(SchoolPersistence schoolPersistence) {
@@ -58,8 +66,11 @@ public class SchoolRepository {
 	}
 
 	/**
-	 * Método que busca todos los schoolPersistence que cumplan con los requisitos
-	 * @param SchoolPersistence schoolPersistence
+	 * Método que busca todos los schoolPersistence que cumplan con los
+	 * requisitos
+	 * 
+	 * @param SchoolPersistence
+	 *            schoolPersistence
 	 * @return List<SchoolPersistence>
 	 */
 	public List<SchoolPersistence> findAll(SchoolPersistence schoolPersistence) {
@@ -72,7 +83,9 @@ public class SchoolRepository {
 
 	/**
 	 * Método que busca un schoolPersistence que cumpla con los requisitos
-	 * @param SchoolPersistence schoolPersistence
+	 * 
+	 * @param SchoolPersistence
+	 *            schoolPersistence
 	 * @return SchoolPersistence
 	 */
 	public SchoolPersistence find(SchoolPersistence schoolPersistence) {

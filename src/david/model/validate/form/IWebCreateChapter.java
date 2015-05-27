@@ -87,5 +87,4 @@ public interface IWebCreateChapter {
 	 * @param String name
 	 */
 	public void setName(String name);
-
 }

@@ -95,5 +95,15 @@ public class ModuleModel implements DModuleModel{
 		Cycle cycle = cycleModel.findCycle(new Cycle(new CycleBuilder().id(cycleId)));
 		return cycle.getModule();
 	}
+	
+	/**
+	 * Método que solicita y gestiona la busqueda de un módulo
+	 * @param Module module
+	 * @return Module
+	 */
+	public Module findModule(Module module){
+		ModulePersistence modulePersistence = mIModuleTransformer.entityToPersistence(module);
+		return mIModuleTransformer.persistenceToEntity(mModuleRepository.find(modulePersistence));
+	}
 
 }

@@ -91,3 +91,19 @@ function getModuleByCourseSchoolCycle() {
 		}
 	})
 }
+
+function getChapterByModule(value) {
+	$.ajax({
+		url: '../webServices/apiServices/getChapterByModule?module='+value,
+		type: 'GET',
+		success: function(result) {
+			console.log(result);
+			$('#chapter').find('option').remove();
+			$('#chapter').append('<option disabled="disabled" selected="selected">Seleccione un Tema ...</option>');
+			console.log(result);
+			$.each(result, function(key, value){
+				$('#chapter').append('<option value="'+value.mId+'">'+value.mName+'</option>');
+			});
+		}
+	})
+}

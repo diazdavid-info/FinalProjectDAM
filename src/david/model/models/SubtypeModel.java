@@ -5,6 +5,8 @@
  */
 package david.model.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import david.model.persistence.SubtypePersistence;
@@ -43,6 +45,30 @@ public class SubtypeModel implements DSubtypeModel {
 			SubtypePersistence subtypePersistence = mISubtypeTransformer.entityToPersistence(subtype);
 			subtype = mISubtypeTransformer.persistenceToEntity(mSubtypeRepository.storage(subtypePersistence));
 		}
+	}
+	
+	/**
+	 * Método que solicita y gestiona el listado de subtipos
+	 * @return List<SubType>
+	 */
+	public List<SubType> listSubtype(){
+		List<SubType> list = new ArrayList<SubType>();
+		List<SubtypePersistence> listPersistence = mSubtypeRepository.findAll(new SubtypePersistence());
+		
+		for (SubtypePersistence subtypePersistence : listPersistence) {
+			list.add(mISubtypeTransformer.persistenceToEntity(subtypePersistence));
+		}
+		return list;
+	}
+	
+	/**
+	 * Método que solicita y gestiona la busqueda de un Subtipo
+	 * @param SubType subType
+	 * @return SubType
+	 */
+	public SubType findSubtype(SubType subType){
+		SubtypePersistence subtypePersistence = mISubtypeTransformer.entityToPersistence(subType);
+		return mISubtypeTransformer.persistenceToEntity(mSubtypeRepository.find(subtypePersistence));
 	}
 
 }
