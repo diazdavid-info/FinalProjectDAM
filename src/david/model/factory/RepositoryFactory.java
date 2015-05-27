@@ -15,24 +15,28 @@ import david.model.repository.ModuleRepository;
 import david.model.repository.PersonRepository;
 import david.model.repository.RoleRepository;
 import david.model.repository.SchoolRepository;
+import david.model.repository.SessionRepository;
 import david.model.repository.SubtypeRepository;
 import david.model.repository.TypeRepository;
 import david.model.repository.UserRepository;
 
 public class RepositoryFactory {
-	
-	private final static DProvider PROVIDER_LOCAL_MYSQL = ProviderFactory.createMysqlProvider();
+
+	private final static DProvider PROVIDER_LOCAL_MYSQL = ProviderFactory
+			.createMysqlProvider();
 
 	/**
 	 * Método que fabrica un UserRepository
+	 * 
 	 * @return UserRepository
 	 */
 	public static UserRepository createUserRepository() {
 		return new UserRepository(PROVIDER_LOCAL_MYSQL);
 	}
-	
+
 	/**
 	 * Método que fabricca un PersonRepository
+	 * 
 	 * @return PersonRepository
 	 */
 	public static PersonRepository createPersonRepository() {
@@ -41,6 +45,7 @@ public class RepositoryFactory {
 
 	/**
 	 * Método que fabrica un AddressRepository
+	 * 
 	 * @return AddressRepository
 	 */
 	public static AddressRepository createAddressRepository() {
@@ -49,14 +54,16 @@ public class RepositoryFactory {
 
 	/**
 	 * Método que fabrica un RoleRepository
+	 * 
 	 * @return RoleRepository
 	 */
 	public static RoleRepository createRoleRepository() {
 		return new RoleRepository(PROVIDER_LOCAL_MYSQL);
 	}
-	
+
 	/**
 	 * Método que fabrica un SchoolRepository
+	 * 
 	 * @return SchoolRepository
 	 */
 	public static SchoolRepository createSchoolRepository() {
@@ -65,6 +72,7 @@ public class RepositoryFactory {
 
 	/**
 	 * Método que fabrica un CourseRepository
+	 * 
 	 * @return CourseRepository
 	 */
 	public static CourseRepository createCourseRepository() {
@@ -73,6 +81,7 @@ public class RepositoryFactory {
 
 	/**
 	 * Método que fabrica un CourseSchoolRepository
+	 * 
 	 * @return CourseSchoolRepository
 	 */
 	public static CourseSchoolRepository createCourseSchoolRepository() {
@@ -81,30 +90,34 @@ public class RepositoryFactory {
 
 	/**
 	 * Método que fabrica un CycleRepository
+	 * 
 	 * @return CycleRepository
 	 */
 	public static CycleRepository createCycleRepository() {
 		return new CycleRepository(PROVIDER_LOCAL_MYSQL);
 	}
-	
+
 	/**
 	 * Método que fabrica un ModuleRepository
+	 * 
 	 * @return ModuleRepository
 	 */
-	public static ModuleRepository createModuleRepository(){
+	public static ModuleRepository createModuleRepository() {
 		return new ModuleRepository(PROVIDER_LOCAL_MYSQL);
 	}
-	
+
 	/**
 	 * Método que fabrica un TypeRepository
+	 * 
 	 * @return TypeRepository
 	 */
-	public static TypeRepository createTypeRepository(){
+	public static TypeRepository createTypeRepository() {
 		return new TypeRepository(PROVIDER_LOCAL_MYSQL);
 	}
 
 	/**
 	 * Método que fabriva un SubtypeRepository
+	 * 
 	 * @return SubtypeRepository
 	 */
 	public static SubtypeRepository createSubtypeRepository() {
@@ -113,9 +126,19 @@ public class RepositoryFactory {
 
 	/**
 	 * Método que fabrica un ChpaterRepository
+	 * 
 	 * @return ChapterRepository
 	 */
 	public static ChapterRepository createChapterRepository() {
 		return new ChapterRepository(PROVIDER_LOCAL_MYSQL);
+	}
+
+	/**
+	 * Método que fabrica un SessionRepository
+	 * 
+	 * @return SessionRepository
+	 */
+	public static SessionRepository createSessionRepository() {
+		return new SessionRepository(PROVIDER_LOCAL_MYSQL);
 	}
 }
