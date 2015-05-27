@@ -70,4 +70,17 @@ public class ModuleRepository {
 		return persistence;
 	}
 
+	/**
+	 * Método que busca el ModulePersistence que cumpla con los requisitos
+	 * @param ModulePersistence modulePersistence
+	 * @return ModulePersistence
+	 */
+	public ModulePersistence find(ModulePersistence modulePersistence) {
+		Mapper<ModulePersistence> mapper = new Mapper<ModulePersistence>(modulePersistence);
+		mProvider.connect();
+		ModulePersistence peristence = mapper.mapperToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return peristence;
+	}
+
 }

@@ -7,7 +7,7 @@ package david.model.persistence;
 
 import david.model.annotation.column;
 
-public class SubtypePersistence {
+public class SubtypePersistence implements Cloneable{
 	
 	/**
 	 * Atributo que almacena el ID

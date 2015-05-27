@@ -8,6 +8,7 @@ package david.services.implement;
 import com.google.gson.Gson;
 
 import david.model.factory.ModelFactory;
+import david.model.models.DChapterModel;
 import david.model.models.DCycleModel;
 import david.model.models.DModuleModel;
 import david.model.models.DSchoolModel;
@@ -63,5 +64,16 @@ public class ImplementServices {
 		Gson gson = new Gson();
 		DModuleModel moduleModel = ModelFactory.createModuleModel();
 		return gson.toJson(moduleModel.listModule(courseId, schoolId, cycleId));
+	}
+
+	/**
+	 * Método que recupera los temas de un módulo
+	 * @param int moduleId
+	 * @return String
+	 */
+	public String getChapterByModule(int moduleId) {
+		Gson gson = new Gson();
+		DChapterModel chapterModel = ModelFactory.createChapterModel();
+		return gson.toJson(chapterModel.listChapterByModule(moduleId));
 	}
 }

@@ -19,6 +19,10 @@ public class ChapterBuilder {
 	 * Atributo que almacena el nombre
 	 */
 	private String mName;
+	/**
+	 * Atributo que almacena la descripción
+	 */
+	private String mDescription;
 
 	/**
 	 * Método que obtiene el valor del atributo mHour
@@ -42,6 +46,14 @@ public class ChapterBuilder {
 	 */
 	public String getName(){
 		return mName;
+	}
+	
+	/**
+	 * Método que obtiene el valor del atributo mDescription
+	 * @return String
+	 */
+	public String getDescription(){
+		return mDescription;
 	}
 
 	/**
@@ -71,6 +83,16 @@ public class ChapterBuilder {
 	 */
 	public ChapterBuilder name(String newVal){
 		mName = newVal;
+		return this;
+	}
+	
+	/**
+	 * Método que establece el valor del atributo mDescription
+	 * @param String newVal
+	 * @return ChapterBuilder
+	 */
+	public ChapterBuilder description(String newVal){
+		mDescription = newVal;
 		return this;
 	}
 
