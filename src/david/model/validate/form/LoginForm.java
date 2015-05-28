@@ -9,28 +9,33 @@ package david.model.validate.form;
 import java.lang.reflect.Field;
 import java.util.Map;
 
+import david.model.annotation.Encriptor;
 import david.model.annotation.Parameter;
+import david.security.Encryptor;
 
+public class LoginForm extends Form implements IWebLogin {
 
-public class LoginForm extends Form implements IWebLogin{
-	
 	/**
 	 * Atributo que almacena el valor del campo username
 	 */
-	@Parameter(name="username", required=true, msg="El campo username no es válido")
+	@Parameter(name = "username", required = true, msg = "El campo username no es válido")
 	private String mUsername;
 	/**
 	 * Atributo que almacena el valor del campo password
 	 */
-	@Parameter(name="password", required=true, msg="El campo password no es válido")
+	@Parameter(name = "password", required = true, msg = "El campo password no es válido")
+	@Encriptor(value = true, type = Encryptor.MD5)
 	private String mPassword;
 
 	/**
 	 * Método que valida los campos del formulario
-	 * @param Map<String, String[]> parameter
+	 * 
+	 * @param Map
+	 *            <String, String[]> parameter
 	 * @return boolean
 	 */
-	public boolean validate(Map<String, String[]> parameter){
+	@Override
+	public boolean validate(Map<String, String[]> parameter) {
 		System.out.println("Estoy en el LoginForm");
 		boolean validate = true;
 		for (Field field : this.getClass().getDeclaredFields()) {
@@ -40,20 +45,24 @@ public class LoginForm extends Form implements IWebLogin{
 		}
 		return validate;
 	}
-	
+
 	/**
 	 * Método que obtiene el valor del Username
+	 * 
 	 * @return String
 	 */
-	public String getUsername(){
+	@Override
+	public String getUsername() {
 		return mUsername;
 	}
-	
+
 	/**
 	 * Método que obtiene el valor del password
+	 * 
 	 * @return String
 	 */
-	public String getPassword(){
+	@Override
+	public String getPassword() {
 		return mPassword;
 	}
 }
