@@ -22,8 +22,10 @@ import david.model.repository.UserRepository;
 
 public class RepositoryFactory {
 
-	private final static DProvider PROVIDER_LOCAL_MYSQL = ProviderFactory
-			.createMysqlProvider();
+	/**
+	 * Atributo que almacena la instancia del provider local y MySql
+	 */
+	private final static DProvider PROVIDER_LOCAL_MYSQL = ProviderFactory.createMysqlProvider();
 
 	/**
 	 * Método que fabrica un UserRepository
