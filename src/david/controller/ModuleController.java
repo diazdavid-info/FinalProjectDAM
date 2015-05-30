@@ -14,9 +14,8 @@ import david.model.models.DUserModel;
 import david.model.pojo.school.Course;
 import david.model.pojo.users.User;
 
+public class ModuleController extends Controller {
 
-public class ModuleController extends Controller{
-	
 	/**
 	 * Atributo que almacena el model de cursos
 	 */
@@ -29,7 +28,7 @@ public class ModuleController extends Controller{
 	 * Atributo que almacena el model de modulos
 	 */
 	private DModuleModel mModuleModel;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -38,35 +37,52 @@ public class ModuleController extends Controller{
 		mUserModel = ModelFactory.createUserModel();
 		mModuleModel = ModelFactory.createModuleModel();
 	}
-	
+
 	/**
 	 * Método que crea un modulo
 	 */
 	public void createAction() {
-		if(isLogin() && isRequest()){
+		if (isLogin() && isRequest()) {
 			mModuleModel.createModule(getRequestParameter());
 		}
-		
-		if(isLogin()){
+
+		if (isLogin()) {
 			List<User> listTutors = mUserModel.listTutors();
 			List<Course> listCourses = mCourseModel.listCourse();
-			
+
 			mServletRequest.setAttribute("listTutors", listTutors);
 			mServletRequest.setAttribute("listCourses", listCourses);
 			render("module/create");
 		}
 	}
-	
+
 	/**
 	 * Método que lista los modulos
 	 */
-	public void listAction(){
-		if(isLogin()){
+	public void listAction() {
+		if (isLogin()) {
 			List<Course> listCourses = mCourseModel.listCourse();
-			
+
 			mServletRequest.setAttribute("listCourses", listCourses);
 			render("module/list");
 		}
 	}
 
+	/**
+	 * Método que añade usuarios al módulo
+	 */
+	public void addUserAction() {
+		if (isLogin() && isRequest()) {
+			mModuleModel.createUserModule(getRequestParameter());
+		}
+
+		if (isLogin()) {
+			List<User> listPupils = mUserModel.listPupils();
+			List<Course> listCourses = mCourseModel.listCourse();
+
+			mServletRequest.setAttribute("listCourses", listCourses);
+			mServletRequest.setAttribute("listPupils", listPupils);
+			render("module/addUser");
+		}
+	}
 }
