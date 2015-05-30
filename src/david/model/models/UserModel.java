@@ -203,4 +203,26 @@ public class UserModel implements DUserModel {
 		UserPersistence userPersistence = mIUserTransformer.entityToPersistence(user);
 		return mIUserTransformer.persistenceToEntity(mUserRepository.find(userPersistence));
 	}
+
+	/**
+	 * Método que solicita y gstiona la busqueda de alumnos
+	 * 
+	 * @return List<User>
+	 */
+	@Override
+	public List<User> listPupils() {
+		Role role = new Role(new RoleBuilder().nameRol("Alumno"));
+		RolePersistence rolePersistence = mIRoleTransformer.entityToPersistence(role);
+		role = mIRoleTransformer.persistenceToEntity(mRoleRepository.find(rolePersistence));
+
+		User user = new User(new UserBuilder().setRole(role));
+		UserPersistence userPersistence = mIUserTransformer.entityToPersistence(user);
+		List<UserPersistence> listUserPersistence = mUserRepository.findAll(userPersistence);
+
+		List<User> listUser = new ArrayList<User>();
+		for (UserPersistence persistence : listUserPersistence) {
+			listUser.add(mIUserTransformer.persistenceToEntity(persistence));
+		}
+		return listUser;
+	}
 }
