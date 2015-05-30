@@ -12,37 +12,51 @@ import java.util.Map;
 import david.model.pojo.users.User;
 
 public interface DUserModel {
-	
+
 	/**
 	 * Método que gestiona el login de usuarios
-	 * @param parameter 
+	 * 
+	 * @param parameter
 	 * @return User
 	 */
 	public User loginUser(Map<String, String[]> parameter);
 
 	/**
 	 * Método que solicita y gestiona la lista de usuarios
+	 * 
 	 * @return List<User>
 	 */
 	public List<User> listUser();
 
 	/**
 	 * Método que gestiona la creación de usuarios
-	 * @param Map<String, String[]> requestParameter
+	 * 
+	 * @param Map
+	 *            <String, String[]> requestParameter
 	 */
 	public void createUser(Map<String, String[]> requestParameter);
 
 	/**
 	 * Método que gestiona la lista de tutores
+	 * 
 	 * @return List<User>
 	 */
 	public List<User> listTutors();
 
 	/**
 	 * Método que solicita y gestiona la busqueda de un user
-	 * @param User user
+	 * 
+	 * @param User
+	 *            user
 	 * @return User
 	 */
 	public User findUser(User user);
+
+	/**
+	 * Método que solicita y gstiona la busqueda de alumnos
+	 * 
+	 * @return List<User>
+	 */
+	public List<User> listPupils();
 
 }

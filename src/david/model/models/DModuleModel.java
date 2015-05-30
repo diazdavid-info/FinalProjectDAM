@@ -15,19 +15,24 @@ public interface DModuleModel {
 
 	/**
 	 * Método que gestiona la creación de un modulo
-	 * @param Map<String, String[]> requestParameter
+	 * 
+	 * @param Map
+	 *            <String, String[]> requestParameter
 	 */
 	public void createModule(Map<String, String[]> requestParameter);
 
 	/**
 	 * Método que busca los módulos de un ciclo
-	 * @param Cycle cycle
+	 * 
+	 * @param Cycle
+	 *            cycle
 	 * @return List<Cycle>
 	 */
 	public List<Module> findModuleByCycle(Cycle cycle);
 
 	/**
 	 * Método que busca los módulos de un curso, instituto y ciclo
+	 * 
 	 * @param int courseId
 	 * @param int schoolId
 	 * @param int cycleId
@@ -37,9 +42,19 @@ public interface DModuleModel {
 
 	/**
 	 * Método que solicita y gestiona la busqueda de un módulo
-	 * @param Module module
+	 * 
+	 * @param Module
+	 *            module
 	 * @return Module
 	 */
 	public Module findModule(Module module);
+
+	/**
+	 * Método que gestiona la asociación entre usuario y módulo
+	 * 
+	 * @param Map
+	 *            <String, String[]> requestParameter
+	 */
+	public void createUserModule(Map<String, String[]> requestParameter);
 
 }

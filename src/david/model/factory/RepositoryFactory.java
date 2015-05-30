@@ -18,12 +18,15 @@ import david.model.repository.SchoolRepository;
 import david.model.repository.SessionRepository;
 import david.model.repository.SubtypeRepository;
 import david.model.repository.TypeRepository;
+import david.model.repository.UserModuleRepository;
 import david.model.repository.UserRepository;
 
 public class RepositoryFactory {
 
-	private final static DProvider PROVIDER_LOCAL_MYSQL = ProviderFactory
-			.createMysqlProvider();
+	/**
+	 * Atributo que almacena la instancia del provider local y MySql
+	 */
+	private final static DProvider PROVIDER_LOCAL_MYSQL = ProviderFactory.createMysqlProvider();
 
 	/**
 	 * Método que fabrica un UserRepository
@@ -140,5 +143,14 @@ public class RepositoryFactory {
 	 */
 	public static SessionRepository createSessionRepository() {
 		return new SessionRepository(PROVIDER_LOCAL_MYSQL);
+	}
+
+	/**
+	 * Método que fabrica un UserModuleRepository
+	 * 
+	 * @return UserModuleRepository
+	 */
+	public static UserModuleRepository createUserModuleRepository() {
+		return new UserModuleRepository(PROVIDER_LOCAL_MYSQL);
 	}
 }

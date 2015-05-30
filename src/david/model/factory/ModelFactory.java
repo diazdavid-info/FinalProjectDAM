@@ -37,13 +37,8 @@ public class ModelFactory {
 	 * @return DUserModel
 	 */
 	public static DUserModel createUserModel() {
-		return new UserModel(TransformerFactory.createUserTransformer(),
-				RepositoryFactory.createUserRepository(),
-				TransformerFactory.createPersonTransformer(),
-				RepositoryFactory.createPersonRepository(),
-				TransformerFactory.createAddressTransformer(),
-				RepositoryFactory.createAddressRepository(),
-				TransformerFactory.createRoletransformer(),
+		return new UserModel(TransformerFactory.createUserTransformer(), RepositoryFactory.createUserRepository(), TransformerFactory.createPersonTransformer(),
+				RepositoryFactory.createPersonRepository(), TransformerFactory.createAddressTransformer(), RepositoryFactory.createAddressRepository(), TransformerFactory.createRoletransformer(),
 				RepositoryFactory.createRoleRepository());
 	}
 
@@ -53,8 +48,7 @@ public class ModelFactory {
 	 * @return DSchoolModel
 	 */
 	public static DSchoolModel createSchoolModel() {
-		return new SchoolModel(TransformerFactory.createSchoolTransformer(),
-				RepositoryFactory.createSchoolRepository());
+		return new SchoolModel(TransformerFactory.createSchoolTransformer(), RepositoryFactory.createSchoolRepository());
 	}
 
 	/**
@@ -63,8 +57,7 @@ public class ModelFactory {
 	 * @return DCourseModel
 	 */
 	public static DCourseModel createCourseModel() {
-		return new CourseModel(TransformerFactory.createCourseTransformer(),
-				RepositoryFactory.createCourseRepository());
+		return new CourseModel(TransformerFactory.createCourseTransformer(), RepositoryFactory.createCourseRepository());
 	}
 
 	/**
@@ -73,8 +66,7 @@ public class ModelFactory {
 	 * @return DCycleModel
 	 */
 	public static DCycleModel createCycleModel() {
-		return new CycleModel(TransformerFactory.createCycleTransformer(),
-				RepositoryFactory.createCycleRepository());
+		return new CycleModel(TransformerFactory.createCycleTransformer(), RepositoryFactory.createCycleRepository());
 	}
 
 	/**
@@ -83,8 +75,7 @@ public class ModelFactory {
 	 * @return DModuleModel
 	 */
 	public static DModuleModel createModuleModel() {
-		return new ModuleModel(TransformerFactory.createModuleTransformer(),
-				RepositoryFactory.createModuleRepository());
+		return new ModuleModel(TransformerFactory.createModuleTransformer(), RepositoryFactory.createModuleRepository(), RepositoryFactory.createUserModuleRepository());
 	}
 
 	/**
@@ -93,8 +84,7 @@ public class ModelFactory {
 	 * @return DAddressModel
 	 */
 	public static DAddressModel createAddressModel() {
-		return new AddressModel(TransformerFactory.createAddressTransformer(),
-				RepositoryFactory.createAddressRepository());
+		return new AddressModel(TransformerFactory.createAddressTransformer(), RepositoryFactory.createAddressRepository());
 	}
 
 	/**
@@ -103,9 +93,7 @@ public class ModelFactory {
 	 * @return DCourseSchoolModel
 	 */
 	public static DCourseSchoolModel createCourseSchoolModel() {
-		return new CourseSchoolModel(
-				TransformerFactory.createCourseSchoolTransformer(),
-				RepositoryFactory.createCourseSchoolRepository());
+		return new CourseSchoolModel(TransformerFactory.createCourseSchoolTransformer(), RepositoryFactory.createCourseSchoolRepository());
 	}
 
 	/**
@@ -114,8 +102,7 @@ public class ModelFactory {
 	 * @return DTypeModel
 	 */
 	public static DTypeModel createTypeModel() {
-		return new TypeModel(TransformerFactory.createTypeTransformer(),
-				RepositoryFactory.createTypeRepository());
+		return new TypeModel(TransformerFactory.createTypeTransformer(), RepositoryFactory.createTypeRepository());
 	}
 
 	/**
@@ -124,8 +111,7 @@ public class ModelFactory {
 	 * @return DSubtypeModel
 	 */
 	public static DSubtypeModel createSubtypeModel() {
-		return new SubtypeModel(TransformerFactory.createSubtypeTransformer(),
-				RepositoryFactory.createSubtypeRepository());
+		return new SubtypeModel(TransformerFactory.createSubtypeTransformer(), RepositoryFactory.createSubtypeRepository());
 	}
 
 	/**
@@ -134,8 +120,7 @@ public class ModelFactory {
 	 * @return DChapterModel
 	 */
 	public static DChapterModel createChapterModel() {
-		return new ChapterModel(TransformerFactory.createChapterTransformer(),
-				RepositoryFactory.createChapterRepository());
+		return new ChapterModel(TransformerFactory.createChapterTransformer(), RepositoryFactory.createChapterRepository());
 	}
 
 	/**
@@ -144,7 +129,6 @@ public class ModelFactory {
 	 * @return DChapterModel
 	 */
 	public static DSessionModel createSessionModel() {
-		return new SessionModel(TransformerFactory.createSessionTransformer(),
-				RepositoryFactory.createSessionRepository());
+		return new SessionModel(TransformerFactory.createSessionTransformer(), RepositoryFactory.createSessionRepository());
 	}
 }
