@@ -17,7 +17,7 @@ public class SessionPersistence implements Cloneable {
 	/**
 	 * Atributo que almacena el chapter
 	 */
-	@column(name = "mChapter", type = "int")
+	@column(name = "mIdChapter", type = "int")
 	private Integer mChapter;
 	/**
 	 * Atributo que almacena el time
@@ -27,7 +27,7 @@ public class SessionPersistence implements Cloneable {
 	/**
 	 * Atributo que almacena el type
 	 */
-	@column(name = "mType", type = "int")
+	@column(name = "mIdType", type = "int")
 	private Integer mType;
 	/**
 	 * Atributo que almacena el description
@@ -37,12 +37,12 @@ public class SessionPersistence implements Cloneable {
 	/**
 	 * Atributo que almacena el module
 	 */
-	@column(name = "mModule", type = "int")
+	@column(name = "mIdModule", type = "int")
 	private Integer mModule;
 	/**
 	 * Atributo que almacena el subtype
 	 */
-	@column(name = "mSubtype", type = "int")
+	@column(name = "mIdSubType", type = "int")
 	private Integer mSubtype;
 
 	/**

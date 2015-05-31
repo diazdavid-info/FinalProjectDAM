@@ -5,6 +5,8 @@
  */
 package david.model.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import david.model.factory.ModelFactory;
@@ -14,6 +16,7 @@ import david.model.pojo.builder.SessionBuilder;
 import david.model.pojo.builder.SubtypeBuilder;
 import david.model.pojo.builder.TypeBuilder;
 import david.model.pojo.school.Chapter;
+import david.model.pojo.school.Module;
 import david.model.pojo.school.Session;
 import david.model.pojo.school.SubType;
 import david.model.pojo.school.Type;
@@ -71,6 +74,27 @@ public class SessionModel implements DSessionModel {
 
 			session = mISessionTransformer.persistenceToEntity(mSessionRepository.storage(sessionPersistence));
 		}
+	}
+
+	/**
+	 * Método encargado de buscar todas las sessiones de un módulo
+	 * 
+	 * @param Module
+	 *            module
+	 * @return List<Session>
+	 */
+	@Override
+	public List<Session> findAllSession(Module module) {
+		List<Session> listSession = new ArrayList<Session>();
+		SessionPersistence persistence = new SessionPersistence();
+		persistence.setModule(module.getId());
+		List<SessionPersistence> listPersistence = mSessionRepository.findAll(persistence);
+
+		for (SessionPersistence sessionPersistence : listPersistence) {
+			listSession.add(mISessionTransformer.persistenceToEntity(sessionPersistence));
+		}
+
+		return listSession;
 	}
 
 }
