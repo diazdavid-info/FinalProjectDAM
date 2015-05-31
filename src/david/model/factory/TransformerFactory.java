@@ -10,11 +10,13 @@ import david.model.transformer.ChapterTransformer;
 import david.model.transformer.CourseSchoolTransformer;
 import david.model.transformer.CourseTransformer;
 import david.model.transformer.CycleTransformer;
+import david.model.transformer.FunctionalityTransformer;
 import david.model.transformer.IAddressTransformer;
 import david.model.transformer.IChapterTransformer;
 import david.model.transformer.ICourseSchoolTransformer;
 import david.model.transformer.ICourseTransformer;
 import david.model.transformer.ICycleTransformer;
+import david.model.transformer.IFunctionalityTransformer;
 import david.model.transformer.IModuleTransformer;
 import david.model.transformer.IPersonTransformer;
 import david.model.transformer.IRoleTransformer;
@@ -149,5 +151,14 @@ public class TransformerFactory {
 	 */
 	public static ISessionTransformer createSessionTransformer() {
 		return new SessionTransformer();
+	}
+
+	/**
+	 * Método que construye un transformador de functionality
+	 * 
+	 * @return IFunctionalityTransformer
+	 */
+	public static IFunctionalityTransformer createFunctionalityTransformer() {
+		return new FunctionalityTransformer();
 	}
 }
