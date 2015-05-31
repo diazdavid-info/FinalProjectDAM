@@ -11,8 +11,10 @@ import david.model.repository.ChapterRepository;
 import david.model.repository.CourseRepository;
 import david.model.repository.CourseSchoolRepository;
 import david.model.repository.CycleRepository;
+import david.model.repository.FunctionalityRepository;
 import david.model.repository.ModuleRepository;
 import david.model.repository.PersonRepository;
+import david.model.repository.RoleFunctionalityRepository;
 import david.model.repository.RoleRepository;
 import david.model.repository.SchoolRepository;
 import david.model.repository.SessionRepository;
@@ -152,5 +154,23 @@ public class RepositoryFactory {
 	 */
 	public static UserModuleRepository createUserModuleRepository() {
 		return new UserModuleRepository(PROVIDER_LOCAL_MYSQL);
+	}
+
+	/**
+	 * Método que fabrica un FunctionalityRepository
+	 * 
+	 * @return FunctionalityRepository
+	 */
+	public static FunctionalityRepository createFunctionalityRepository() {
+		return new FunctionalityRepository(PROVIDER_LOCAL_MYSQL);
+	}
+
+	/**
+	 * Método que fabrica un RoleFunctionalityRepository
+	 * 
+	 * @return RoleFunctionalityRepository
+	 */
+	public static RoleFunctionalityRepository createRoleFunctionalityRepository() {
+		return new RoleFunctionalityRepository(PROVIDER_LOCAL_MYSQL);
 	}
 }

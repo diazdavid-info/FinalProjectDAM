@@ -16,15 +16,19 @@ import david.model.models.DChapterModel;
 import david.model.models.DCourseModel;
 import david.model.models.DCourseSchoolModel;
 import david.model.models.DCycleModel;
+import david.model.models.DFunctionalityModel;
 import david.model.models.DGraphicModel;
 import david.model.models.DModuleModel;
+import david.model.models.DRoleModel;
 import david.model.models.DSchoolModel;
 import david.model.models.DSessionModel;
 import david.model.models.DSubtypeModel;
 import david.model.models.DTypeModel;
 import david.model.models.DUserModel;
+import david.model.models.FunctionalityModel;
 import david.model.models.GraphicModel;
 import david.model.models.ModuleModel;
+import david.model.models.RoleModel;
 import david.model.models.SchoolModel;
 import david.model.models.SessionModel;
 import david.model.models.SubtypeModel;
@@ -141,5 +145,23 @@ public class ModelFactory {
 	 */
 	public static DGraphicModel createGraphicModel() {
 		return new GraphicModel();
+	}
+
+	/**
+	 * Método que fabrica el modelo de role
+	 * 
+	 * @return DRoleModel
+	 */
+	public static DRoleModel createRoleModel() {
+		return new RoleModel(TransformerFactory.createRoletransformer(), RepositoryFactory.createRoleRepository());
+	}
+
+	/**
+	 * Método que fabrica el modelo de functionality
+	 * 
+	 * @return DFunctionalityModel
+	 */
+	public static DFunctionalityModel createFunctionalityModel() {
+		return new FunctionalityModel(TransformerFactory.createFunctionalityTransformer(), RepositoryFactory.createFunctionalityRepository(), RepositoryFactory.createRoleFunctionalityRepository());
 	}
 }
