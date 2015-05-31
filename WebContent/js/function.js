@@ -2,9 +2,6 @@
  * 
  */
 
-window.onload = function(){
-	
-}
 
 /**
  * Función que hace una petición ajax para recuperar los institutos
@@ -78,7 +75,7 @@ function getModuleByCourseSchoolCycle() {
 	var school = (!$('#schools').val()) ? 0 : $('#schools').val();
 	var cycle = (!$('#cycle').val()) ? 0 : $('#cycle').val();
 	$.ajax({
-		url: '../webServices/apiServices/getModuleByCourseSchoolCycle?course='+course+'&school='+school+'&cycle',
+		url: '../webServices/apiServices/getModuleByCourseSchoolCycle?course='+course+'&school='+school+'&cycle='+cycle,
 		type: 'GET',
 		success: function(result) {
 			console.log(result);
@@ -105,5 +102,51 @@ function getChapterByModule(value) {
 				$('#chapter').append('<option value="'+value.mId+'">'+value.mName+'</option>');
 			});
 		}
+	})
+}
+
+var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+
+var barChartData = {
+	labels : ["Base de datos","Formación y orientación laboral","Desarrollo"],
+	datasets : [
+		{
+			fillColor : "rgba(220,220,220,0.5)",
+			strokeColor : "rgba(220,220,220,0.8)",
+			highlightFill: "rgba(220,220,220,0.75)",
+			highlightStroke: "rgba(220,220,220,1)",
+			data : [205,90,100]
+		},
+		{
+			fillColor : "rgba(151,187,205,0.5)",
+			strokeColor : "rgba(151,187,205,0.8)",
+			highlightFill : "rgba(151,187,205,0.75)",
+			highlightStroke : "rgba(151,187,205,1)",
+			data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+		}
+	]
+
+}
+
+
+window.onload = function(){
+	if(document.getElementById("canvas")){
+		sendAjax('webServices/apiServices/getDataGraphic?teacher='+$('#userId').val(), printGraphic);
+	}
+}
+
+function printGraphic(result) {
+	console.log(result);
+	var ctx2 = document.getElementById("canvas").getContext("2d");
+	window.myBar = new Chart(ctx2).Bar(result, {
+		responsive : true
+	});
+}
+
+function sendAjax(url, callBack) {
+	$.ajax({
+		url: url,
+		type: 'GET',
+		success: callBack
 	})
 }

@@ -5,6 +5,8 @@
  */
 package david.model.repository;
 
+import java.util.List;
+
 import david.model.mapper.Mapper;
 import david.model.persistence.SessionPersistence;
 import david.model.provider.DProvider;
@@ -61,6 +63,21 @@ public class SessionRepository {
 		sessionPersistence.setId(mProvider.executeUpdate(mapper.mapperStorageToDbb()));
 		mProvider.disconnect();
 		return sessionPersistence;
+	}
+
+	/**
+	 * Método que solicita y gestiona el listado de session
+	 * 
+	 * @param SessionPersistence
+	 *            persistence
+	 * @return List<SessionPersistence>
+	 */
+	public List<SessionPersistence> findAll(SessionPersistence sessionPersistence) {
+		Mapper<SessionPersistence> mapper = new Mapper<SessionPersistence>(sessionPersistence);
+		mProvider.connect();
+		List<SessionPersistence> list = mapper.mapperAllToPersistence(mProvider.executeQuery(mapper.mapperToDbb()));
+		mProvider.disconnect();
+		return list;
 	}
 
 }

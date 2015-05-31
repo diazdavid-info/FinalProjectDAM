@@ -16,12 +16,14 @@ import david.model.models.DChapterModel;
 import david.model.models.DCourseModel;
 import david.model.models.DCourseSchoolModel;
 import david.model.models.DCycleModel;
+import david.model.models.DGraphicModel;
 import david.model.models.DModuleModel;
 import david.model.models.DSchoolModel;
 import david.model.models.DSessionModel;
 import david.model.models.DSubtypeModel;
 import david.model.models.DTypeModel;
 import david.model.models.DUserModel;
+import david.model.models.GraphicModel;
 import david.model.models.ModuleModel;
 import david.model.models.SchoolModel;
 import david.model.models.SessionModel;
@@ -130,5 +132,14 @@ public class ModelFactory {
 	 */
 	public static DSessionModel createSessionModel() {
 		return new SessionModel(TransformerFactory.createSessionTransformer(), RepositoryFactory.createSessionRepository());
+	}
+
+	/**
+	 * Método que fabrica el modelo de graphic
+	 * 
+	 * @return DGraphicModel
+	 */
+	public static DGraphicModel createGraphicModel() {
+		return new GraphicModel();
 	}
 }

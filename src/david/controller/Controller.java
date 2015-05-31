@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import david.model.pojo.users.User;
 
 public class Controller {
-	
+
 	/**
 	 * Atributo que almacenar el request del servlet
 	 */
@@ -30,54 +30,65 @@ public class Controller {
 	 * Atributo que almacena los parametros de un request
 	 */
 	protected Map<String, String[]> mRequestParameter = null;
-	
+
 	/**
 	 * Método que establece el valor del atributo mServletRequest
-	 * @param HttpServletRequest request
+	 * 
+	 * @param HttpServletRequest
+	 *            request
 	 */
-	public void setServletRequest(HttpServletRequest request){
+	public void setServletRequest(HttpServletRequest request) {
 		mServletRequest = request;
 	}
-	
+
 	/**
 	 * Método que extablece el valor del atributo mServletResponse
-	 * @param HttpServletResponse response
+	 * 
+	 * @param HttpServletResponse
+	 *            response
 	 */
-	public void setServletResponse(HttpServletResponse response){
+	public void setServletResponse(HttpServletResponse response) {
 		mServletResponse = response;
 	}
-	
+
 	/**
 	 * Método que establece el valor al atributo mRequestParameter
-	 * @param Map<String, String[]> requestParameter
+	 * 
+	 * @param Map
+	 *            <String, String[]> requestParameter
 	 */
-	public void setRequestParameter(Map<String, String[]> requestParameter){
+	public void setRequestParameter(Map<String, String[]> requestParameter) {
 		mRequestParameter = requestParameter;
 	}
-	
+
 	/**
 	 * Método que obtiene el valor del atributo mRequestParameter
+	 * 
 	 * @return Map<String, String[]>
 	 */
-	public Map<String, String[]> getRequestParameter(){
+	public Map<String, String[]> getRequestParameter() {
 		return mRequestParameter;
 	}
-	
+
 	/**
 	 * Método que renderiza la vista
-	 * @param String viewName
+	 * 
+	 * @param String
+	 *            viewName
 	 */
 	protected void render(String viewName) {
 		try {
-			mServletRequest.getRequestDispatcher("/view/"+viewName+".jsp").include(mServletRequest, mServletResponse);
+			mServletRequest.getRequestDispatcher("/view/" + viewName + ".jsp").include(mServletRequest, mServletResponse);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Método que redirecciona a una URL
-	 * @param String path
+	 * 
+	 * @param String
+	 *            path
 	 */
 	protected void redirect(String path) {
 		try {
@@ -86,24 +97,28 @@ public class Controller {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Método que comprueba si hay parametros en una petición get o post
+	 * 
 	 * @return boolean
 	 */
 	protected boolean isRequest() {
 		return !mRequestParameter.isEmpty();
 	}
-	
+
 	/**
 	 * Método que comprueba si un usuario esta logeado
+	 * 
 	 * @return boolean
 	 */
 	protected boolean isLogin() {
 		HttpSession session = mServletRequest.getSession();
 		User user = (User) session.getAttribute("user");
-		if(user == null){
-			redirect(mServletRequest.getContextPath()+"/user");
+		if (user == null) {
+			redirect(mServletRequest.getContextPath() + "/user");
+		} else {
+			mServletRequest.setAttribute("userSession", user);
 		}
 		return (user != null) ? true : false;
 	}

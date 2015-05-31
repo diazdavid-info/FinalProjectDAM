@@ -10,6 +10,7 @@
 	
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/Chart.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/function.js"></script>
 	
 	<title>Seguimiento Lectivo</title>
