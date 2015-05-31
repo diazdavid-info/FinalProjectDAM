@@ -10,6 +10,7 @@ import java.util.Map;
 
 import david.model.pojo.school.Module;
 import david.model.pojo.school.Session;
+import david.model.pojo.users.User;
 
 public interface DSessionModel {
 
@@ -29,5 +30,14 @@ public interface DSessionModel {
 	 * @return List<Session>
 	 */
 	public List<Session> findAllSession(Module module);
+
+	/**
+	 * Método encargado de buscar las sessiones de un usuario
+	 * 
+	 * @param User
+	 *            user
+	 * @return List<Module>
+	 */
+	public List<Module> listSession(User user);
 
 }

@@ -17,7 +17,7 @@
             		<li><a href="<%=request.getContextPath() %>/subtype/create">Añadir SubTipo</a></li>
             		<li><a href="<%=request.getContextPath() %>/chapter/create">Añadir Temario</a></li>
             		<li class="divider"></li>
-            		<li><a href="<%=request.getContextPath() %>/module/list">Listar</a></li>
+            		<li><a href="<%=request.getContextPath() %>/session/list">Listar</a></li>
             	</ul>
         	</li>
       		<li class="dropdown">
