@@ -12,6 +12,7 @@ import java.util.Map;
 import david.model.factory.ModelFactory;
 import david.model.persistence.SessionPersistence;
 import david.model.pojo.builder.ChapterBuilder;
+import david.model.pojo.builder.ModuleBuilder;
 import david.model.pojo.builder.SessionBuilder;
 import david.model.pojo.builder.SubtypeBuilder;
 import david.model.pojo.builder.TypeBuilder;
@@ -20,6 +21,7 @@ import david.model.pojo.school.Module;
 import david.model.pojo.school.Session;
 import david.model.pojo.school.SubType;
 import david.model.pojo.school.Type;
+import david.model.pojo.users.User;
 import david.model.repository.SessionRepository;
 import david.model.transformer.ISessionTransformer;
 import david.model.validate.form.IWebCreateSession;
@@ -95,6 +97,19 @@ public class SessionModel implements DSessionModel {
 		}
 
 		return listSession;
+	}
+
+	/**
+	 * Método encargado de buscar las sessiones de un usuario
+	 * 
+	 * @param User
+	 *            user
+	 * @return List<Session>
+	 */
+	@Override
+	public List<Module> listSession(User user) {
+		DModuleModel moduleModel = ModelFactory.createModuleModel();
+		return moduleModel.findAllModule(new Module(new ModuleBuilder().teacher(user)));
 	}
 
 }

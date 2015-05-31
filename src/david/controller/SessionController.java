@@ -13,11 +13,12 @@ import david.model.models.DSessionModel;
 import david.model.models.DSubtypeModel;
 import david.model.models.DTypeModel;
 import david.model.pojo.school.Course;
+import david.model.pojo.school.Module;
 import david.model.pojo.school.SubType;
 import david.model.pojo.school.Type;
+import david.model.pojo.users.User;
 
-
-public class SessionController extends Controller{
+public class SessionController extends Controller {
 
 	/**
 	 * Atributo que almacena el model de cursos
@@ -35,7 +36,7 @@ public class SessionController extends Controller{
 	 * Atributo que almacena el model de session
 	 */
 	private DSessionModel mSessionModel;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -45,25 +46,38 @@ public class SessionController extends Controller{
 		mSubtypeModel = ModelFactory.createSubtypeModel();
 		mSessionModel = ModelFactory.createSessionModel();
 	}
-	
+
 	/**
 	 * Método que crea una sessión
 	 */
 	public void createAction() {
-		if(isLogin() && isRequest()){
+		if (isLogin() && isRequest()) {
 			mSessionModel.createSession(getRequestParameter());
 		}
-		
-		if(isLogin()){
+
+		if (isLogin()) {
 			List<Course> listCourses = mCourseModel.listCourse();
 			List<Type> listType = mTypeModel.listType();
 			List<SubType> listSubtype = mSubtypeModel.listSubtype();
-			
+
 			mServletRequest.setAttribute("listCourses", listCourses);
 			mServletRequest.setAttribute("listType", listType);
 			mServletRequest.setAttribute("listSubtype", listSubtype);
 			render("session/create");
 		}
 	}
-	
+
+	/**
+	 * Método que lista todas las sessiones
+	 */
+	public void listAction() {
+		if (isLogin()) {
+			User user = (User) mServletRequest.getAttribute("userSession");
+			List<Module> listModules = mSessionModel.listSession(user);
+
+			mServletRequest.setAttribute("listModules", listModules);
+			render("session/list");
+		}
+	}
+
 }
