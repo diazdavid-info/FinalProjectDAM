@@ -1,10 +1,10 @@
-<%@page import="david.model.pojo.users.User"%>
-<%@page import="david.utils.Message"%>
-<%@page import="java.util.ArrayList"%>
-<%@ page import="java.util.List"%>
-<%@ page import="david.model.pojo.school.School"%>
-<%@ page import="david.model.pojo.school.Course"%>
-<%@ page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@ page import="david.model.pojo.users.User" %>
+<%@ page import="david.utils.Message" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="david.model.pojo.school.School" %>
+<%@ page import="david.model.pojo.school.Course" %>
+<%@ page import="org.apache.jasper.tagplugins.jstl.core.ForEach" %>
 <jsp:include page="/include/head.jsp" />
 
 <jsp:include page="/include/nav.jsp" />
