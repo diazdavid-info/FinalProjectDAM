@@ -34,13 +34,11 @@ public class UserController extends Controller {
 		User user = null;
 		if (isRequest()) {
 			user = mModel.loginUser(getRequestParameter());
-			System.out.println("SI");
 		}
 
 		if (user != null) {
 			HttpSession session = mServletRequest.getSession(true);
 			session.setAttribute("user", user);
-			System.out.println("EL LOGIN ES OK");
 			redirect("app");
 		}
 
@@ -64,9 +62,12 @@ public class UserController extends Controller {
 	 * Método que crea un usuario
 	 */
 	public void createAction() {
-		if (isRequest()) {
+		if (isLogin() && isRequest()) {
 			mModel.createUser(getRequestParameter());
 		}
-		render("user/create");
+
+		if (isLogin()) {
+			render("user/create");
+		}
 	}
 }

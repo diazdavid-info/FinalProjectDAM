@@ -1,8 +1,10 @@
 ﻿package david.model.pojo.permission;
 
+import david.model.pojo.builder.FunctionalityBuilder;
 
 /**
  * Clase de funcionalidades
+ * 
  * @author David Díaz
  * @version 1.0
  * @created 13-mar-2015 15:53:40
@@ -22,10 +24,13 @@ public class Functionality {
 	 */
 	private String mName;
 
-	public Functionality(){
-
+	public Functionality(FunctionalityBuilder builder) {
+		mDescription = builder.getDescription();
+		mId = builder.getId();
+		mName = builder.getName();
 	}
 
+	@Override
 	public void finalize() throws Throwable {
 
 	}
@@ -33,21 +38,21 @@ public class Functionality {
 	/**
 	 * Descripción de la funcionalidad
 	 */
-	public String getDescription(){
+	public String getDescription() {
 		return mDescription;
 	}
 
 	/**
 	 * Identificador de la funcionalidad
 	 */
-	public int getId(){
+	public int getId() {
 		return mId;
 	}
 
 	/**
 	 * Nombre de la funcionalidad
 	 */
-	public String getName(){
+	public String getName() {
 		return mName;
 	}
 
@@ -56,7 +61,7 @@ public class Functionality {
 	 * 
 	 * @param newVal
 	 */
-	public void setDescription(String newVal){
+	public void setDescription(String newVal) {
 		mDescription = newVal;
 	}
 
@@ -65,7 +70,7 @@ public class Functionality {
 	 * 
 	 * @param newVal
 	 */
-	public void setId(int newVal){
+	public void setId(int newVal) {
 		mId = newVal;
 	}
 
@@ -74,7 +79,7 @@ public class Functionality {
 	 * 
 	 * @param newVal
 	 */
-	public void setName(String newVal){
+	public void setName(String newVal) {
 		mName = newVal;
 	}
 

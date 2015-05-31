@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import david.model.factory.ModelFactory;
 import david.model.persistence.AddressPersistence;
 import david.model.persistence.PersonPersistence;
 import david.model.persistence.RolePersistence;
@@ -33,7 +34,6 @@ import david.model.transformer.IUserTransformer;
 import david.model.validate.form.IWebCreateUser;
 import david.model.validate.form.LoginForm;
 import david.model.validate.form.UserCreateForm;
-import david.security.Encryptor;
 import david.utils.Message;
 
 public class UserModel implements DUserModel {
@@ -98,13 +98,14 @@ public class UserModel implements DUserModel {
 		LoginForm form = new LoginForm();
 		if (form.validate(parameter)) {
 			user = new User(new UserBuilder().setUsername(form.getUsername()).setPassword(form.getPassword()));
-			System.out.println("PASSWORD CIFRADA: " + Encryptor.encriptionMD5(form.getPassword()));
 			UserPersistence userPersistence = mIUserTransformer.entityToPersistence(user);
 			if (mUserRepository.find(userPersistence).getId() == null) {
 				user = null;
 				Message.addMesagge("El usuario o la contraseña no coinciden");
 			} else {
 				user = mIUserTransformer.persistenceToEntity(userPersistence);
+				DRoleModel roleModel = ModelFactory.createRoleModel();
+				user.setRole(roleModel.findRole(new Role(new RoleBuilder().id(userPersistence.getRole()))));
 			}
 		}
 		return user;
