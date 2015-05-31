@@ -57,4 +57,13 @@ public interface DModuleModel {
 	 */
 	public void createUserModule(Map<String, String[]> requestParameter);
 
+	/**
+	 * Método que solicita y gestiona la busqueda una lista de módulos
+	 * 
+	 * @param Module
+	 *            module
+	 * @return List<Module>
+	 */
+	public List<Module> findAllModule(Module module);
+
 }

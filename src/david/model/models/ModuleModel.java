@@ -110,6 +110,7 @@ public class ModuleModel implements DModuleModel {
 	@Override
 	public List<Module> listModule(int courseId, int schoolId, int cycleId) {
 		DCycleModel cycleModel = ModelFactory.createCycleModel();
+		System.out.println("CYCLE ID " + cycleId);
 		Cycle cycle = cycleModel.findCycle(new Cycle(new CycleBuilder().id(cycleId)));
 		return cycle.getModule();
 	}
@@ -125,6 +126,28 @@ public class ModuleModel implements DModuleModel {
 	public Module findModule(Module module) {
 		ModulePersistence modulePersistence = mIModuleTransformer.entityToPersistence(module);
 		return mIModuleTransformer.persistenceToEntity(mModuleRepository.find(modulePersistence));
+	}
+
+	/**
+	 * Método que solicita y gestiona la busqueda una lista de módulos
+	 * 
+	 * @param Module
+	 *            module
+	 * @return List<Module>
+	 */
+	@Override
+	public List<Module> findAllModule(Module module) {
+		List<Module> listModule = new ArrayList<Module>();
+		List<ModulePersistence> listPersistence = mModuleRepository.findAll(mIModuleTransformer.entityToPersistence(module));
+		DSessionModel sessionModel = ModelFactory.createSessionModel();
+
+		for (ModulePersistence modulePersistence : listPersistence) {
+			Module newModule = mIModuleTransformer.persistenceToEntity(modulePersistence);
+			newModule.setSession(sessionModel.findAllSession(newModule));
+			listModule.add(newModule);
+		}
+
+		return listModule;
 	}
 
 	/**

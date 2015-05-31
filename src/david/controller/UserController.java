@@ -13,14 +13,13 @@ import david.model.factory.ModelFactory;
 import david.model.models.DUserModel;
 import david.model.pojo.users.User;
 
+public class UserController extends Controller {
 
-public class UserController extends Controller{
-	
 	/**
 	 * Atributo que almacena el model
 	 */
 	private DUserModel mModel;
-	
+
 	/**
 	 * Costructor por defecto
 	 */
@@ -33,39 +32,39 @@ public class UserController extends Controller{
 	 */
 	public void indexAction() {
 		User user = null;
-		if(isRequest()){
+		if (isRequest()) {
 			user = mModel.loginUser(getRequestParameter());
 			System.out.println("SI");
 		}
-		
-		if(user != null){
+
+		if (user != null) {
 			HttpSession session = mServletRequest.getSession(true);
 			session.setAttribute("user", user);
 			System.out.println("EL LOGIN ES OK");
 			redirect("app");
 		}
-		
-		if(user == null){
+
+		if (user == null) {
 			render("user/login");
 		}
 	}
-	
+
 	/**
 	 * Método que lista todos los usuarios
 	 */
 	public void listAction() {
-		if(isLogin()){
+		if (isLogin()) {
 			List<User> listUser = mModel.listUser();
 			mServletRequest.setAttribute("listUser", listUser);
 			render("user/list");
 		}
 	}
-	
+
 	/**
 	 * Método que crea un usuario
 	 */
 	public void createAction() {
-		if(isRequest()){
+		if (isRequest()) {
 			mModel.createUser(getRequestParameter());
 		}
 		render("user/create");

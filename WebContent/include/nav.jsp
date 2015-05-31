@@ -1,3 +1,6 @@
+<%@page import="david.model.pojo.users.User"%>
+<% User userSesion = (User) request.getAttribute("userSession");  %>
+<input id="userId" type="hidden" name="userId" value="<%= userSesion.getId() %>">
 <nav class="navbar navbar-inverse">
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
