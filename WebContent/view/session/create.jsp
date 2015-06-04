@@ -106,6 +106,13 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<div class="col-sm-6">
+						<div class="col-sm-12">
+							<input name="date" type="text" class="form-control" id="date" placeholder="Fecha dd/mm/aaaa" />
+	   					</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<div class="col-sm-12">
 						<div class="col-sm-12">
 							<textarea name="description" class="form-control" rows="3" placeholder="Descripción de la sessión"></textarea>

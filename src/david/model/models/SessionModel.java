@@ -69,7 +69,8 @@ public class SessionModel implements DSessionModel {
 
 			Chapter chapter = chapterModel.findChapter(new Chapter(new ChapterBuilder().id(Integer.parseInt(form.getChapter()))));
 
-			Session session = new Session(new SessionBuilder().chapter(chapter).description(form.getDescription()).subType(subtype).time(Integer.parseInt(form.getHour())).type(type));
+			Session session = new Session(new SessionBuilder().chapter(chapter).description(form.getDescription()).subType(subtype).time(Integer.parseInt(form.getHour())).type(type)
+					.date(form.getDate()));
 
 			SessionPersistence sessionPersistence = mISessionTransformer.entityToPersistence(session);
 			sessionPersistence.setModule(Integer.parseInt(form.getModule()));
