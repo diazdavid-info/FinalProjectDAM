@@ -42,6 +42,8 @@ public class SessionTransformer implements ISessionTransformer {
 			persistece.setType(session.getSubType().getId());
 		}
 
+		persistece.setDate(session.getDate());
+
 		return persistece;
 	}
 
@@ -55,9 +57,7 @@ public class SessionTransformer implements ISessionTransformer {
 	@Override
 	public Session persistenceToEntity(SessionPersistence sessionPersistence) {
 		SessionBuilder builder = new SessionBuilder();
-		builder.description(sessionPersistence.getDescription())
-				.id(sessionPersistence.getId())
-				.time(sessionPersistence.getTime());
+		builder.description(sessionPersistence.getDescription()).id(sessionPersistence.getId()).time(sessionPersistence.getTime()).date(sessionPersistence.getDate());
 
 		return new Session(builder);
 	}

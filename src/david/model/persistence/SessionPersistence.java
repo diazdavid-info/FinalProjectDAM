@@ -44,6 +44,11 @@ public class SessionPersistence implements Cloneable {
 	 */
 	@column(name = "mIdSubType", type = "int")
 	private Integer mSubtype;
+	/**
+	 * Atributo que almacena el date
+	 */
+	@column(name = "mDate", type = "varchar")
+	private String mDate;
 
 	/**
 	 * Método que obtiene el nombre de la tabla
@@ -195,6 +200,25 @@ public class SessionPersistence implements Cloneable {
 	 */
 	public void setSubtype(Integer mSubtype) {
 		this.mSubtype = mSubtype;
+	}
+
+	/**
+	 * Método que obtiene el valor del atributo mDate
+	 * 
+	 * @return String
+	 */
+	public String getDate() {
+		return mDate;
+	}
+
+	/**
+	 * Método que establece el valor del atributo mDate
+	 * 
+	 * @param String
+	 *            mDate
+	 */
+	public void setDate(String mDate) {
+		this.mDate = mDate;
 	}
 
 }
