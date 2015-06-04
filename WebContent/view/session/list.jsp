@@ -16,6 +16,7 @@
 		<div class="panel-body">
 			<table id="table-cycles" class="table table-hover">
 				<tr>
+					<th>Fecha</th>
 					<th>Nombre Módulo</th>
 					<th>ID Sesión</th>
 					<th>Duración</th>
@@ -24,6 +25,7 @@
 				<% for(Module module : listModules){ %>
 					<% for(Session sesion : module.getSession()){ %>
 						<tr>
+							<td><%= sesion.getDate() %></td>
 							<td><%= module.getName() %></td>
 							<td><%= sesion.getId() %></td>
 							<td><%= sesion.getTime() %></td>

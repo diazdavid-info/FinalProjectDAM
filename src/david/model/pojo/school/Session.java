@@ -2,9 +2,9 @@
 
 import david.model.pojo.builder.SessionBuilder;
 
-
 /**
  * Clase que recoge las sessiones impartidas
+ * 
  * @author David Díaz
  * @version 1.0
  * @created 13-mar-2015 15:53:36
@@ -15,6 +15,10 @@ public class Session {
 	 * Capítulo que se ha impartido en la sessión
 	 */
 	private Chapter mChapter;
+	/**
+	 * Fecha de la sesión
+	 */
+	private String mDate;
 	/**
 	 * Descripción de lo que se ha realizado en la sessión
 	 */
@@ -36,15 +40,17 @@ public class Session {
 	 */
 	private Type mType;
 
-	public Session(SessionBuilder sessionBuilder){
+	public Session(SessionBuilder sessionBuilder) {
 		mChapter = sessionBuilder.getChapter();
 		mDescription = sessionBuilder.getDescription();
 		mId = sessionBuilder.getId();
 		mSubType = sessionBuilder.getSubType();
 		mTime = sessionBuilder.getTime();
 		mType = sessionBuilder.getType();
+		mDate = sessionBuilder.getDate();
 	}
 
+	@Override
 	public void finalize() throws Throwable {
 
 	}
@@ -52,42 +58,49 @@ public class Session {
 	/**
 	 * Capítulo que se ha impartido en la sessión
 	 */
-	public Chapter getChapter(){
+	public Chapter getChapter() {
 		return mChapter;
+	}
+
+	/**
+	 * Fecha en la que se ha impartida la sesión
+	 */
+	public String getDate() {
+		return mDate;
 	}
 
 	/**
 	 * Descripción de lo que se ha realizado en la sessión
 	 */
-	public String getDescription(){
+	public String getDescription() {
 		return mDescription;
 	}
 
 	/**
 	 * Identificador de la sessión
 	 */
-	public int getId(){
+	public int getId() {
 		return mId;
 	}
 
 	/**
 	 * Subtipo de la sessión
 	 */
-	public SubType getSubType(){
+	public SubType getSubType() {
 		return mSubType;
 	}
 
 	/**
 	 * Tiempo de la sessión
 	 */
-	public int getTime(){
+	public int getTime() {
 		return mTime;
 	}
 
 	/**
 	 * Tipo de la sessión
 	 */
-	public Type getType(){
+	public Type getType() {
 		return mType;
 	}
 
@@ -96,8 +109,17 @@ public class Session {
 	 * 
 	 * @param newVal
 	 */
-	public void setChapter(Chapter newVal){
+	public void setChapter(Chapter newVal) {
 		mChapter = newVal;
+	}
+
+	/**
+	 * Fecha en la que se imparte la sesión
+	 * 
+	 * @param date
+	 */
+	public void setDate(String date) {
+		mDate = date;
 	}
 
 	/**
@@ -105,7 +127,7 @@ public class Session {
 	 * 
 	 * @param newVal
 	 */
-	public void setDescription(String newVal){
+	public void setDescription(String newVal) {
 		mDescription = newVal;
 	}
 
@@ -114,7 +136,7 @@ public class Session {
 	 * 
 	 * @param newVal
 	 */
-	public void setId(int newVal){
+	public void setId(int newVal) {
 		mId = newVal;
 	}
 
@@ -123,7 +145,7 @@ public class Session {
 	 * 
 	 * @param newVal
 	 */
-	public void setSubType(SubType newVal){
+	public void setSubType(SubType newVal) {
 		mSubType = newVal;
 	}
 
@@ -132,7 +154,7 @@ public class Session {
 	 * 
 	 * @param newVal
 	 */
-	public void setTime(int newVal){
+	public void setTime(int newVal) {
 		mTime = newVal;
 	}
 
@@ -141,7 +163,7 @@ public class Session {
 	 * 
 	 * @param newVal
 	 */
-	public void setType(Type newVal){
+	public void setType(Type newVal) {
 		mType = newVal;
 	}
 
