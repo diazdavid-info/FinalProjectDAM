@@ -1,14 +1,13 @@
-﻿package david.model.pojo.school;
-
-import david.model.pojo.builder.ChapterBuilder;
-
-
-/**
+﻿/**
  * Clase que recoge los capítulos de un temario
  * @author David Díaz
  * @version 1.0
  * @created 13-mar-2015 15:53:29
  */
+package david.model.pojo.school;
+
+import david.model.pojo.builder.ChapterBuilder;
+
 public class Chapter {
 
 	/**
@@ -24,12 +23,13 @@ public class Chapter {
 	 */
 	private String mName;
 
-	public Chapter(ChapterBuilder chapterBuilder){
+	public Chapter(ChapterBuilder chapterBuilder) {
 		mHour = chapterBuilder.getHour();
 		mId = chapterBuilder.getId();
 		mName = chapterBuilder.getName();
 	}
 
+	@Override
 	public void finalize() throws Throwable {
 
 	}
@@ -37,21 +37,21 @@ public class Chapter {
 	/**
 	 * Tiempo dísponible para impartir el capítulo
 	 */
-	public int getHour(){
+	public int getHour() {
 		return mHour;
 	}
 
 	/**
 	 * Identificador del capítulo
 	 */
-	public int getId(){
+	public int getId() {
 		return mId;
 	}
 
 	/**
 	 * Nombre del capítulo
 	 */
-	public String getName(){
+	public String getName() {
 		return mName;
 	}
 
@@ -60,7 +60,7 @@ public class Chapter {
 	 * 
 	 * @param newVal
 	 */
-	public void setHour(int newVal){
+	public void setHour(int newVal) {
 		mHour = newVal;
 	}
 
@@ -69,7 +69,7 @@ public class Chapter {
 	 * 
 	 * @param newVal
 	 */
-	public void setId(int newVal){
+	public void setId(int newVal) {
 		mId = newVal;
 	}
 
@@ -78,7 +78,7 @@ public class Chapter {
 	 * 
 	 * @param newVal
 	 */
-	public void setName(String newVal){
+	public void setName(String newVal) {
 		mName = newVal;
 	}
 
